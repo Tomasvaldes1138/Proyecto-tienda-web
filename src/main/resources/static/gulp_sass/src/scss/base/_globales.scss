@@ -1,0 +1,56 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-size: 1.6rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1, h2, h3, p, a {
+    color: $black;
+    font-family: $principal;
+    margin: 0;
+}
+span{
+    font-weight: 700;
+}
+a{
+    text-decoration: none;
+}
+
+.container{
+    margin: 0 auto;
+    width: 75%;
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-space{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.f-start{
+    align-items: flex-start;
+}
+.f-column-l{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.gap-column{
+    column-gap: 3rem;
+}
+
+
