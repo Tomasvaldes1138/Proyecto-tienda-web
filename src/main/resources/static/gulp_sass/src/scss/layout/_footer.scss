@@ -1,7 +1,7 @@
 .footer{
     margin-top: 6rem;
     background-color: $footerBack;
-    padding: 2rem 0;
+    padding: 5rem 0;
 }
 
 .f-title{
@@ -21,11 +21,20 @@
     max-width: 38rem;
 }
 
+.social-media{
+    display: flex;
+    column-gap: .5rem;
+    margin-top: 1rem;
+    justify-content: left;
+}
+
 .s-btn-container{
     display: flex;
     justify-content: left;
     .input-s{
         border-radius: 2rem 0 0 2rem;
+        outline: none;
+        padding-left: 1rem;
     }
     .btn-suscribirse{
         background-color: $lightBlue;
@@ -37,6 +46,14 @@
         margin-left: -1rem;
         p{
             color: $white;
+            text-transform: uppercase;
+            font-weight: $bold;
         }
     }
+}
+
+.copyright{
+    margin-top: 3rem;
+    margin-bottom: -3rem;
+    font-size: $fontSmall;
 }

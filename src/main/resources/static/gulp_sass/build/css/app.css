@@ -349,13 +349,14 @@ html {
 
 body {
   font-size: 1.6rem;
+  background-color: #F7F7F7;
 }
 
 img {
   max-width: 100%;
 }
 
-h1, h2, h3, p, a {
+h1, h2, h3, p, a, tr, th, td, label, option, select, input {
   color: #000000;
   font-family: "Roboto", sans-serif;
   margin: 0;
@@ -396,8 +397,45 @@ a {
   justify-content: left;
 }
 
+.flex-c-c {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .gap-column {
   column-gap: 3rem;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.underline:hover {
+  text-decoration: underline;
+}
+
+.btn-reset {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  position: relative;
+}
+
+.align-top {
+  align-items: flex-start;
+}
+
+.mg-2 {
+  margin-bottom: 2rem;
+}
+
+.bold {
+  font-weight: 700;
 }
 
 .header {
@@ -413,15 +451,66 @@ a {
 }
 
 .barra-container .barra-busqueda {
-  border-radius: 1rem;
+  border-radius: 2rem;
+  width: 40rem;
+  height: 4rem;
+  outline: none;
+  padding-left: 1rem;
+}
+.barra-container .barra-busqueda::placeholder {
+  padding-left: 0.5rem;
+  color: #000000;
+}
+.barra-container .lupa {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  position: relative;
+  top: 0.1rem;
+  left: -4.2rem;
 }
 
 .acciones {
   column-gap: 2rem;
 }
+.acciones .dropdown {
+  position: relative;
+  display: inline-block;
+}
+.acciones .dropdown-btn {
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+}
+.acciones .dropdown-content {
+  display: none;
+  position: absolute;
+  margin-top: 0rem;
+  border: 1px solid #e1e1e1;
+}
+.acciones .dropdown-content a {
+  display: block;
+  background-color: #fff;
+  padding: 1rem;
+  text-decoration: underline;
+}
+.acciones .dropdown:hover .dropdown-content {
+  display: block;
+}
 .acciones .h-logo {
   color: #fff;
   font-size: 1.6rem;
+}
+.acciones .triangle {
+  width: 0;
+  height: 0;
+  border-top: 8px solid #fff;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  margin-left: 4px;
 }
 
 .nav {
@@ -440,6 +529,76 @@ a {
   padding: 3rem 0;
 }
 
+.registro-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #fff;
+  margin: 5rem 12rem;
+  padding: 2rem 0;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.f-registro {
+  width: 28rem;
+}
+.f-registro h1 {
+  font-weight: 300;
+}
+.f-registro .u-field {
+  margin-bottom: 1rem;
+}
+.f-registro .u-field .input-form {
+  width: 100%;
+  height: 4rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: #F9FAFF;
+  color: #000000;
+  border: 2px solid #ebebee;
+}
+.f-registro .btn-alert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1rem;
+}
+.f-registro .btn-alert p {
+  font-size: 1.4rem;
+}
+.f-registro .btn-alert p a {
+  color: #4076FF;
+}
+.f-registro .btn-registro {
+  background-color: #012A93;
+  color: #fff;
+  padding: 1.5rem 8.8rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.reg-background {
+  background-color: #F9FAFF;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.f-registro h1 {
+  margin-bottom: 2rem;
+}
+
 .title {
   margin-bottom: 4rem;
   font-weight: 400;
@@ -448,7 +607,7 @@ a {
 .grid-productos {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 2rem;
+  gap: 2rem;
 }
 
 .producto-container {
@@ -496,20 +655,153 @@ a {
   color: #DA291C;
   font-weight: 700;
 }
-.producto-container .info .pb-container .btn-agregar {
+
+.btn-agregar {
   background-color: #4076FF;
   padding: 0.8rem 1rem;
   border-radius: 2rem;
+  display: flex;
+  justify-content: center;
 }
-.producto-container .info .pb-container .btn-agregar .nombre-agregar {
+.btn-agregar .nombre-agregar {
   font-size: 1.4rem;
   color: #fff;
+  font-weight: 700;
+}
+
+.entrega-container {
+  margin-top: 8rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.left {
+  width: 48rem;
+}
+.left .form-entrega {
+  margin: 0;
+  padding: 2rem 4rem;
+  margin: 3rem 0;
+}
+
+.right .row-producto {
+  column-gap: 2rem;
+}
+.right .row-producto .c-cantidad {
+  border: 1px solid #000000;
+  padding: 0.8rem 1.2rem;
+}
+.right .row-producto .nombre-2 {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.right .row-producto .precio {
+  font-weight: 700;
+}
+
+.total {
+  border-top: 1px solid #000000;
+  margin-top: 2rem;
+  padding: 4rem 0;
+}
+
+.alerta-exito {
+  background-color: #4076FF;
+  padding: 1.5rem 5rem;
+  margin: 3rem 0;
+}
+.alerta-exito p {
+  color: #fff;
+  text-align: center;
+}
+
+.datos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.datos-transferencia {
+  margin-top: 2rem;
+  background-color: #fff;
+  padding: 2rem;
+  border: 1px solid #000000;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3rem;
+}
+
+.monto {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.imagen-comprobante {
+  background-image: url(../../../../img/transferencia.jpg);
+  width: 2rem;
+  height: 2rem;
+  color: red;
+}
+
+.subir-imagen {
+  margin: 3rem 0;
+  row-gap: 1rem;
+}
+.subir-imagen .enviar-comprobante {
+  width: 15.5rem;
+}
+
+.listado-carro {
+  width: 70rem;
+  background-color: #fff;
+}
+.listado-carro .producto-carro {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+}
+.listado-carro .producto-carro .name-producto {
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+.listado-carro .producto-carro .precios-carro {
+  width: 10rem;
+  margin: 1.5rem 0;
+}
+
+.edit-cantidad {
+  width: 12rem;
+}
+.edit-cantidad .btn-edit {
+  background-color: #e1e1e1;
+  padding: 0.4rem;
+}
+.edit-cantidad .cantidad {
+  width: 3rem;
+}
+
+.area-cupon {
+  width: 34rem;
+  padding: 2rem;
+  background-color: #fff;
+}
+.area-cupon .desc-btn {
+  width: 13rem;
+  padding: 1rem 0;
+}
+.area-cupon .desc-btn p {
+  font-weight: 700;
+  text-align: center;
 }
 
 .footer {
   margin-top: 6rem;
   background-color: #E8E8E8;
-  padding: 2rem 0;
+  padding: 5rem 0;
 }
 
 .f-title {
@@ -530,12 +822,21 @@ a {
   max-width: 38rem;
 }
 
+.social-media {
+  display: flex;
+  column-gap: 0.5rem;
+  margin-top: 1rem;
+  justify-content: left;
+}
+
 .s-btn-container {
   display: flex;
   justify-content: left;
 }
 .s-btn-container .input-s {
   border-radius: 2rem 0 0 2rem;
+  outline: none;
+  padding-left: 1rem;
 }
 .s-btn-container .btn-suscribirse {
   background-color: #4076FF;
@@ -548,4 +849,88 @@ a {
 }
 .s-btn-container .btn-suscribirse p {
   color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.copyright {
+  margin-top: 3rem;
+  margin-bottom: -3rem;
+  font-size: 1.4rem;
+}
+
+.opciones {
+  display: flex;
+  justify-content: center;
+}
+.opciones .opcion {
+  background-color: #fff;
+  width: 19rem;
+  padding: 2rem 0;
+  border: 1px solid #000000;
+  border-radius: 1.2rem 1.2rem 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.content-border {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #000000;
+  padding: 2rem 2rem;
+  margin: 6rem;
+  margin-top: 0;
+  background-color: #fff;
+}
+.content-border .tabla-pedidos {
+  border: 1px solid #000000;
+  border-collapse: collapse;
+}
+.content-border .tabla-pedidos .header-columna {
+  background-color: #4076FF;
+}
+.content-border .tabla-pedidos .header-columna .nombre-columna {
+  text-align: left;
+  color: #fff;
+  width: 14rem;
+  padding: 1rem;
+  font-size: 1.8rem;
+}
+.content-border .tabla-pedidos td {
+  padding: 3rem 1rem;
+  font-size: 1.5rem;
+}
+
+.formulario {
+  padding: 4rem 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  margin: 10rem;
+  margin-top: 0;
+}
+.formulario .field {
+  margin-bottom: 3rem;
+}
+.formulario .field .input-form {
+  width: 100%;
+  height: 4rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  background-color: #F9FAFF;
+  color: #000000;
+  border: 2px solid #ebebee;
+}
+.formulario .btn-enviar {
+  background-color: #4076FF;
+  padding: 1rem 12rem;
+  color: #fff;
+  border-radius: 1rem;
+  border: none;
+  margin-top: 5rem;
+}
+
+.datos-actualizar {
+  margin-bottom: 4rem;
 }

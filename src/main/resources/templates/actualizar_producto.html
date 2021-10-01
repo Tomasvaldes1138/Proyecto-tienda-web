@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Productos</title>
+  <!-- <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Play&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container flex-space">
+    <a class="logo c-pointer" href="">PC Labs</a>
+    
+      <form action="#" class="barra-container">
+        <input class="barra-busqueda" type="text" name="busqueda" id="busqueda" placeholder="Buscar Productos">
+        <input type="submit" value="🔍" class="lupa">
+      </form>
+    <div class="acciones flex-space">
+      <div class="carro-container flex-space">
+        <a class="h-logo" href="carrito.html">🛒  Carro</a>
+      </div>
+
+      <div class="login-container dropdown">
+          <div class="dropdown-btn flex-space">
+            <p class="h-logo" href="#">👤   Login</p>
+            <div class="triangle"></div>
+        </div>
+        <div class="dropdown-content">
+          <a href="login.html">Cliente</a>
+          <a href="login_admin.html">Administrador</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </header>
+    <nav class="nav">
+      <div class="container">
+      <a href="#" class="nav-link" >Procesadores</a>
+      <a href="#" class="nav-link" >Tarjetas Graficas</a>
+      <a href="#" class="nav-link" >Memorias Ram</a>
+      <a href="#" class="nav-link" >Placas Madre</a>
+      <a href="#" class="nav-link" >Fuentes de Poder</a>
+      <a href="#" class="nav-link" >Gabinetes</a>
+    </div>
+    </nav>
+    <div class="container">
+      <p class="page-name" >Actualizar</p>
+      <h1 class="title" >Actualizar Producto</h1>
+      
+      <div class="opciones">
+        <div class="opcion">
+          <p class="ordenes">Ordenes</p>
+        </div>
+        <div class="opcion">
+          <p class="productos">Productos</p>
+      </div>
+      <div class="opcion">
+        <p class="nuevo-producto">Nuevo Producto</p>
+      </div>
+      <div class="opcion">
+        <p class="nuevo-admin">Nuevo Administrador</p>
+      </div>
+    </div>
+
+    <form action="#" class="formulario content-border">
+      <p class="page-name" >Datos Actuales</p>
+
+        <table class="tabla-pedidos datos-actualizar">
+            <tr class="header-columna" >
+              <th class="nombre-columna" >Imagen</th>
+              <th class="nombre-columna" >Nombre</th>
+              <th class="nombre-columna" >Precio</th>
+              <th class="nombre-columna" >Descuento</th>
+              <th class="nombre-columna" >Stock</th>
+            </tr>
+            <tr>
+              <td><img src="" alt="" width="100px" height="100px"></td>
+              <td>Msi gaming gtx 1060</td>
+              <td>$990</td>
+              <td>10%</td>
+              <td>12</td>
+            </tr>
+          </table>
+
+        <p class="page-name" >Actualización de los datos</p>
+
+
+        <div class="field">
+            <label for="nombre">Nombre Producto</label>
+            <input class="input-form" type="text" name="nombre" id="nombre">
+        </div>
+        <div class="field">
+            <label for="precio">Precio</label>
+            <input class="input-form" type="number" name="precio" id="precio">
+        </div>
+        <div class="field">
+            <label for="stock">Stock</label>
+            <input class="input-form" type="stock" name="stock" id="stock">
+        </div>
+        <div class="field">
+            <label for="descuento">Descuento</label>
+            <input class="input-form" type="number" name="descuento" id="descuento">
+        </div>
+        <div class="field">
+            <label for="url-imagen">URL Imagen</label>
+            <input class="input-form" type="text" name="url-imagen" id="url-imagen">
+        </div>
+
+        <div class="flex-center">
+            <input class="btn-enviar c-pointer" type="submit" value="Actualizar">
+        </div>
+    </form>
+    </div>
+
+
+  </div>
+    
+    
+
+
+
+
+
+
+
+
+    <footer class="footer">
+      <div class="container flex-space f-start gap-column">
+      <div class="icons">
+          <p class="logo logo-f">PC Labs</p>
+          
+          <div class="social-media">
+            <p>F</p>
+            <P>T</P>
+            <P>G</P>
+          </div>
+
+        </div>
+
+        <div class="n-t-container f-column-l">
+          <h3 class="f-title" >Nuestra tienda</h3>
+          <a class="f-link" href="#">Trabaja con nosotros</a>
+          <a class="f-link" href="#">Sobre nosotros</a>
+          <a class="f-link" href="#">Contáctanos</a>
+          <a class="f-link" href="#">Promociones</a>
+          <a class="f-link" href="#">Admnistradores</a>
+        </div>
+
+        <div class="s-c-container f-column-l">
+          <h3 class="f-title" >Servicio al Cliente</h3>
+          <a class="f-link" href="#">Términos y condiciones</a>
+          <a class="f-link" href="#">Cambios y devoluciones</a>
+          <a class="f-link" href="#">Centro de ayuda</a>
+        </div>
+
+        <div class="c-container f-column-l">
+          <h3 class="f-title" >Categorías</h3>
+          <a class="f-link underline" href="categoria/procesadores.html">Procesadores</a>
+          <a class="f-link underline" href="categoria/tarjetas_graficas.html">Tarjetas gráficas</a>
+          <a class="f-link underline" href="categoria/memorias_ram.html">Memorias ram</a>
+          <a class="f-link underline" href="categoria/fuentes_poder.html">Fuentes de poder</a>
+          <a class="f-link underline" href="categoria/gabinetes.html">Gabinetes</a>
+        </div>
+
+        <div class="s-container f-column-l">
+          <h3 class="f-title" >Suscríbete</h3>
+          <p class="f-link"> Suscríbete a nuestro newletter, para que seas el primero en conocer nuestras nuevas ofertas y promociones</p>
+          <div class="s-btn-container">  
+            <input class="input-s" type="email" name="email" id="email">
+            <div class="btn-suscribirse">
+              <p>Suscribirse</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+</body>
+</html>

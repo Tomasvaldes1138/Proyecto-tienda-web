@@ -12,17 +12,69 @@
 .barra-container{
 
     .barra-busqueda{
-        border-radius: 1rem;
+        border-radius: 2rem;
+        width: 40rem;
+        height: 4rem;
+        outline: none;
+        padding-left: 1rem;
+        &::placeholder{
+            padding-left: .5rem;
+            color: $black;
+        }
     }
+    .lupa{
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        position: relative;
+        top: .1rem; left: -4.2rem;
+    }
+    
 }
 
 .acciones{
     column-gap: 2rem;
+
+    .dropdown{
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-btn{
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    .dropdown-content{
+        display: none;
+        position: absolute;
+        margin-top: 0rem;
+        border: 1px solid #e1e1e1;
+        a{
+            display: block;
+            background-color: $white;
+            padding: 1rem;
+            text-decoration: underline;
+        }
+    }
+    .dropdown:hover .dropdown-content{
+        display: block;
+    }
     
     .h-logo{
         color: $white;
         font-size: 1.6rem;
     }
+    .triangle {
+        width: 0;
+        height: 0;
+        border-top: 8px solid $white;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        margin-left: 4px;
+   }
 }
 .nav{
     padding: 2rem 0;

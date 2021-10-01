@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Productos</title>
+  <!-- <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Play&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container flex-space">
+    <a class="logo c-pointer" href="">PC Labs</a>
+    
+      <form action="#" class="barra-container">
+        <input class="barra-busqueda" type="text" name="busqueda" id="busqueda" placeholder="Buscar Productos">
+        <input type="submit" value="🔍" class="lupa">
+      </form>
+    <div class="acciones flex-space">
+      <div class="carro-container flex-space">
+        <a class="h-logo" href="carrito.html">🛒  Carro</a>
+      </div>
+
+      <div class="login-container dropdown">
+          <div class="dropdown-btn flex-space">
+            <p class="h-logo" href="#">👤   Login</p>
+            <div class="triangle"></div>
+        </div>
+        <div class="dropdown-content">
+          <a href="login.html">Cliente</a>
+          <a href="login_admin.html">Administrador</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </header>
+    <nav class="nav">
+      <div class="container">
+        <a href="categoria/procesadores.html" class="nav-link" >Procesadores</a>
+        <a href="categoria/tarjetas_graficas.html" class="nav-link" >Tarjetas Graficas</a>
+        <a href="categoria/memorias_ram.html" class="nav-link" >Memorias Ram</a>
+        <a href="categoria/placas_madre.html" class="nav-link" >Placas Madre</a>
+        <a href="categoria/fuentes_poder.html" class="nav-link" >Fuentes de Poder</a>
+        <a href="categoria/gabinetes.html" class="nav-link" >Gabinetes</a>
+    </div>
+    </nav>
+    <div class="container">
+      <p class="page-name" >Ordenes</p>
+      <h1 class="title" >Ordenes de Compra</h1>
+      
+      <div class="opciones">
+        <div class="opcion  c-pointer">
+          <a href="pedidos_realizados.html" class="ordenes">Ordenes</a>
+        </div>
+        <div class="opcion  c-pointer">
+          <a href="info_productos.html" class="productos">Productos</a>
+      </div>
+      <div class="opcion  c-pointer">
+        <a href="nuevo_producto.html" class="nuevo-producto">Nuevo Producto</a>
+      </div>
+      <div class="opcion  c-pointer">
+        <a href="nuevo_administrador.html" class="nuevo-admin">Nuevo Administrador</a>
+      </div>
+    </div>
+
+    <div class="content-border">
+      <table class="tabla-pedidos">
+        <tr class="header-columna" >
+          <th class="nombre-columna" >ID</th>
+          <th class="nombre-columna" >Fecha</th>
+          <th class="nombre-columna" >Cliente</th>
+          <th class="nombre-columna" >Entrega</th>
+          <th class="nombre-columna" >Orden Compra</th>
+          <th class="nombre-columna" >Comprobante</th>
+          <th class="nombre-columna" >Total</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>30-09-2021</td>
+          <td>Juan Perez</td>
+          <td>Retiro</td>
+          <td><a href="#">Ver Orden</a></td>
+          <td><a href="#">Ver Comprobante</a></td>
+          <td>$79.990</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>01-10-2021</td>
+          <td>Pedro Perez</td>
+          <td>Despacho</td>
+          <td><a href="#">Ver Orden</a></td>
+          <td><a href="#">Ver Comprobante</a></td>
+          <td>$129.990</td>
+        </tr>
+      </table>
+    </div>
+
+
+
+
+
+
+
+  </div>
+    
+    
+
+
+
+
+
+
+
+
+    <footer class="footer">
+      <div class="container flex-space f-start gap-column">
+      <div class="icons">
+          <p class="logo logo-f">PC Labs</p>
+          
+          <div class="social-media">
+            <p>F</p>
+            <P>T</P>
+            <P>G</P>
+          </div>
+
+        </div>
+
+        <div class="n-t-container f-column-l">
+          <h3 class="f-title" >Nuestra tienda</h3>
+          <a class="f-link" href="#">Trabaja con nosotros</a>
+          <a class="f-link" href="#">Sobre nosotros</a>
+          <a class="f-link" href="#">Contáctanos</a>
+          <a class="f-link" href="#">Promociones</a>
+          <a class="f-link" href="#">Admnistradores</a>
+        </div>
+
+        <div class="s-c-container f-column-l">
+          <h3 class="f-title" >Servicio al Cliente</h3>
+          <a class="f-link" href="#">Términos y condiciones</a>
+          <a class="f-link" href="#">Cambios y devoluciones</a>
+          <a class="f-link" href="#">Centro de ayuda</a>
+        </div>
+
+        <div class="c-container f-column-l">
+          <h3 class="f-title" >Categorías</h3>
+          <a class="f-link" href="categoria/procesadores.html">Procesadores</a>
+          <a class="f-link" href="categoria/tarjetas_graficas.html">Tarjetas gráficas</a>
+          <a class="f-link" href="categoria/memorias_ram.html">Memorias ram</a>
+          <a class="f-link" href="categoria/fuentes_poder.html">Fuentes de poder</a>
+          <a class="f-link" href="categoria/gabinetes.html">Gabinetes</a>
+        </div>
+
+        <div class="s-container f-column-l">
+          <h3 class="f-title" >Suscríbete</h3>
+          <p class="f-link"> Suscríbete a nuestro newletter, para que seas el primero en conocer nuestras nuevas ofertas y promociones</p>
+          <div class="s-btn-container">  
+            <input class="input-s" type="email" name="email" id="email">
+            <div class="btn-suscribirse">
+              <p>Suscribirse</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+</body>
+</html>

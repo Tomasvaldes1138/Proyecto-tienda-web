@@ -1,0 +1,48 @@
+.listado-carro{
+    width: 70rem;
+    background-color: $white;
+    
+    .producto-carro{
+        display: flex;
+        align-items: center;
+        column-gap: 2rem;
+        .name-producto{
+            text-transform: uppercase;
+            margin-bottom: .5rem;
+            font-weight: $regular;
+            font-size: $fontSize;
+
+        }
+        .precios-carro{
+            width: 10rem;
+            margin: 1.5rem 0;
+        }
+    }
+}
+
+.edit-cantidad{
+    width: 12rem;
+
+    .btn-edit{
+        background-color: #e1e1e1;
+        padding: .4rem;
+
+    }
+    .cantidad{
+        width: 3rem;
+    }
+}
+
+.area-cupon{
+    width: 34rem;
+    padding: 2rem;
+    background-color: $white;
+    .desc-btn{
+        width: 13rem;
+        padding: 1rem 0;
+        p{
+            font-weight: $bold;
+            text-align: center;
+        }
+    }
+}

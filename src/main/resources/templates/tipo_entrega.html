@@ -47,125 +47,79 @@
       <a href="categoria/gabinetes.html" class="nav-link" >Gabinetes</a>
     </div>
     </nav>
-    <div class="container">
-      <p class="page-name" >Home</p>
-      
-      <h1 class="title" >Productos</h1>
+    <div class="container flex-space entrega-container">
+        <div class="left">
+        <div class="seleccion flex-space">
+            <div class="radio-opcion">
+                <input type="radio" name="despacho" id="despacho">
+                <label for="despacho">Despacho a Domicilio</label>
+            </div>
 
-      <div class="grid-productos">
-      <div class="producto-container">
-        <div class="descuento-container">
-          <p class="descuento">-20%</p>
+            <div class="radio-opcion">
+                <input type="radio" name="retiro" id="retiro">
+                <label for="retiro">Retiro en Tienda</label>
+            </div>
+            
         </div>
-        <div class="img-container">
-            <img src="" alt="" width="150px" height="150px">
-        </div>
-        <div class="info">
-          <h2 class="nombre-producto" >Cpu Intel i3 8100</h2>
-          <p class="tipo-categoria">Procesadores</p>
-            <div class="pb-container flex-space">
-              <div class="precios flex-space ">
-                <p class="precio-anterior">$1.290</p>
-                <p class="precio-actual">$990</p>
-              </div>
-              <div class="btn-agregar">
-                <p class="nombre-agregar">🛒 Agregar</p>
-              </div>
+
+        <form action="#" class="formulario content-border form-entrega">
+
+            <div class="field f-column-l">
+                <label for="region">Region:</label>
+                <select name="region" id="region" class="input-form">
+                    <option value="La Araucania">La Araucania</option>
+                </select>
+            </div>
+
+            <div class="field f-column-l">
+                <label for="apellidos">Ciudad:</label>
+                <select name="ciudad" id="ciudad" class="input-form">
+                    <option value="temuco">Temuco</option>
+                </select>
+            </div>
+            
+            <div class="field">
+                <label for="email">Calle:</label>
+                <input class="input-form" type="email" name="email" id="email">
+            </div>
+            <div class="field">
+                <label for="rut">Depto/Oficina/Otros:</label>
+                <input class="input-form" type="text" name="rut" id="rut">
+            </div>
+            <div class="field">
+                <label for="rut">Teléfono</label>
+                <input class="input-form" type="text" name="rut" id="rut">
+            </div>
+        </form>
+
+        <div class="flex-space">
+            <div class="btn-agregar desc-btn">
+                <a href="carrito.html" class="nombre-agregar ">VOLVER AL CARRO</a>
+            </div>            
+            <div class="btn-agregar desc-btn">
+                <a href="orden_exitosa.html" class="nombre-agregar ">ENVIAR ORDEN</a>
             </div>
         </div>
-      </div>
 
-      <div class="producto-container">
-        <div class="descuento-container">
-          <p class="descuento">-20%</p>
-        </div>
-        <div class="img-container">
-            <img src="" alt="" width="150px" height="150px">
-        </div>
-        <div class="info">
-          <h2 class="nombre-producto" >Cpu Intel i3 8100</h2>
-          <p class="tipo-categoria">Procesadores</p>
-            <div class="pb-container flex-space">
-              <div class="precios flex-space ">
-                <p class="precio-anterior">$1.290</p>
-                <p class="precio-actual">$990</p>
-              </div>
-              <div class="btn-agregar">
-                <p class="nombre-agregar">🛒 Agregar</p>
-              </div>
-            </div>
-        </div>
-      </div>
+    </div>
 
-      <div class="producto-container">
-        <div class="descuento-container">
-          <p class="descuento">-20%</p>
-        </div>
-        <div class="img-container">
-            <img src="" alt="" width="150px" height="150px">
-        </div>
-        <div class="info">
-          <h2 class="nombre-producto" >Cpu Intel i3 8100</h2>
-          <p class="tipo-categoria">Procesadores</p>
-            <div class="pb-container flex-space">
-              <div class="precios flex-space ">
-                <p class="precio-anterior">$1.290</p>
-                <p class="precio-actual">$990</p>
-              </div>
-              <div class="btn-agregar">
-                <p class="nombre-agregar">🛒 Agregar</p>
-              </div>
+    <div class="right">
+        <div class="row-producto flex-space">
+            <div class="c-cantidad">
+                <p>1</p>
             </div>
+            <p class="nombre-2">CPU Intel i5 10400</p>
+            <p class="precio">$1.090</p>
         </div>
-      </div>
+        <div class="flex-space total">
+            <p class="bold">Total</p>
+            <p class="bold"> $7.990</p>
+        </div>
+    </div>
 
-      <div class="producto-container">
-        <div class="descuento-container">
-          <p class="descuento">-20%</p>
-        </div>
-        <div class="img-container">
-            <img src="" alt="" width="150px" height="150px">
-        </div>
-        <div class="info">
-          <h2 class="nombre-producto" >Cpu Intel i3 8100</h2>
-          <p class="tipo-categoria">Procesadores</p>
-            <div class="pb-container flex-space">
-              <div class="precios flex-space ">
-                <p class="precio-anterior">$1.290</p>
-                <p class="precio-actual">$990</p>
-              </div>
-              <div class="btn-agregar">
-                <p class="nombre-agregar">🛒 Agregar</p>
-              </div>
-            </div>
-        </div>
-      </div>
-
-      <div class="producto-container">
-        <div class="descuento-container">
-          <p class="descuento">-20%</p>
-        </div>
-        <div class="img-container">
-            <img src="" alt="" width="150px" height="150px">
-        </div>
-        <div class="info">
-          <h2 class="nombre-producto" >Cpu Intel i3 8100</h2>
-          <p class="tipo-categoria">Procesadores</p>
-            <div class="pb-container flex-space">
-              <div class="precios flex-space ">
-                <p class="precio-anterior">$1.290</p>
-                <p class="precio-actual">$990</p>
-              </div>
-              <div class="btn-agregar">
-                <p class="nombre-agregar">🛒 Agregar</p>
-              </div>
-            </div>
-        </div>
-      </div>
 
     </div>
       
-    </div>
     <footer class="footer">
       <div class="container flex-space f-start gap-column">
       <div class="icons">
@@ -194,6 +148,7 @@
           <a class="f-link underline" href="#">Promociones</a>
           <a class="f-link underline" href="#">Admnistradores</a>
         </div>
+
 
         <div class="s-c-container f-column-l">
           <h3 class="f-title" >Servicio al Cliente</h3>

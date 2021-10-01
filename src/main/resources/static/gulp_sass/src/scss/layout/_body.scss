@@ -8,7 +8,7 @@
 .grid-productos{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 2rem;
+    gap: 2rem;
 }
 
 .producto-container{
@@ -53,15 +53,113 @@
                     font-weight: $bold;
                 }
             }
-            .btn-agregar{
-                background-color: $lightBlue;
-                padding:  .8rem 1rem;
-                border-radius: 2rem;
-                .nombre-agregar{
-                    font-size: 1.4rem;
-                    color: $white;
-                }
-            }
+
         }
+    }
+}
+
+.btn-agregar{
+    background-color: $lightBlue;
+    padding:  .8rem 1rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    .nombre-agregar{
+        font-size: 1.4rem;
+        color: $white;
+        font-weight: $bold;
+    }
+}
+
+.entrega-container{
+    margin-top: 8rem;
+    display: flex;
+    align-items: flex-start;
+
+}
+
+.left{
+    width: 48rem;
+
+    .form-entrega{
+        margin: 0;
+        padding: 2rem 4rem;
+        margin: 3rem 0;
+
+    }
+}
+.right{
+
+    .row-producto{
+        column-gap: 2rem;
+
+        .c-cantidad{
+            border: 1px solid $black;
+            padding: .8rem 1.2rem;
+        }
+
+        .nombre-2{
+            text-transform: uppercase;
+            font-size: 2rem;
+        }
+        
+        .precio{
+            font-weight: $bold;
+        }
+    }
+}
+
+.total{
+    border-top: 1px solid $black;
+    margin-top: 2rem;
+    padding: 4rem 0;
+}
+
+.alerta-exito{
+    background-color: $lightBlue;
+    padding: 1.5rem 5rem;
+    margin: 3rem 0;
+    p{
+        color: $white;
+        text-align: center;
+    }
+}
+
+.datos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.datos-transferencia{
+    margin-top: 2rem;
+    background-color: $white;
+    padding: 2rem;
+    border: 1px solid $black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3rem;
+
+}
+
+.monto{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.imagen-comprobante{
+    background-image: url(../../../../img/transferencia.jpg);
+    width: 2rem;
+    height: 2rem;
+    color: red;
+}
+
+.subir-imagen{
+    margin: 3rem 0;
+    row-gap: 1rem;
+
+    .enviar-comprobante{
+        width: 15.5rem;
     }
 }
