@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
-   <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css">
+  <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Play&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- <link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css"> -->
+  <!--<link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css"> -->
 </head>
 <body>
   <header class="header">
@@ -39,51 +39,26 @@
     </header>
     <nav class="nav">
       <div class="container">
-      <a href="categoria/procesadores.html" class="nav-link" >Procesadores</a>
-      <a href="categoria/tarjetas_graficas.html" class="nav-link" >Tarjetas Graficas</a>
-      <a href="categoria/memorias_ram.html" class="nav-link" >Memorias Ram</a>
-      <a href="categoria/placas_madre.html" class="nav-link" >Placas Madre</a>
-      <a href="categoria/fuentes_poder.html" class="nav-link" >Fuentes de Poder</a>
-      <a href="categoria/gabinetes.html" class="nav-link" >Gabinetes</a>
+        <a href="categoria/procesadores.html" class="nav-link" >Procesadores</a>
+        <a href="categoria/tarjetas_graficas.html" class="nav-link" >Tarjetas Graficas</a>
+        <a href="categoria/memorias_ram.html" class="nav-link" >Memorias Ram</a>
+        <a href="categoria/placas_madre.html" class="nav-link" >Placas Madre</a>
+        <a href="categoria/fuentes_poder.html" class="nav-link" >Fuentes de Poder</a>
+        <a href="categoria/gabinetes.html" class="nav-link" >Gabinetes</a>
     </div>
     </nav>
-    <div class="container">
-      <p class="page-name" >Home</p>
-      
-      <h1 class="title" >Productos</h1>
 
-      <div class="grid-productos">
+    <div class="container ">
+      <h1 class="title mg-t-4">Comprobante de pago</h1>
+        <div class="comprobante-area">
 
+            <img src="../static/img/comprobante.jpg" alt="comprobante" width="550px" height="800px">
 
-      <div class="producto-container" th:each="producto:${productos}">
-        <div class="descuento-container">
-          <p class="descuento">-20%</p>
         </div>
-        <div class="img-container">
-            <img src="" alt="" width="150px" height="150px">
-        </div>
-        <div class="info">
-          <h2 class="nombre-producto"  th:text="${producto.nombre}" ></h2>
-
-          <p class="tipo-categoria" th:text="${producto.categoria}"></p>
-            <div class="pb-container flex-space">
-              <div class="precios flex-space ">
-                <p  class="precio-anterior" th:text="${producto.precioAnterior}" ></p>
-                <p class="precio-actual" th:text="${producto.precio}"></p>
-              </div>
-              <div class="btn-agregar">
-                <p class="nombre-agregar">🛒 Agregar</p>
-              </div>
-            </div>
-        </div>
-      </div>
-
-
-
 
     </div>
+ 
       
-    </div>
     <footer class="footer">
       <div class="container flex-space f-start gap-column">
       <div class="icons">
@@ -113,6 +88,7 @@
           <a class="f-link underline" href="#">Admnistradores</a>
         </div>
 
+        
         <div class="s-c-container f-column-l">
           <h3 class="f-title" >Servicio al Cliente</h3>
           <a class="f-link underline" href="#">Términos y condiciones</a>

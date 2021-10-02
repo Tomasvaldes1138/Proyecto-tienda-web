@@ -163,3 +163,82 @@
         width: 15.5rem;
     }
 }
+
+.tabla-detalle{
+    border-collapse: collapse;
+    margin: 3rem 0;
+    .head-info-orden{
+        width: min-content;
+        text-align: center;
+        color: $white;
+        background-color: $lightBlue;
+        width: 90rem;
+        border: 1px solid $black;
+        padding: 2rem 0;      
+        font-size: 2rem;  
+    }
+    .head-row{
+        width: 20rem;
+        padding: 2rem 1rem;
+        border: .5px solid $black;
+        background-color: $footerBack;
+    }
+
+
+    .w-0{
+        padding: 0;
+    }
+
+    .head-row{
+        text-align: left;
+    }
+
+}
+
+.info-row{
+    padding: 2rem 1rem;
+    border: .5px solid $black;
+    background-color: $inputBack;
+}
+
+.tabla-listado{
+    border-collapse: collapse;
+
+    .w-s{
+        width: 6rem;
+    }
+    .w-m{
+        width: 18rem;
+    }
+    .w-l{
+        width: 60rem;
+    }
+    .head-listado{
+        padding: 2rem 1rem;
+        background-color: $lightBlue;
+        color: $white;
+        border: .5px solid $black;
+
+    }
+    .info-row{
+        border: .5px solid $black;
+    }
+    .t-foot{
+        background-color: $footerBack;
+        border: .5px solid $black;
+
+        td{
+            font-size: 2rem;
+            padding: 1.5rem 1rem;
+        }
+
+    }
+}
+
+.comprobante-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10rem 0;
+    background-color: $white;
+}

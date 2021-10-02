@@ -39,51 +39,108 @@
     </header>
     <nav class="nav">
       <div class="container">
-      <a href="categoria/procesadores.html" class="nav-link" >Procesadores</a>
-      <a href="categoria/tarjetas_graficas.html" class="nav-link" >Tarjetas Graficas</a>
-      <a href="categoria/memorias_ram.html" class="nav-link" >Memorias Ram</a>
-      <a href="categoria/placas_madre.html" class="nav-link" >Placas Madre</a>
-      <a href="categoria/fuentes_poder.html" class="nav-link" >Fuentes de Poder</a>
-      <a href="categoria/gabinetes.html" class="nav-link" >Gabinetes</a>
+        <a href="categoria/procesadores.html" class="nav-link" >Procesadores</a>
+        <a href="categoria/tarjetas_graficas.html" class="nav-link" >Tarjetas Graficas</a>
+        <a href="categoria/memorias_ram.html" class="nav-link" >Memorias Ram</a>
+        <a href="categoria/placas_madre.html" class="nav-link" >Placas Madre</a>
+        <a href="categoria/fuentes_poder.html" class="nav-link" >Fuentes de Poder</a>
+        <a href="categoria/gabinetes.html" class="nav-link" >Gabinetes</a>
     </div>
     </nav>
+
     <div class="container">
-      <p class="page-name" >Home</p>
-      
-      <h1 class="title" >Productos</h1>
 
-      <div class="grid-productos">
+      <h1 class="title mg-t-4">Detalle orden de compra</h1>
+
+      <table class="tabla-detalle">
+        <tr>
+          <td class="head-info-orden" id="info" colspan="2">Información de la orden de compra</td>
+          <td class="w-0"></td>
+        </tr>
+        <tr>
+          <th class="head-row" id="n-orden">Numero de orden:</th>
+          <td class="info-row">627382</td>
+        </tr>
+        <tr>
+          <th class="head-row" id="f-emision">Fecha de emisión:</hd>
+          <td class="info-row">22-09-2021 16:40</td>
+        </tr>
+        <tr>
+          <th class="head-row" id="nombres">Nombres:</th>
+          <td class="info-row">Juan Diego</td>
+        </tr>
+        <tr>
+          <th class="head-row" id="apellidos">Apellidos:</th>
+          <td class="info-row">Perez Diaz</td>
+        </tr>
+        <tr>
+          <th class="head-row" id="rut">Rut:</th>
+          <td class="info-row">17.234.123-4</td>
+        </tr>
+      </table>
+
+      <table class="tabla-detalle">
+        <tr>
+          <td class="head-info-orden" id="info" colspan="2">Información de entrega</td>
+          <td class="w-0"></td>
+        </tr>
+        <tr>
+          <th class="head-row" id="despacho">Despacho:</th>
+          <td class="info-row">Retiro en tienda</td>
+        </tr>
+        <tr>
+          <th class="head-row" id="region">Región:</hd>
+          <td class="info-row">--------</td>
+        </tr>
+        <tr>
+          <th class="head-row" id="ciudad">Ciudad:</th>
+          <td class="info-row">--------</td>
+        </tr>
+        <tr>
+          <th class="head-row" id="direccion">Dirección:</th>
+          <td class="info-row">Alemania 432</td>
+        </tr>
+        <tr>
+          <th class="head-row" id="telefono">Teléfono:</th>
+          <td class="info-row">972832734</td>
+        </tr>
+      </table>
 
 
-      <div class="producto-container" th:each="producto:${productos}">
-        <div class="descuento-container">
-          <p class="descuento">-20%</p>
-        </div>
-        <div class="img-container">
-            <img src="" alt="" width="150px" height="150px">
-        </div>
-        <div class="info">
-          <h2 class="nombre-producto"  th:text="${producto.nombre}" ></h2>
-
-          <p class="tipo-categoria" th:text="${producto.categoria}"></p>
-            <div class="pb-container flex-space">
-              <div class="precios flex-space ">
-                <p  class="precio-anterior" th:text="${producto.precioAnterior}" ></p>
-                <p class="precio-actual" th:text="${producto.precio}"></p>
-              </div>
-              <div class="btn-agregar">
-                <p class="nombre-agregar">🛒 Agregar</p>
-              </div>
-            </div>
-        </div>
-      </div>
-
-
+      <p class="mg-2">Listado de productos</p>
+      <table class="tabla-listado">
+        <tr>
+          <th class="head-listado w-s" id="id">ID</th>
+          <th class="head-listado w-l" id="col-producto">Producto</th>
+          <th class="head-listado w-s" id="col-cantidad">Cant.</th>
+          <th class="head-listado w-m" id="col-valor">Valor</th>
+        </tr>
+        <tr>
+          <td class="info-row">1</td>
+          <td class="info-row">NZXT S340 dark + blue</td>
+          <td class="info-row">1</td>
+          <td class="info-row">$19.990</td>
+        </tr>
+        <tr>
+          <td class="info-row">1</td>
+          <td class="info-row">Cpu intel i5 10400</td>
+          <td class="info-row">1</td>
+          <td class="info-row">$119.990</td>
+        </tr>
+        <tfoot>
+          <tr class="t-foot">
+            <td colspan="1">Total:</td>
+            <td></td>
+            <td></td>
+            <td>$138.990</td>
+          </tr>
+        </tfoot>
+      </table>
 
 
     </div>
+ 
       
-    </div>
     <footer class="footer">
       <div class="container flex-space f-start gap-column">
       <div class="icons">
@@ -113,6 +170,7 @@
           <a class="f-link underline" href="#">Admnistradores</a>
         </div>
 
+        
         <div class="s-c-container f-column-l">
           <h3 class="f-title" >Servicio al Cliente</h3>
           <a class="f-link underline" href="#">Términos y condiciones</a>

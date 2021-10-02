@@ -434,6 +434,10 @@ a {
   margin-bottom: 2rem;
 }
 
+.mg-t-4 {
+  margin-top: 4rem;
+}
+
 .bold {
   font-weight: 700;
 }
@@ -751,6 +755,77 @@ a {
 }
 .subir-imagen .enviar-comprobante {
   width: 15.5rem;
+}
+
+.tabla-detalle {
+  border-collapse: collapse;
+  margin: 3rem 0;
+}
+.tabla-detalle .head-info-orden {
+  width: min-content;
+  text-align: center;
+  color: #fff;
+  background-color: #4076FF;
+  width: 90rem;
+  border: 1px solid #000000;
+  padding: 2rem 0;
+  font-size: 2rem;
+}
+.tabla-detalle .head-row {
+  width: 20rem;
+  padding: 2rem 1rem;
+  border: 0.5px solid #000000;
+  background-color: #E8E8E8;
+}
+.tabla-detalle .w-0 {
+  padding: 0;
+}
+.tabla-detalle .head-row {
+  text-align: left;
+}
+
+.info-row {
+  padding: 2rem 1rem;
+  border: 0.5px solid #000000;
+  background-color: #F9FAFF;
+}
+
+.tabla-listado {
+  border-collapse: collapse;
+}
+.tabla-listado .w-s {
+  width: 6rem;
+}
+.tabla-listado .w-m {
+  width: 18rem;
+}
+.tabla-listado .w-l {
+  width: 60rem;
+}
+.tabla-listado .head-listado {
+  padding: 2rem 1rem;
+  background-color: #4076FF;
+  color: #fff;
+  border: 0.5px solid #000000;
+}
+.tabla-listado .info-row {
+  border: 0.5px solid #000000;
+}
+.tabla-listado .t-foot {
+  background-color: #E8E8E8;
+  border: 0.5px solid #000000;
+}
+.tabla-listado .t-foot td {
+  font-size: 2rem;
+  padding: 1.5rem 1rem;
+}
+
+.comprobante-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10rem 0;
+  background-color: #fff;
 }
 
 .listado-carro {
