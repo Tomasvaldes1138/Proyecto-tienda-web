@@ -34,6 +34,13 @@ public class Producto {
         //precioANTERIOR
     }
 
+    public Producto(String nombre, int precio, int stock, String urlImagen) {
+        this.nombre = nombre;
+        this.stock = stock;
+        this.precio = precio;
+        this.urlImagen = urlImagen;
+    }
+
     public int getId() {
         return id;
     }
@@ -96,5 +103,27 @@ public class Producto {
 
     public void setPrecioAnterior(String precioAnterior) {
         this.precioAnterior = precioAnterior;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", categoria=" + categoria +
+                ", stock=" + stock +
+                ", precio=" + precio +
+                ", urlImagen='" + urlImagen + '\'' +
+                ", descuento=" + descuento +
+                ", precioAnterior='" + precioAnterior + '\'' +
+                '}';
+    }
+
+    public String cambiarGuion(Producto producto) {
+        return producto.categoria.toString().replace("_"," ");
+    }
+
+    public void  saludar(){
+        System.out.println("HOLAAAAAAA");
     }
 }
