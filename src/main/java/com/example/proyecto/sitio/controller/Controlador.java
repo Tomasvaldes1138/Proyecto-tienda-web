@@ -26,16 +26,6 @@ public class Controlador {
      * @param model interfaz que contiene el metodo addAttribute
      * @return String que redirecciona a la vista index.html
      */
-    @GetMapping("/listar")
-    public String listar(Model model) {
-        //Producto producto1 = new Producto(1, "Manzana", "Manzanita", 2, "Frutas");
-
-        //List<Producto> productos = service.listar();
-        //model.addAttribute("productos", productos);
-        //model.addAttribute("producto", C  );
-
-        return "index";
-    }
 
     @GetMapping("/home")
     public String home_productos(Model model){
@@ -74,7 +64,6 @@ public class Controlador {
         Producto producto18 = new Producto(18,"ASUS ROG Strix Z590-E Gaming LGA 1200",Categorias.PLACAS_MADRE,3,30000,"https://m.media-amazon.com/images/I/91saKkUUPAL._AC_SL1500_.jpg",10);
 
         List<Producto> productos = Arrays.asList(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15, producto16, producto17, producto18);
-        System.out.println("asfasfasfasfasf");
         model.addAttribute("productos", productos);
 
         return "home";
@@ -287,7 +276,6 @@ public class Controlador {
 
     @PostMapping( value = "/insertar_producto")
     public String insertarProducto(@ModelAttribute Producto producto) {
-        System.out.println(producto.toString());
         return "nuevo_producto";
     }
 

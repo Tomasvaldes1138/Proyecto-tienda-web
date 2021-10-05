@@ -51,12 +51,12 @@
           <div class="left">
           <div class="seleccion flex-space">
               <div class="radio-opcion">
-                  <input type="radio" name="despacho" id="despacho">
+                  <input type="radio" name="tipo_envio" id="despacho" class="check-despacho">
                   <label for="despacho">Despacho a Domicilio</label>
               </div>
 
               <div class="radio-opcion">
-                  <input type="radio" name="retiro" id="retiro">
+                  <input type="radio" name="tipo_envio" id="retiro">
                   <label for="retiro">Retiro en Tienda</label>
               </div>
 
@@ -186,5 +186,7 @@
           <p class="copyright">Copyright © 2021 PC Labs. Todos los Derechos Reservados.</p>
         </div>
       </footer>
+
+      <script th:src="@{/gulp_sass/src/js/script.js}"></script>
   </body>
   </html>
