@@ -104,13 +104,18 @@
       </div>
 
       <div class="right">
-          <div class="row-producto flex-space">
+
+          <div class="row-producto flex-space" th:each="producto:${productos}">
+            
+            <div class="flex-space">
               <div class="c-cantidad">
                   <p>1</p>
               </div>
-              <p class="nombre-2">CPU Intel i5 10400</p>
-              <p class="precio">$1.090</p>
+              <p class="nombre-2" th:text="${producto.nombre}"></p>
+            </div>
+              <p class="precio" th:text="${'$' + producto.precio}"></p>
           </div>
+
           <div class="flex-space total">
               <p class="bold">Total</p>
               <p class="bold"> $7.990</p>
@@ -126,16 +131,16 @@
             <p class="logo logo-f c-pointer">PC Labs</p>
 
             <div class="social-media">
-              <div class="fb-container c-pointer">
-                <img src="../static/img/icon_fb.svg" alt="" width="24px">
-              </div>
-              <div class="tw-container c-pointer">
-                <img src="../static/img/icon_tw.svg" alt="" width="24px">
+                <div class="fb-container c-pointer">
+                    <img th:src="@{/img/icon_fb.svg}" alt="icon_fb" width="24px">
+                </div>
+                <div class="tw-container c-pointer">
+                    <img th:src="@{/img/icon_tw.svg}" alt="icon_tw" width="24px">
 
-              </div>
-              <div class="ig-container c-pointer">
-                <img src="../static/img/icon_ig.svg" alt="" width="24px">
-              </div>
+                </div>
+                <div class="ig-container c-pointer">
+                    <img th:src="@{/img/icon_ig.svg}" alt="icon_ig" width="24px">
+                </div>
             </div>
 
           </div>

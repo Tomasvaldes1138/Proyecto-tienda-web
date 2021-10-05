@@ -87,6 +87,11 @@ a{
 .mg-2{
     margin-bottom: 2rem;
 }
+.mg-r-2{
+    margin-right: 2rem;
+    text-decoration: line-through;
+    color: $priceBefore;
+}
 
 .mg-t-4{
     margin-top: 4rem;

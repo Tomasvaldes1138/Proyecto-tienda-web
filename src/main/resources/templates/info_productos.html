@@ -2,7 +2,7 @@
 <html xmlns="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Productos</title>
+  <title>Info Productos</title>
   <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,68 +48,53 @@
     </div>
     </nav>
     <div class="container">
-      <p class="page-name" >Informacion de los productos</p>
+      <p class="page-name" ></p>
       <h1 class="title" >Informacion de los productos</h1>
       
       <div class="opciones">
         <div class="opcion c-pointer">
           <a href="pedidos_realizados" class="ordenes"> Ordenes </a>
         </div>
+        <div class="opcion c-pointer productos-active">
+          <a href="info_productos" class="productos "> Productos </a>
+        </div>
+
         <div class="opcion c-pointer">
-          <a href="info_productos" class="productos"> Productos </a>
-      </div>
-      <div class="opcion c-pointer">
-        <a href="nuevo_producto" class="nuevo-producto"> Nuevo Producto </a>
-      </div>
-      <div class="opcion  c-pointer">
-        <a href="nuevo_administrador" class="nuevo-admin"> Nuevo Administrador </a>
-      </div>
+          <a href="nuevo_producto" class="nuevo-producto"> Nuevo Producto </a>
+        </div>
+        <div class="opcion  c-pointer">
+          <a href="nuevo_administrador" class="nuevo-admin"> Nuevo Administrador </a>
+        </div>
     </div>
 
     <div class="content-border">
       <table class="tabla-pedidos">
         <tr class="header-columna" >
           <th class="nombre-columna" >Imagen</th>
-          <th class="nombre-columna" >Nombre</th>
-          <th class="nombre-columna" >Precio</th>
-          <th class="nombre-columna" >Descuento</th>
-          <th class="nombre-columna" >Stock</th>
-          <th class="nombre-columna" >Editar</th>
+          <th class="nombre-columna large-col" >Nombre</th>
+          <th class="nombre-columna small-col" >Precio</th>
+          <th class="nombre-columna small-col" >Descuento</th>
+          <th class="nombre-columna small-col" >Stock</th>
+          <th class="nombre-columna edit-col" >Editar</th>
         </tr>
-        <tr>
-          <td><img src="" alt="" width="120px" height="120px"></td>
-          <td>Msi gaming gtx 1060</td>
-          <td>$990</td>
-          <td>10%</td>
-          <td>12</td>
-          <td><a href="#">⚙</a></td>
+
+        <tr th:each="producto:${productos}">
+          <td><img th:src="${producto.urlImagen}" alt="" width="120px" height="120px"></td>
+          <td th:text="${producto.nombre}"></td>
+          <td th:text="${producto.precio}"></td>
+          <td th:text="${producto.descuento}+'%'"></td>
+          <td th:text="${producto.stock}">12</td>
+          <td class="btn-editar"><a href="/actualizar_producto">⚙</a></td>
         </tr>
-        <tr>
-            <td><img src="" alt="" width="120px" height="120px"></td>
-            <td>Msi gaming gtx 1060</td>
-            <td>$990</td>
-            <td>10%</td>
-            <td>12</td>
-            <td><a href="#">⚙</a></td>
-          </tr>
+
+
       </table>
     </div>
 
 
 
-
-
-
-
   </div>
     
-    
-
-
-
-
-
-
 
 
     <footer class="footer">
@@ -118,9 +103,16 @@
           <p class="logo logo-f">PC Labs</p>
           
           <div class="social-media">
-            <p>F</p>
-            <P>T</P>
-            <P>G</P>
+            <div class="fb-container c-pointer">
+              <img th:src="@{/img/icon_fb.svg}" alt="icon_fb" width="24px">
+            </div>
+            <div class="tw-container c-pointer">
+              <img th:src="@{/img/icon_tw.svg}" alt="icon_tw" width="24px">
+
+            </div>
+            <div class="ig-container c-pointer">
+              <img th:src="@{/img/icon_ig.svg}" alt="icon_ig" width="24px">
+            </div>
           </div>
 
         </div>

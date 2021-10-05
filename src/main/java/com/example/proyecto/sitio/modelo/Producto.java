@@ -25,11 +25,12 @@ public class Producto {
     public Producto(int id, String nombre, Categorias categoria, int stock, int precio, String urlImagen, int descuento) {
         this.id = id;
         this.nombre = nombre;
-        this.categoria = categoria;
+        this.categoria =  categoria;
         this.stock = stock;
         this.precio = precio;
         this.urlImagen = urlImagen;
         this.descuento = descuento;
+        this.precioAnterior = Integer.toString ( (int) ( precio+( (int)precio*0.2) )  ) ;
 
         //precioANTERIOR
     }
@@ -119,8 +120,15 @@ public class Producto {
                 '}';
     }
 
-    public String cambiarGuion(Producto producto) {
-        return producto.categoria.toString().replace("_"," ");
+    public String convertirString() {
+        String convertir=this.categoria.toString().replace("_"," ");
+        char[] arr = convertir.toCharArray();
+
+        for(int i = 1; i < convertir.length();i++) {
+            arr[i] = Character.toLowerCase(arr[i]);
+        }
+
+        return new String(arr);
     }
 
     public void  saludar(){

@@ -2,11 +2,12 @@
 <html xmlns="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Home</title><link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css">
+  <title>Home</title>
+  <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Play&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <!--<link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css"> -->
 </head>
 <body>
   <header class="header">
@@ -51,25 +52,33 @@
         <h1 class="title" >Tu Carrito</h1>
 
         <div class="flex-space align-top">
-        <div class="listado-carro flex-space">
+            
+        <div class="listado-carro">
+          
+          <div class="producto-btn-container flex-space" th:each="producto:${productos}">
             <div class="producto-carro">
-                <img src="" alt="" width="125px" height="125px">
+              
+            <img th:src="${producto.urlImagen}" alt="" width="125px" height="125px">
                 <div>
-                    <p class="name-producto">CPU Intel i5 10400</p>
+                    <p class="name-producto" th:text="${producto.nombre}"></p>
                     <div class="precios flex-space precios-carro">
-                        <p class="precio-anterior">$1.290</p>
-                        <p class="precio-actual">$990</p>
+                        <p class="precio-anterior mg-r-2" th:text="${'$' + producto.precioAnterior}"></p>
+                        <p class="precio-actual" th:text="${'$' +producto.precio}"></p>
                     </div>
                     <div class="edit-cantidad flex-space">
                         <button class="btn-reset btn-edit">➖</button>
-                        <input class="cantidad" type="number" name="cantidad" id="cantidad">
+                        <input class="cantidad" type="number" name="cantidad" id="cantidad" value="1">
                         <button class="btn-reset btn-edit">➕</button>
                     </div>
                 </div>
             </div>
-            <div class="btn-agregar">
-                <p class="nombre-agregar">REMOVER</p>
+
+            <div class="btn-agregar c-pointer remover-btn ">
+                <a class="nombre-agregar">REMOVER</a>
             </div>
+          </div>
+
+
         </div>
 
         <div class="area-cupon">
@@ -112,16 +121,16 @@
           <p class="logo logo-f c-pointer">PC Labs</p>
           
           <div class="social-media">
-            <div class="fb-container c-pointer">
-              <img src="../static/img/icon_fb.svg" alt="" width="24px">
-            </div>
-            <div class="tw-container c-pointer">
-              <img src="../static/img/icon_tw.svg" alt="" width="24px">
+                <div class="fb-container c-pointer">
+                  <img th:src="@{/img/icon_fb.svg}" alt="icon_fb" width="24px">
+                </div>
+                <div class="tw-container c-pointer">
+                  <img th:src="@{/img/icon_tw.svg}" alt="icon_tw" width="24px">
 
-            </div>
-            <div class="ig-container c-pointer">
-              <img src="../static/img/icon_ig.svg" alt="" width="24px">
-            </div>
+                </div>
+                <div class="ig-container c-pointer">
+                  <img th:src="@{/img/icon_ig.svg}" alt="icon_ig" width="24px">
+                </div>
           </div>
 
         </div>

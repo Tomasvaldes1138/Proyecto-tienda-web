@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Productos</title>
-   <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css"> -->
+   <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Play&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -48,8 +48,9 @@
       </div>
       </nav>
       <div class="container">
-        <p class="page-name" >Nuevo Administrador</p>
-        <h1 class="title" >Agregar Nuevo Administrador</h1>
+          <p class="page-name" ></p>
+
+          <h1 class="title" >Agregar Nuevo Administrador</h1>
 
         <div class="opciones">
           <div class="opcion  c-pointer">
@@ -61,8 +62,8 @@
         <div class="opcion  c-pointer">
           <a href="nuevo_producto" class="nuevo-producto">Nuevo Producto</a>
         </div>
-        <div class="opcion  c-pointer">
-          <a href="nuevo_administrador" class="nuevo-admin">Nuevo Administrador</a>
+        <div class="opcion  c-pointer nuevo-a-active">
+          <a href="nuevo_administrador" class="nuevo-admin ">Nuevo Administrador</a>
         </div>
       </div>
 
@@ -106,23 +107,23 @@
 
 
 
-
-
-
-
-
-
-
       <footer class="footer">
         <div class="container flex-space f-start gap-column">
         <div class="icons">
             <p class="logo logo-f">PC Labs</p>
 
             <div class="social-media">
-              <p>F</p>
-              <P>T</P>
-              <P>G</P>
-            </div>
+              <div class="fb-container c-pointer">
+                <img th:src="@{/img/icon_fb.svg}" alt="icon_fb" width="24px">
+              </div>
+              <div class="tw-container c-pointer">
+                <img th:src="@{/img/icon_tw.svg}" alt="icon_tw" width="24px">
+
+              </div>
+              <div class="ig-container c-pointer">
+                <img th:src="@{/img/icon_ig.svg}" alt="icon_ig" width="24px">
+              </div>
+          </div>
 
           </div>
 

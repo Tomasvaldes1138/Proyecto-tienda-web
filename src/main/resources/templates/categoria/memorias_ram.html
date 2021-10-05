@@ -2,7 +2,7 @@
 <html xmlns="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
+  <title>Memorias Ram</title>
   <link rel="stylesheet" type="text/css" href="../gulp_sass/build/css/app.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +48,7 @@
     </div>
     </nav>
     <div class="container">
-      <p class="page-name" >Home>Memorias Ram</p>
+      <p class="page-name" >Home > Memorias Ram</p>
       
       <h1 class="title" >Memorias Ram</h1>
 
@@ -71,7 +71,7 @@
               </div>
 
               <div class="btn-agregar">
-                <p class="nombre-agregar">🛒 Agregar</p>
+                <p class="nombre-agregar c-pointer">🛒 Agregar</p>
               </div>
 
             </div>
@@ -84,19 +84,19 @@
       <div class="container flex-space f-start gap-column">
       <div class="icons">
           <p class="logo logo-f c-pointer">PC Labs</p>
-          
-          <div class="social-media">
-            <div class="fb-container c-pointer">
-              <img src="../../static/img/icon_fb.svg" alt="" width="24px">
-            </div>
-            <div class="tw-container c-pointer">
-              <img src="../../static/img/icon_tw.svg" alt="" width="24px">
 
-            </div>
-            <div class="ig-container c-pointer">
-              <img src="../../static/img/icon_ig.svg" alt="" width="24px">
-            </div>
+        <div class="social-media">
+          <div class="fb-container c-pointer">
+            <img th:src="@{/img/icon_fb.svg}" alt="icon_fb" width="24px">
           </div>
+          <div class="tw-container c-pointer">
+            <img th:src="@{/img/icon_tw.svg}" alt="icon_tw" width="24px">
+
+          </div>
+          <div class="ig-container c-pointer">
+            <img th:src="@{/img/icon_ig.svg}" alt="icon_ig" width="24px">
+          </div>
+        </div>
 
         </div>
 

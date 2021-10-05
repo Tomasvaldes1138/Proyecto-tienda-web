@@ -72,7 +72,7 @@
                 <p class="precio-actual" th:text="${producto.precio}"></p>
               </div>
 
-              <div class="btn-agregar">
+              <div class="btn-agregar c-pointer">
                 <p class="nombre-agregar">🛒 Agregar</p>
               </div>
 
@@ -91,19 +91,19 @@
       <div class="container flex-space f-start gap-column">
       <div class="icons">
           <p class="logo logo-f c-pointer">PC Labs</p>
-          
-          <div class="social-media">
-            <div class="fb-container c-pointer">
-              <img src="../static/img/icon_fb.svg" alt="" width="24px">
-            </div>
-            <div class="tw-container c-pointer">
-              <img src="../static/img/icon_tw.svg" alt="" width="24px">
 
-            </div>
-            <div class="ig-container c-pointer">
-              <img src="../static/img/icon_ig.svg" alt="" width="24px">
-            </div>
+        <div class="social-media">
+          <div class="fb-container c-pointer">
+            <img th:src="@{/img/icon_fb.svg}" alt="icon_fb" width="24px">
           </div>
+          <div class="tw-container c-pointer">
+            <img th:src="@{/img/icon_tw.svg}" alt="icon_tw" width="24px">
+
+          </div>
+          <div class="ig-container c-pointer">
+            <img th:src="@{/img/icon_ig.svg}" alt="icon_ig" width="24px">
+          </div>
+        </div>
 
         </div>
 

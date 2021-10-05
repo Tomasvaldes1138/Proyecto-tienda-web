@@ -2,7 +2,7 @@
 <html xmlns="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
+  <title>Fuentes Poder</title>
   <link rel="stylesheet" type="text/css" href="../gulp_sass/build/css/app.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,8 +48,8 @@
     </div>
     </nav>
     <div class="container">
-      <p class="page-name" >Home>Fuentes de poder</p>
-      
+      <p class="page-name" >Home > Fuentes de poder</p>
+
       <h1 class="title" >Fuentes de poder</h1>
 
       <div class="grid-productos">
@@ -70,7 +70,7 @@
                 <p class="precio-actual" th:text="${producto.precio}"></p>
               </div>
 
-              <div class="btn-agregar">
+              <div class="btn-agregar c-pointer">
                 <p class="nombre-agregar">🛒 Agregar</p>
               </div>
 
@@ -87,16 +87,16 @@
           
           <div class="social-media">
             <div class="fb-container c-pointer">
-              <img src="../../static/img/icon_fb.svg" alt="" width="24px">
+              <img th:src="@{/img/icon_fb.svg}" alt="icon_fb" width="24px">
             </div>
             <div class="tw-container c-pointer">
-              <img src="../../static/img/icon_tw.svg" alt="" width="24px">
+              <img th:src="@{/img/icon_tw.svg}" alt="icon_tw" width="24px">
 
             </div>
             <div class="ig-container c-pointer">
-              <img src="../../static/img/icon_ig.svg" alt="" width="24px">
+              <img th:src="@{/img/icon_ig.svg}" alt="icon_ig" width="24px">
             </div>
-          </div>
+        </div>
 
         </div>
 

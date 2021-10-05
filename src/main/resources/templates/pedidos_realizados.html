@@ -48,12 +48,12 @@
     </div>
     </nav>
     <div class="container">
-      <p class="page-name" >Ordenes</p>
+      <p class="page-name" ></p>
       <h1 class="title" >Ordenes de Compra</h1>
       
       <div class="opciones">
-        <div class="opcion  c-pointer">
-          <a href="pedidos_realizados" class="ordenes">Ordenes</a>
+        <div class="opcion  c-pointer ordenes-active">
+          <a href="pedidos_realizados" class="ordenes ">Ordenes</a>
         </div>
         <div class="opcion  c-pointer">
           <a href="info_productos" class="productos">Productos</a>
@@ -77,54 +77,38 @@
           <th class="nombre-columna" >Comprobante</th>
           <th class="nombre-columna" >Total</th>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>30-09-2021</td>
-          <td>Juan Perez</td>
-          <td>Retiro</td>
-          <td><a href="#">Ver Orden</a></td>
-          <td><a href="#">Ver Comprobante</a></td>
-          <td>$79.990</td>
+        <tr th:each="orden:${ordenes}">
+          <td th:text="${orden.id}"></td>
+          <td th:text="${orden.fecha}"></td>
+          <td th:text="${orden.cliente}"></td>
+          <td th:text="${orden.tipoEntrega}"></td>
+          <td><a href="orden_compra">Ver Orden</a></td>
+          <td><a href="comprobante">Ver Comprobante</a></td>
+          <td th:text="${'$'+orden.total}"></td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>01-10-2021</td>
-          <td>Pedro Perez</td>
-          <td>Despacho</td>
-          <td><a href="#">Ver Orden</a></td>
-          <td><a href="#">Ver Comprobante</a></td>
-          <td>$129.990</td>
-        </tr>
+
       </table>
     </div>
 
-
-
-
-
-
-
   </div>
     
-    
-
-
-
-
-
-
-
-
     <footer class="footer">
       <div class="container flex-space f-start gap-column">
       <div class="icons">
           <p class="logo logo-f">PC Labs</p>
           
           <div class="social-media">
-            <p>F</p>
-            <P>T</P>
-            <P>G</P>
-          </div>
+            <div class="fb-container c-pointer">
+              <img th:src="@{/img/icon_fb.svg}" alt="icon_fb" width="24px">
+            </div>
+            <div class="tw-container c-pointer">
+              <img th:src="@{/img/icon_tw.svg}" alt="icon_tw" width="24px">
+
+            </div>
+            <div class="ig-container c-pointer">
+              <img th:src="@{/img/icon_ig.svg}" alt="icon_ig" width="24px">
+            </div>
+      </div>
 
         </div>
 
