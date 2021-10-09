@@ -78,7 +78,7 @@
               <th class="nombre-columna" >Stock</th>
             </tr>
             <tr>
-              <td><img th:src="${producto.urlImagen}" alt="" width="100px" height="100px"></td>
+              <td><img th:src="${producto.url_imagen}" alt="" width="100px" height="100px"></td>
               <td th:text="${producto.nombre}"></td>
               <td th:text="${producto.precio}"></td>
               <td th:text="${producto.descuento}"></td>
@@ -107,7 +107,7 @@
         </div>
         <div class="field">
             <label for="url-imagen">URL Imagen</label>
-            <input class="input-form" type="text" name="url-imagen" id="url-imagen" th:value="${producto.urlImagen}">
+            <input class="input-form" type="text" name="url-imagen" id="url-imagen" th:value="${producto.url_imagen}">
         </div>
 
         <div class="flex-center">

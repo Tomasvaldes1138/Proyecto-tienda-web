@@ -10,36 +10,36 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
-    private Categorias categoria;
     private int stock;
     private int precio;
-    private String urlImagen;
+    private String url_imagen;
     private int descuento;
-    private String precioAnterior;
+    private String precio_anterior;
 
+    @ManyToOne
+    @JoinColumn(name = "id_categoria" )
+    private Categoria categoria;
 
     public Producto(){
 
     }
 
-    public Producto(int id, String nombre, Categorias categoria, int stock, int precio, String urlImagen, int descuento) {
+    public Producto(int id, String nombre, int stock, int precio, String url_imagen, int descuento) {
         this.id = id;
         this.nombre = nombre;
-        this.categoria =  categoria;
         this.stock = stock;
         this.precio = precio;
-        this.urlImagen = urlImagen;
+        this.url_imagen = url_imagen;
         this.descuento = descuento;
-        this.precioAnterior = Integer.toString ( (int) ( precio+( (int)precio*0.2) )  ) ;
-
+        this.precio_anterior = Integer.toString ( (int) ( precio+( (int)precio*0.2) )  ) ;
         //precioANTERIOR
     }
 
-    public Producto(String nombre, int precio, int stock, String urlImagen) {
+    public Producto(String nombre, int precio, int stock, String url_imagen) {
         this.nombre = nombre;
         this.stock = stock;
         this.precio = precio;
-        this.urlImagen = urlImagen;
+        this.url_imagen = url_imagen;
     }
 
     public int getId() {
@@ -58,11 +58,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public Categorias getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categorias categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
@@ -82,12 +82,12 @@ public class Producto {
         this.precio = precio;
     }
 
-    public String getUrlImagen() {
-        return urlImagen;
+    public String getUrl_imagen() {
+        return url_imagen;
     }
 
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
+    public void setUrl_imagen(String url_imagen) {
+        this.url_imagen = url_imagen;
     }
 
     public int getDescuento() {
@@ -98,12 +98,12 @@ public class Producto {
         this.descuento = descuento;
     }
 
-    public String getPrecioAnterior() {
-        return precioAnterior;
+    public String getPrecio_anterior() {
+        return precio_anterior;
     }
 
-    public void setPrecioAnterior(String precioAnterior) {
-        this.precioAnterior = precioAnterior;
+    public void setPrecio_anterior(String precio_anterior) {
+        this.precio_anterior = precio_anterior;
     }
 
     @Override
@@ -114,9 +114,9 @@ public class Producto {
                 ", categoria=" + categoria +
                 ", stock=" + stock +
                 ", precio=" + precio +
-                ", urlImagen='" + urlImagen + '\'' +
+                ", urlImagen='" + url_imagen + '\'' +
                 ", descuento=" + descuento +
-                ", precioAnterior='" + precioAnterior + '\'' +
+                ", precioAnterior='" + precio_anterior + '\'' +
                 '}';
     }
 
@@ -131,7 +131,4 @@ public class Producto {
         return new String(arr);
     }
 
-    public void  saludar(){
-        System.out.println("HOLAAAAAAA");
-    }
 }
