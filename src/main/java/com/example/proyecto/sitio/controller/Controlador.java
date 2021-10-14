@@ -31,7 +31,6 @@ public class Controlador {
     public String home_productos(Model model){
 
         List<Producto> productos = service.listar();
-
         model.addAttribute("productos", productos);
         System.out.println(productos.get(0).getCategoria().getNombre_categoria());
 
@@ -91,17 +90,14 @@ public class Controlador {
 //        List<Producto> productos = Arrays.asList(producto1,producto17, producto6);
   //      model.addAttribute("productos", productos);
 
-
         return "carrito";
     }
-
 
 
     @GetMapping("/comprobante")
     public String comprobante(){
         return "comprobante";
     }
-
 
 
     @GetMapping("/info_productos")
