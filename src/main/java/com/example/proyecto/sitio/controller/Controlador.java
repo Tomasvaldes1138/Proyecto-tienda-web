@@ -39,27 +39,26 @@ public class Controlador {
         Producto producto4 = new Producto(4,"AMD Ryzen 7 3700x",Categorias.PROCESADORES,7,200000,"https://m.media-amazon.com/images/I/717Di3DGIbL._AC_SL1092_.jpg",10);
         Producto producto5 = new Producto(5,"Intel i9 10900k",Categorias.PROCESADORES,2,300000,"https://www.profesionalreview.com/wp-content/uploads/2020/05/intel-core-i9-10900k-review10.png%22",10);
 
-
-
+        // tarjetas graficas
         Producto producto6 = new Producto(6, "MSI rtx 3080 ventus 3x", Categorias.TARJETAS_GRAFICAS, 5, 699990, "https://asset.msi.com/resize/image/global/product/product_7_20200917182157_5f6338c5cd72a.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png", 10);
         Producto producto7 = new Producto(7,"MSI gtx 1060 gaming X",Categorias.TARJETAS_GRAFICAS,10,13000,"https://c1.neweggimages.com/ProductImage/14-137-018-S99.jpg",10);
         Producto producto8 = new Producto(8,"AMD msi RX 6800 XT",Categorias.TARJETAS_GRAFICAS,7,500000,"https://c1.neweggimages.com/ProductImageCompressAll1280/14-137-607-V05.jpg",10);
         Producto producto9 = new Producto(9,"Gigabyte RTX 3090 Eagle",Categorias.TARJETAS_GRAFICAS,20,400000,"https://images10.newegg.com/BizIntell/item/14/932/14-932-327/GIGABYTE%20Video%20Card-a0.png",10);
         Producto producto10 = new Producto(10,"AMD XFX 5500 XT THICC II",Categorias.TARJETAS_GRAFICAS,7,190000,"https://images.jumpseller.com/store/bulldog-pc/7241669/Portada.jpg?1610197116",10);
 
-
+        // gabinetes
         Producto producto11 = new Producto(11,"NZXT H510 -Black/Red",Categorias.GABINETES,20,90000,"https://m.media-amazon.com/images/I/51kYiXNtftL._AC_SL1000_.jpg",10);
         Producto producto12 = new Producto(12,"Corsair 4000X RGB",Categorias.GABINETES,30,70000,"https://m.media-amazon.com/images/I/81MvIP9T0mL._AC_SL1500_.jpg",10);
 
-
+        // ram
         Producto producto13 = new Producto(13,"G.Skill Tridentz RGB 16Gb 2x8 3600mhz",Categorias.MEMORIAS_RAM,100,40000,"https://m.media-amazon.com/images/I/61l4EStxhnL._AC_SL1274_.jpg",10);
         Producto producto14 = new Producto(14,"Corsair Vengeance LPX 16gb 2x8 3200mhz",Categorias.MEMORIAS_RAM,40,34000,"https://m.media-amazon.com/images/I/51kHiPeTSmL._AC_SL1000_.jpg",10);
 
-
+        // fuentes de poder
         Producto producto15 = new Producto(15,"EVGA 430W 80 PLUS",Categorias.FUENTES_PODER,90,20000,"https://m.media-amazon.com/images/I/71Q+m2q9smL._AC_SL1200_.jpg",10);
         Producto producto16 = new Producto(16,"EVGA 450 80 PLUS BRONCE",Categorias.FUENTES_PODER,2,30000,"https://m.media-amazon.com/images/I/71zHGCtPNEL._AC_SL1200_.jpg",10);
 
-
+        // placas madres
         Producto producto17 = new Producto(17,"ASUS ROG Strix B450-F gaming AM4", Categorias.PLACAS_MADRE,10,150000,"https://m.media-amazon.com/images/I/91MWQtTH4bL._AC_SL1500_.jpg",10);
         Producto producto18 = new Producto(18,"ASUS ROG Strix Z590-E Gaming LGA 1200",Categorias.PLACAS_MADRE,3,30000,"https://m.media-amazon.com/images/I/91saKkUUPAL._AC_SL1500_.jpg",10);
 
@@ -90,6 +89,7 @@ public class Controlador {
 
 
         model.addAttribute("productos", productos);
+
         return "categoria/fuentes_poder";
     }
     @GetMapping("categoria/gabinetes")
@@ -145,17 +145,14 @@ public class Controlador {
         List<Producto> productos = Arrays.asList(producto1,producto17, producto6);
         model.addAttribute("productos", productos);
 
-
         return "carrito";
     }
-
 
 
     @GetMapping("/comprobante")
     public String comprobante(){
         return "comprobante";
     }
-
 
 
     @GetMapping("/info_productos")
