@@ -58,15 +58,15 @@
             <p class="descuento">-20%</p>
           </div>
           <div class="img-container">
-            <img th:src="${producto.urlImagen}" alt="" width="150px" height="150px">
+            <img th:src="${producto.url_imagen}" alt="" width="150px" height="150px">
           </div>
           <div class="info">
             <h2 class="nombre-producto"  th:text="${producto.nombre}" ></h2>
 
-            <p class="tipo-categoria" th:text="${producto.categoria}"></p>
+            <p class="tipo-categoria" th:text="${producto.categoria.nombre_categoria}"></p>
             <div class="pb-container flex-space">
               <div class="precios flex-space ">
-                <p  class="precio-anterior" th:text="${producto.precioAnterior}" ></p>
+                <p  class="precio-anterior" th:text="${producto.precio_anterior}" ></p>
                 <p class="precio-actual" th:text="${producto.precio}"></p>
               </div>
 

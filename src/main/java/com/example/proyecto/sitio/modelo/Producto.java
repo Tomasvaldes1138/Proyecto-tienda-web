@@ -14,7 +14,7 @@ public class Producto {
     private int precio;
     private String url_imagen;
     private int descuento;
-    private String precio_anterior;
+    private int precio_anterior;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria" )
@@ -24,15 +24,14 @@ public class Producto {
 
     }
 
-    public Producto(int id, String nombre, int stock, int precio, String url_imagen, int descuento) {
+    public Producto(int id, String nombre, int stock, int precio, String url_imagen, int descuento, int precio_anterior) {
         this.id = id;
         this.nombre = nombre;
         this.stock = stock;
         this.precio = precio;
         this.url_imagen = url_imagen;
         this.descuento = descuento;
-        this.precio_anterior = Integer.toString ( (int) ( precio+( (int)precio*0.2) )  ) ;
-        //precioANTERIOR
+        this.precio_anterior = precio_anterior ;
     }
 
     public Producto(String nombre, int precio, int stock, String url_imagen) {
@@ -98,11 +97,11 @@ public class Producto {
         this.descuento = descuento;
     }
 
-    public String getPrecio_anterior() {
+    public int getPrecio_anterior() {
         return precio_anterior;
     }
 
-    public void setPrecio_anterior(String precio_anterior) {
+    public void setPrecio_anterior(int precio_anterior) {
         this.precio_anterior = precio_anterior;
     }
 

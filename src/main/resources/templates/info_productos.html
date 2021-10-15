@@ -79,7 +79,7 @@
         </tr>
 
         <tr th:each="producto:${productos}">
-          <td><img th:src="${producto.urlImagen}" alt="" width="120px" height="120px"></td>
+          <td><img th:src="${producto.url_imagen}" alt="" width="120px" height="120px"></td>
           <td th:text="${producto.nombre}"></td>
           <td th:text="${producto.precio}"></td>
           <td th:text="${producto.descuento}+'%'"></td>

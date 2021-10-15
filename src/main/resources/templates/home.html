@@ -57,7 +57,7 @@
 
       <div class="producto-container" th:each="producto:${productos}">
         <div class="descuento-container">
-          <p class="descuento"th:text="${producto.descuento + '$'}" >-20%</p>
+          <p class="descuento"th:text="${producto.descuento + '%'}" ></p>
         </div>
         <div class="img-container">
             <img th:src="${producto.url_imagen}" alt="" width="150px" height="150px">
