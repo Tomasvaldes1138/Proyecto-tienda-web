@@ -151,7 +151,6 @@ public class Controlador {
     }
 
 
-
     @GetMapping("/orden_compra")
     public String orden_compra(){
         return "orden_compra";
@@ -160,7 +159,6 @@ public class Controlador {
     public String orden_exitosa(){
         return "orden_exitosa";
     }
-
 
 
     @GetMapping("/pedidos_realizados")
