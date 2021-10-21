@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
-   <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css">
+  <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Play&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -20,12 +20,14 @@
         </form>
       <div class="acciones flex-space">
         <div class="carro-container flex-space">
-          <a class="h-logo" href="carrito">🛒  Carro</a>
+          <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
+          <a class="h-logo mg-l-1" href="carrito">Carro</a>
         </div>
 
         <div class="login-container dropdown">
             <div class="dropdown-btn flex-space">
-              <p class="h-logo" href="#">👤   Login</p>
+              <img th:src="@{/img/icons/login.svg}" alt="icon_carrito" width="18px">
+              <p class="h-logo mg-l-1" href="#">Login</p>
               <div class="triangle"></div>
           </div>
           <div class="dropdown-content">
@@ -63,18 +65,20 @@
             <img th:src="${producto.url_imagen}" alt="" width="150px" height="150px">
         </div>
         <div class="info">
-          <h2 class="nombre-producto"  th:text="${producto.nombre}" ></h2>
-
-           <p class="tipo-categoria" th:text="${producto.categoria.nombre_categoria}"></p>
-            <div class="pb-container flex-space">
+              <h2 class="nombre-producto"  th:text="${producto.nombre}" ></h2>
+              <p class="tipo-categoria" th:text="${producto.categoria.nombre_categoria}"></p>
+           
+            <div class="pb-container flex-space mg-2">
               <div class="precios flex-space ">
                 <p  class="precio-anterior" th:text="${producto.precio_anterior}" ></p>
                 <p class="precio-actual" th:text="${producto.precio}"></p>
               </div>
 
-              <div class="btn-agregar c-pointer">
-                <p class="nombre-agregar">🛒 Agregar</p>
-              </div>
+              <form class="btn-agregar c-pointer" th:action="@{/agregar_producto}" method="POST"  >
+                <input type="hidden" th:value="${producto.id}" th:name="id" th:id="id" >
+                <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
+                <input class="btn-reset btn-enviar c-pointer" type="submit" value="Agregar">
+              </form>
             </div>
         </div>
       </div>

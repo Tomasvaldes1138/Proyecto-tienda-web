@@ -26,4 +26,19 @@ function iniciarApp(){
             input_container.classList.remove('mg-2');
         }
     }
+
+    carrito_btn();
+}
+
+function carrito_btn(){
+    const btn_mas = document.querySelector('.btn-mas');
+    const btn_menos = document.querySelector('.btn-menos');
+    console.log("funciooopn");
+    console.log(btn_mas);
+
+    btn_mas.onclick = () => {
+        console.log("clickckckck");
+        console.log(btn_mas.previousSibling);
+    }
+
 }

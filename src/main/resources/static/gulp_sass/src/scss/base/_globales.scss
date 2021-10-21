@@ -74,8 +74,6 @@ a{
     color: inherit;
     border: none;
     padding: 0;
-    font: inherit;
-    cursor: pointer;
     outline: inherit;
     position: relative;
 }
@@ -95,6 +93,9 @@ a{
 
 .mg-t-4{
     margin-top: 4rem;
+}
+.mg-l-1{
+    margin-left: .5rem;
 }
 
 .bold{

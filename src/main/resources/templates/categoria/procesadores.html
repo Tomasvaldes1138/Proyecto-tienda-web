@@ -20,12 +20,14 @@
         </form>
       <div class="acciones flex-space">
         <div class="carro-container flex-space">
-          <a class="h-logo" href="../carrito">🛒  Carro</a>
+          <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
+          <a class="h-logo mg-l-1" href="carrito">Carro</a>
         </div>
 
         <div class="login-container dropdown">
             <div class="dropdown-btn flex-space">
-              <p class="h-logo" href="#">👤   Login</p>
+              <img th:src="@{/img/icons/login.svg}" alt="icon_carrito" width="18px">
+              <p class="h-logo mg-l-1" href="#">Login</p>
               <div class="triangle"></div>
           </div>
           <div class="dropdown-content">
@@ -65,15 +67,17 @@
             <h2 class="nombre-producto"  th:text="${producto.nombre}" ></h2>
 
             <p class="tipo-categoria" th:text="${producto.categoria.nombre_categoria}"></p>
-            <div class="pb-container flex-space">
+            <div class="pb-container flex-space mg-2">
               <div class="precios flex-space ">
                 <p  class="precio-anterior" th:text="${producto.precio_anterior}" ></p>
                 <p class="precio-actual" th:text="${producto.precio}"></p>
               </div>
 
-              <div class="btn-agregar">
-                <p class="nombre-agregar c-pointer">🛒 Agregar</p>
-              </div>
+              <form class="btn-agregar c-pointer" th:action="@{/agregar_producto}" method="POST"  >
+                <input type="hidden" th:value="${producto.id}" th:name="id" th:id="id" >
+                <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
+                <input class="btn-reset btn-enviar c-pointer" type="submit" value="Agregar">
+              </form>
 
             </div>
           </div>

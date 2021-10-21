@@ -23,5 +23,15 @@ public class ProductoService implements IProductoService {
         return (List<Producto>) data.findAll();
     }
 
+    @Override
+    public int save(Producto a) {
+        int respuesta = 0;
+        Producto producto = data.save(a);
+        if(!producto.equals(null)){
+            respuesta = 1;
+        }
+        return 0;
+    }
+
 
 }

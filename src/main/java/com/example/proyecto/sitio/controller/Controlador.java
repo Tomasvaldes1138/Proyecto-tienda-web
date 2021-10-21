@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +23,9 @@ public class Controlador {
     @Autowired
     private IAdministradorService serviceAdmin;
 
+    static ArrayList<Integer> productos_id = new ArrayList<>();
+
+
     /**
      *Metodo que obtiene los productos de la base de datos y los entrega a la vista index
      * @param model interfaz que contiene el metodo addAttribute
@@ -30,10 +34,8 @@ public class Controlador {
 
     @GetMapping("/home")
     public String home_productos(Model model){
-
         List<Producto> productos = service.listar();
         model.addAttribute("productos", productos);
-
         return "home";
     }
 
@@ -81,13 +83,33 @@ public class Controlador {
 
     @GetMapping("/carrito")
     public String carrito(Model model){
+        List<Producto> productos_carrito= get_productos_carrito();
 
-        List<Producto> productos_carrito = service.listar().subList(2,6);
         model.addAttribute("productos", productos_carrito);
         model.addAttribute("precio", productos_carrito.stream().mapToInt(Producto::getPrecio).sum() );
         model.addAttribute("cantidad", productos_carrito.size());
 
         return "carrito";
+    }
+
+    public List<Producto> get_productos_carrito(){
+        List<Producto> productos_carrito= new ArrayList<>();
+
+        for (int i = 0; i < productos_id.size() ; i++) {
+            int id = productos_id.get(i);
+            Producto producto2 =  service.listar().stream().filter( producto -> producto.getId() == id ).findAny().get() ;
+            productos_carrito.add( producto2 );
+        }
+
+        return productos_carrito;
+    }
+
+
+    @PostMapping(value="agregar_producto")
+    public String agregar_producto(@ModelAttribute("producto") Producto producto){
+        productos_id.add( producto.getId() );
+        System.out.println("holaaa: " +  productos_id );
+        return "redirect:/home";
     }
 
 
@@ -128,6 +150,8 @@ public class Controlador {
         return "index";
     }
 
+
+
     @GetMapping("/orden_compra")
     public String orden_compra(){
         return "orden_compra";
@@ -162,9 +186,8 @@ public class Controlador {
 
     @GetMapping("/tipo_entrega")
     public String tipo_entrega(Model model){
-
-       // List<Producto> productos = Arrays.asList(producto1,producto17, producto6);
-        //model.addAttribute("productos", productos);
+       List<Producto> productos = get_productos_carrito();
+        model.addAttribute("productos", productos);
         return "tipo_entrega";
     }
 
@@ -179,18 +202,18 @@ public class Controlador {
 
 
     @RequestMapping( value ="/nuevo_producto")
-    public String nuevo_producto() {
+    public String nuevo_producto(Model model) {
+        model.addAttribute("producto", new Producto());
         return "nuevo_producto";
     }
 
-
-
-
-    @PostMapping( value = "/insertar_producto")
-    public String insertarProducto(@ModelAttribute Producto producto) {
-        return "nuevo_producto";
+    @PostMapping(value="insertar_producto")
+    public String insertar_producto(@ModelAttribute Producto producto){
+        System.out.println("Producto: " + producto.toString());
+        //Necesito llamar a service de Administrador pero ya esta declarada por producto.
+        service.save(producto);
+        return "index";
     }
-
 
 
 }

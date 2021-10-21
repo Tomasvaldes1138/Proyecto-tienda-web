@@ -20,12 +20,14 @@
         </form>
       <div class="acciones flex-space">
         <div class="carro-container flex-space">
-          <a class="h-logo" href="carrito">🛒  Carro</a>
+          <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
+          <a class="h-logo mg-l-1" href="carrito">Carro</a>
         </div>
 
         <div class="login-container dropdown">
             <div class="dropdown-btn flex-space">
-              <p class="h-logo" href="#">👤   Login</p>
+              <img th:src="@{/img/icons/login.svg}" alt="icon_carrito" width="18px">
+              <p class="h-logo mg-l-1" href="#">Login</p>
               <div class="triangle"></div>
           </div>
           <div class="dropdown-content">
@@ -66,9 +68,9 @@
                         <p class="precio-actual" th:text="${'$' +producto.precio}"></p>
                     </div>
                     <div class="edit-cantidad flex-space">
-                        <button class="btn-reset btn-edit">➖</button>
+                        <button class="btn-reset btn-edit btn-menos">➖</button>
                         <input class="cantidad" type="number" name="cantidad" id="cantidad" value="1">
-                        <button class="btn-reset btn-edit">➕</button>
+                        <button class="btn-reset btn-edit btn-mas">➕</button>
                     </div>
                 </div>
             </div>
@@ -175,5 +177,8 @@
         <p class="copyright">Copyright © 2021 PC Labs. Todos los Derechos Reservados.</p>
       </div>
     </footer>
+
+    <script th:src="@{/gulp_sass/src/js/carrito.js}"></script>
+
 </body>
 </html>

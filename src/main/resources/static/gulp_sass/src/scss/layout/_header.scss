@@ -84,6 +84,12 @@
         font-weight: $light;
         margin-right: 1.8rem;
         text-transform: uppercase;
+        transition: font-size .3s ease;
+        &:hover{
+            color: #0e2c79;
+            font-weight: $regular;
+            font-size: 1.6rem;
+        }
     }
 
 }

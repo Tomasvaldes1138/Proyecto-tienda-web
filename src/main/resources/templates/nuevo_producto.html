@@ -20,12 +20,14 @@
         </form>
       <div class="acciones flex-space">
         <div class="carro-container flex-space">
-          <a class="h-logo" href="carrito">🛒  Carro</a>
+          <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
+          <a class="h-logo mg-l-1" href="carrito">Carro</a>
         </div>
 
         <div class="login-container dropdown">
             <div class="dropdown-btn flex-space">
-              <p class="h-logo" href="#">👤   Login</p>
+              <img th:src="@{/img/icons/login.svg}" alt="icon_carrito" width="18px">
+              <p class="h-logo mg-l-1" href="#">Login</p>
               <div class="triangle"></div>
           </div>
           <div class="dropdown-content">
@@ -68,35 +70,35 @@
       </div>
 
       <!-- <form th:object="${producto}" th:action="@{insertar_producto}" method="post" class="formulario content-border"> -->
-      <form class="formulario content-border">
+      <form class="formulario content-border" th:object="${producto}" th:action="@{/insertar_producto}" method="post">
           <div class="field">
               <label for="nombre">Nombre Producto</label>
-              <input  class="input-form" type="text" name="nombre" id="nombre">
+              <input th:field="*{nombre}" class="input-form" type="text" name="nombre" id="nombre">
           </div>
           <div class="field">
               <label for="precio">Precio</label>
-              <input  class="input-form" type="text" name="precio" id="precio">
+              <input  th:field="*{precio}" class="input-form" type="text" name="precio" id="precio">
           </div>
           <div class="field">
               <label for="stock">Stock</label>
-              <input  class="input-form" type="number" name="stock" id="stock">
+              <input  th:field="*{stock}" class="input-form" type="number" name="stock" id="stock">
           </div>
         <div class="field">
 
           <label for="stock">Categoría</label>
-          <select name="stock" id="stock" class="input-form">
-            <option value="procesadores">Procesadores</option>
-            <option value="tarjetas-graficas">Tarjetas Graficas</option>
-            <option value="memorias-ram">Memorias Ram</option>
-            <option value="placas-madre">Placas Madre</option>
-            <option value="fuentes-poder">Fuentes de Poder</option>
-            <option value="gabinetes">Gabinetes</option>
+          <select th:field="*{categoria}" name="stock" id="stock" class="input-form">
+            <option value="1">Procesadores</option>
+            <option value="2">Tarjetas Graficas</option>
+            <option value="3">Memorias Ram</option>
+            <option value="4">Placas Madre</option>
+            <option value="5">Fuentes de Poder</option>
+            <option value="6">Gabinetes</option>
           </select>
 
         </div>
           <div class="field">
               <label for="url">URL Imagen</label>
-              <input  class="input-form" type="text" name="url" id="url">
+              <input  th:field="*{url_imagen}" class="input-form" type="text" name="url" id="url">
           </div>
           <div class="flex-center">
               <input class="btn-enviar c-pointer" type="submit" value="Agregar">
