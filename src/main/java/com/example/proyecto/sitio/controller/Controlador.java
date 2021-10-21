@@ -6,8 +6,15 @@ import com.example.proyecto.sitio.modelo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +38,8 @@ public class Controlador {
      * @param model interfaz que contiene el metodo addAttribute
      * @return String que redirecciona a la vista index.html
      */
+
+
 
     @GetMapping("/home")
     public String home_productos(Model model){
@@ -211,6 +220,37 @@ public class Controlador {
         //Necesito llamar a service de Administrador pero ya esta declarada por producto.
         service.save(producto);
         return "index";
+    }
+
+    /**
+     * link video 1: https://www.youtube.com/watch?v=BjHEuNdpC-U&t=189s
+     * link video 2:https://www.youtube.com/watch?v=df67kmObW7M
+     * Faltaria solamente mandar el ordenCompra a la base de datos
+     *
+     * * Comentario de otra clase*
+     * En orden_exitosa.html linea 62 agregue: entype="multipart/form-data
+     *
+     *
+     */
+    @PostMapping("/subir")
+    public String subir( @ModelAttribute OrdenCompra ordenCompra, BindingResult result, Model model,
+                        @RequestParam("file") MultipartFile comprobante, RedirectAttributes atributo){
+        if(!comprobante.isEmpty()){
+            Path directorioComprobantes = Paths.get("src//main//resources//static/comprobantes");
+            String rutaAbsoluta = directorioComprobantes.toFile().getAbsolutePath();
+
+            try {
+                byte[] byteComprobante = comprobante.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta+"//"+comprobante.getOriginalFilename());
+                Files.write(rutaCompleta,byteComprobante);
+
+                ordenCompra.setComprobantePago(comprobante.getOriginalFilename());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return "";
     }
 
 
