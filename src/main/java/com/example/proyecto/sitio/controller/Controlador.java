@@ -22,6 +22,7 @@ public class Controlador {
 
     @Autowired
     private IProductoService service;
+    
 
     @Autowired
     private IRegionService service_region;
