@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded',function(){
     iniciarApp();
+    filtrarCiudades();
 });
 
 function iniciarApp(){
@@ -18,7 +19,6 @@ function iniciarApp(){
 
     function hideForm(checked){
         if(!despacho.checked){
-            console.log('anadiendo clase hide');
             form_entrega.classList.add('hide-form');
             input_container.classList.add('mg-2');
         }else{
@@ -27,18 +27,29 @@ function iniciarApp(){
         }
     }
 
-    carrito_btn();
 }
 
-function carrito_btn(){
-    const btn_mas = document.querySelector('.btn-mas');
-    const btn_menos = document.querySelector('.btn-menos');
-    console.log("funciooopn");
-    console.log(btn_mas);
+function filtrarCiudades(){
+    const select_region = document.querySelector('#select-region');
+    const ciudades = document.querySelectorAll('.option-ciudad');
 
-    btn_mas.onclick = () => {
-        console.log("clickckckck");
-        console.log(btn_mas.previousSibling);
+    setCiudades();
+
+    select_region.addEventListener('change', () => setCiudades() );
+
+    function setCiudades(){
+        const select_ciudad = document.querySelector('#select-ciudad');
+        let cadena = '';
+
+        ciudades.forEach( ciudad => {
+            if(ciudad.classList.contains(`${select_region.value}`)){
+            cadena+=`<option value="${ciudad.value}" class="option-ciudad" >${ciudad.text}</option> \n`
+            }
+        } );
+        select_ciudad.innerHTML = cadena;
     }
 
+
 }
+
+

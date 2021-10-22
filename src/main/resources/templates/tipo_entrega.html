@@ -68,15 +68,17 @@
 
               <div class="field f-column-l">
                   <label for="region">Region:</label>
-                  <select name="region" id="region" class="input-form">
-                      <option value="La Araucania">La Araucania</option>
+                  <select th:name="region" id="select-region" class="input-form" >
+                      <option  th:each="region:${regiones}" th:value="${region.id_region}" th:text="${region.nombre_region}" class="option-region" ></option>
+
+
                   </select>
               </div>
 
               <div class="field f-column-l">
                   <label for="apellidos">Ciudad:</label>
-                  <select name="ciudad" id="ciudad" class="input-form">
-                      <option value="temuco">Temuco</option>
+                  <select name="ciudad" id="select-ciudad" class="input-form">
+                      <option  th:each="ciudad:${ciudades}" th:text="${ciudad.nombre}" th:class="'option-ciudad ' + ${ciudad.region.id_region}" th:value="${ciudad.id}" ></option>
                   </select>
               </div>
 
@@ -120,7 +122,7 @@
 
           <div class="flex-space total">
               <p class="bold">Total</p>
-              <p class="bold"> $940.980</p>
+              <p th:text="${'$' + precio}" class="bold"></p>
           </div>
       </div>
 
