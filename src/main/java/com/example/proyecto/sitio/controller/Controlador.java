@@ -1,7 +1,9 @@
 package com.example.proyecto.sitio.controller;
 
 import com.example.proyecto.sitio.interfaceService.IAdministradorService;
+import com.example.proyecto.sitio.interfaceService.ICiudadService;
 import com.example.proyecto.sitio.interfaceService.IProductoService;
+import com.example.proyecto.sitio.interfaceService.IRegionService;
 import com.example.proyecto.sitio.modelo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,13 @@ public class Controlador {
 
     @Autowired
     private IProductoService service;
+
+    @Autowired
+    private IRegionService service_region;
+
+    @Autowired
+    private ICiudadService service_ciudad;
+
     @Autowired
     private IAdministradorService serviceAdmin;
 
@@ -95,10 +104,9 @@ public class Controlador {
     public List<Producto> get_productos_carrito(){
         List<Producto> productos_carrito= new ArrayList<>();
 
-        for (int i = 0; i < productos_id.size() ; i++) {
-            int id = productos_id.get(i);
-            Producto producto2 =  service.listar().stream().filter( producto -> producto.getId() == id ).findAny().get() ;
-            productos_carrito.add( producto2 );
+        for (int id : productos_id) {
+            Producto producto2 = service.listar().stream().filter(producto -> producto.getId() == id).findAny().get();
+            productos_carrito.add(producto2);
         }
 
         return productos_carrito;
@@ -184,8 +192,15 @@ public class Controlador {
 
     @GetMapping("/tipo_entrega")
     public String tipo_entrega(Model model){
-       List<Producto> productos = get_productos_carrito();
+        List<Producto> productos = get_productos_carrito();
+        List<Region> regiones = service_region.listar();
+        List<Ciudad> ciudades = service_ciudad.listar();
+
+        model.addAttribute("regiones", regiones);
+        model.addAttribute("ciudades", ciudades);
+
         model.addAttribute("productos", productos);
+        model.addAttribute("precio", productos.stream().mapToInt(Producto::getPrecio).sum() );
         return "tipo_entrega";
     }
 
