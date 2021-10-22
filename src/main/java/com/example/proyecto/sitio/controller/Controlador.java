@@ -1,9 +1,6 @@
 package com.example.proyecto.sitio.controller;
 
-import com.example.proyecto.sitio.interfaceService.IAdministradorService;
-import com.example.proyecto.sitio.interfaceService.ICiudadService;
-import com.example.proyecto.sitio.interfaceService.IProductoService;
-import com.example.proyecto.sitio.interfaceService.IRegionService;
+import com.example.proyecto.sitio.interfaceService.*;
 import com.example.proyecto.sitio.modelo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,6 +36,9 @@ public class Controlador {
 
     @Autowired
     private IAdministradorService serviceAdmin;
+
+    @Autowired
+    private IOrdenCompraService serviceOrdenCompra;
 
     static ArrayList<Integer> productos_id = new ArrayList<>();
 
@@ -173,21 +173,15 @@ public class Controlador {
     public String orden_compra(){
         return "orden_compra";
     }
-    @GetMapping("/orden_exitosa")
-    public String orden_exitosa(){
-        return "orden_exitosa";
-    }
+
 
 
     @GetMapping("/pedidos_realizados")
     public String pedidos_realizados(Model model){
-        OrdenCompra orden1 = new OrdenCompra(1,"21-09-2021","Juan Perez", Entrega.DESPACHO, "", "", 119990);
-        OrdenCompra orden2 = new OrdenCompra(2,"26-09-2021","Pedro Perez", Entrega.RETIRO, "", "", 19990);
-        OrdenCompra orden3 = new OrdenCompra(3,"28-09-2021","Juan Diaz", Entrega.DESPACHO, "", "", 89990);
-        OrdenCompra orden4 = new OrdenCompra(4,"29-09-2021","Pedro Perez", Entrega.RETIRO, "", "", 59990);
 
-        List<OrdenCompra> ordenes = Arrays.asList(orden1, orden2, orden3, orden4);
-        model.addAttribute("ordenes", ordenes);
+
+       // List<OrdenCompra> ordenes = Arrays.asList(orden1, orden2, orden3, orden4);
+    //    model.addAttribute("ordenes", ordenes);
 
         return "pedidos_realizados";
     }
@@ -248,6 +242,13 @@ public class Controlador {
      *
      *
      */
+
+    @GetMapping("/orden_exitosa")
+    public String orden_exitosa(Model model){
+        model.addAttribute("orden_compra", new OrdenCompra());
+        return "orden_exitosa";
+    }
+
     @PostMapping("/subir")
     public String subir( @ModelAttribute OrdenCompra ordenCompra, BindingResult result, Model model,
                         @RequestParam("file") MultipartFile comprobante, RedirectAttributes atributo){
@@ -264,6 +265,8 @@ public class Controlador {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+        serviceOrdenCompra.save(ordenCompra);
 
         }
         return "";

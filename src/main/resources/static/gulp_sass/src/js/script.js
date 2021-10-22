@@ -49,7 +49,8 @@ function filtrarCiudades(){
         select_ciudad.innerHTML = cadena;
     }
 
-
 }
 
 
+
+    
