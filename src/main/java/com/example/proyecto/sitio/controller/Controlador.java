@@ -269,7 +269,7 @@ public class Controlador {
         serviceOrdenCompra.save(ordenCompra);
 
         }
-        return "";
+        return "home";
     }
 
 
