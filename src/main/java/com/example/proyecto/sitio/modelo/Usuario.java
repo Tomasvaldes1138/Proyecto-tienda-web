@@ -6,11 +6,10 @@ import javax.persistence.*;
 
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String email;
     private String nombres;
     private String apellidos;
     private String rut;
-    private String email;
     private String clave;
 
 
