@@ -232,16 +232,6 @@ public class Controlador {
         return "index";
     }
 
-    /**
-     * link video 1: https://www.youtube.com/watch?v=BjHEuNdpC-U&t=189s
-     * link video 2:https://www.youtube.com/watch?v=df67kmObW7M
-     * Faltaria solamente mandar el ordenCompra a la base de datos
-     *
-     * * Comentario de otra clase*
-     * En orden_exitosa.html linea 62 agregue: entype="multipart/form-data
-     *
-     *
-     */
 
     @GetMapping("/orden_exitosa")
     public String orden_exitosa(Model model){
@@ -255,7 +245,6 @@ public class Controlador {
         if(!comprobante.isEmpty()){
             Path directorioComprobantes = Paths.get("src//main//resources//static/comprobantes");
             String rutaAbsoluta = directorioComprobantes.toFile().getAbsolutePath();
-
             try {
                 byte[] byteComprobante = comprobante.getBytes();
                 Path rutaCompleta = Paths.get(rutaAbsoluta+"//"+comprobante.getOriginalFilename());
@@ -269,8 +258,14 @@ public class Controlador {
         serviceOrdenCompra.save(ordenCompra);
 
         }
-        return "home";
+        return "redirect:/home";
     }
+
+
+
+
+
+
 
 
 }
