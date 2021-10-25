@@ -11,6 +11,7 @@ public interface IProductoService {
 
     public List<Producto> listar();
     public int save(Producto a);
+    public List<Producto> filtrar(String busqueda);
 
 
 }

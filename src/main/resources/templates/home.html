@@ -14,27 +14,28 @@
       <div class="container flex-space">
       <a class="logo c-pointer" href="home">PC Labs</a>
       
-        <form action="#" class="barra-container">
+        <form th:action="@{/buscar_productos}" class="barra-container" method="post">
           <input class="barra-busqueda" type="text" name="busqueda" id="busqueda" placeholder="Buscar Productos">
           <input type="submit" value="🔍" class="lupa">
         </form>
-      <div class="acciones flex-space">
-        <div class="carro-container flex-space">
-          <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
-          <a class="h-logo mg-l-1" href="carrito">Carro</a>
-        </div>
 
-        <div class="login-container dropdown">
-            <div class="dropdown-btn flex-space">
-              <img th:src="@{/img/icons/login.svg}" alt="icon_carrito" width="18px">
-              <p class="h-logo mg-l-1" href="#">Login</p>
-              <div class="triangle"></div>
+        <div class="acciones flex-space">
+          <div class="carro-container flex-space">
+            <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
+            <a class="h-logo mg-l-1" href="carrito">Carro</a>
           </div>
-          <div class="dropdown-content">
-            <a href="login">Cliente</a>
-            <a href="login_admin">Administrador</a>
+
+          <div class="login-container dropdown">
+              <div class="dropdown-btn flex-space">
+                <img th:src="@{/img/icons/login.svg}" alt="icon_carrito" width="18px">
+                <p class="h-logo mg-l-1" href="#">Login</p>
+                <div class="triangle"></div>
+            </div>
+            <div class="dropdown-content">
+              <a href="login">Cliente</a>
+              <a href="login_admin">Administrador</a>
+            </div>
           </div>
-        </div>
       </div>
 
     </div>

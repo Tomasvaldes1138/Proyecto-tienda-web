@@ -100,6 +100,20 @@ public class Controlador {
         return "categoria/tarjetas_graficas";
     }
 
+    @PostMapping("buscar_productos")
+    public String buscar_productos(@RequestParam(required = false) String busqueda, Model model){
+        busqueda = busqueda.toLowerCase();
+        List<Producto> productos = service.filtrar(busqueda);
+        model.addAttribute("productos", productos);
+
+
+        System.out.println("------Busqueda: " + busqueda + " ---------");
+        return "categoria/filtrados";
+    }
+
+
+
+
     @GetMapping("/carrito")
     public String carrito(Model model){
         List<Producto> productos_carrito= get_productos_carrito();
