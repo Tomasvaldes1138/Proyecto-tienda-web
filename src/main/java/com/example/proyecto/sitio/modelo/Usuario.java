@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 public class Usuario {
     @Id
-    private String email;
+    private String correo;
     private String nombres;
     private String apellidos;
     private String rut;
@@ -17,14 +17,13 @@ public class Usuario {
 
     }
 
-    public Usuario(String nombres, String apellidos, String rut, String email, String clave) {
+    public Usuario(String correo, String nombres, String apellidos, String rut, String clave) {
+        this.correo = correo;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.rut = rut;
-        this.email = email;
         this.clave = clave;
     }
-
 
     public String getNombres() {
         return nombres;
@@ -50,12 +49,12 @@ public class Usuario {
         this.rut = rut;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getClave() {

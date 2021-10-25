@@ -60,7 +60,7 @@
               <h2>Pagar orden</h2>
               <p>Haga click para subir el comprobante de la transferencia</p>
 
-              <form th:action="@{/subir}" th:object='${orden_compra}' class="subir-imagen f-column-l" enctype="multipart/form-data" method="post">
+              <form th:action="@{/subir_comprobante}" th:object='${orden_compra}' class="subir-imagen f-column-l" enctype="multipart/form-data" method="post">
                   <img th:src="@{/img/transferencia.jpg}" alt="transferencia" width="360px" height="140px">
                   <input name="file" type="file" id="imagen-comprobante" >
                   <input type="submit" value="Enviar" class="enviar-comprobante">

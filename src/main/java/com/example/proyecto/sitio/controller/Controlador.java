@@ -40,6 +40,9 @@ public class Controlador {
     @Autowired
     private IOrdenCompraService serviceOrdenCompra;
 
+    @Autowired
+    private IUsuarioService serviceUsuario;
+
     static ArrayList<Integer> productos_id = new ArrayList<>();
 
 
@@ -174,8 +177,6 @@ public class Controlador {
         return "orden_compra";
     }
 
-
-
     @GetMapping("/pedidos_realizados")
     public String pedidos_realizados(Model model){
 
@@ -187,10 +188,17 @@ public class Controlador {
     }
 
 
-
     @GetMapping("/registro")
-    public String registro(){
+    public String registro(Model model){
+        model.addAttribute("usuario", new Usuario());
         return "registro";
+    }
+
+    @PostMapping(value = "insertar_usuario")
+    public String insertar_usuario(@ModelAttribute Usuario usuario){
+        serviceUsuario.save(usuario);
+        System.out.println(usuario.toString());
+        return "login";
     }
 
 
@@ -217,7 +225,6 @@ public class Controlador {
     }
 
 
-
     @RequestMapping( value ="/nuevo_producto")
     public String nuevo_producto(Model model) {
         model.addAttribute("producto", new Producto());
@@ -239,7 +246,7 @@ public class Controlador {
         return "orden_exitosa";
     }
 
-    @PostMapping("/subir")
+    @PostMapping("/subir_comprobante")
     public String subir( @ModelAttribute OrdenCompra ordenCompra, BindingResult result, Model model,
                         @RequestParam("file") MultipartFile comprobante, RedirectAttributes atributo){
         if(!comprobante.isEmpty()){
@@ -260,6 +267,7 @@ public class Controlador {
         }
         return "redirect:/home";
     }
+
 
 
 

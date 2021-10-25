@@ -13,28 +13,29 @@
 
       <div class="registro-container">
           <div class="form-container">
-          <form action="/login" class="f-registro">
+
+          <form class="f-registro" th:object="${usuario}" th:action="@{/insertar_usuario}" method="post">
               <h1>Regístrate</h1>
               <p class="page-name" >Datos Personales</p>
               <div class="u-field">
                   <label for="nombres">Nombres</label>
-                  <input class="input-form" type="text" name="nombres" id="nombres">
+                  <input th:field="*{nombres}" class="input-form" type="text" name="nombres" id="nombres">
               </div>
               <div class="u-field">
                   <label for="apellidos">Apellidos</label>
-                  <input class="input-form" type="text" name="apellidos" id="apellidos">
+                  <input th:field="*{apellidos}" class="input-form" type="text" name="apellidos" id="apellidos">
               </div>
               <div class="u-field">
                   <label for="rut">Rut</label>
-                  <input class="input-form" type="text" name="rut" id="rut">
+                  <input th:field="*{rut}" class="input-form" type="text" name="rut" id="rut">
               </div>
               <div class="u-field">
                   <label for="email">Correo</label>
-                  <input class="input-form" type="email" name="email" id="email">
+                  <input th:field="*{correo}" class="input-form" type="email" name="email" id="email">
               </div>
               <div class="u-field">
                   <label for="password1">Contraseña</label>
-                  <input class="input-form" type="password" name="password1" id="password1">
+                  <input th:field="*{clave}" class="input-form" type="password" name="password1" id="password1">
               </div>
               <div class="u-field">
                   <label for="password2">Repetir Contraseña</label>
