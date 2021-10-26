@@ -31,15 +31,15 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public boolean iniciarSesion(String correo, String clave) {
+    public Usuario iniciarSesion(String correo, String clave) {
         List<Usuario> usuarios = (List<Usuario>) data.findAll();
         Optional<Usuario> usuarioEncontrado = usuarios.stream().filter(usuario-> usuario.getCorreo().equals(correo) && usuario.getClave().equals(clave)).findFirst();
 
         if(usuarioEncontrado.isEmpty()){
             System.out.println("Los datos ingresados no coinciden");
-            return false;
+            return null;
         }
 
-        return true;
+        return usuarioEncontrado.get();
     }
 }

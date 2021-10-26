@@ -44,6 +44,10 @@ public class Controlador {
 
     static ArrayList<Integer> productos_id = new ArrayList<>();
 
+    static Usuario usuarioLogeado = new Usuario();
+
+
+
 
     /**
      *Metodo que obtiene los productos de la base de datos y los entrega a la vista index
@@ -55,10 +59,14 @@ public class Controlador {
 
     @GetMapping("/home")
     public String home_productos(Model model){
+
         List<Producto> productos = service.listar();
         model.addAttribute("productos", productos);
         return "home";
     }
+
+
+
 
     @GetMapping("categoria/procesadores")
     public String categoria_procesadores(Model model){
@@ -102,6 +110,11 @@ public class Controlador {
         return "categoria/tarjetas_graficas";
     }
 
+
+
+
+
+
     @PostMapping("buscar_productos")
     public String buscar_productos(@RequestParam(required = false) String busqueda, Model model){
         busqueda = busqueda.toLowerCase();
@@ -138,6 +151,14 @@ public class Controlador {
         return productos_carrito;
     }
 
+    @PostMapping(value = "continuar_despacho")
+    public String validar_carrito(){
+        if(productos_id != null){
+            return "redirect:/tipo_entrega";
+        }
+        return "redirect:/carrito";
+    }
+
 
     @PostMapping(value="agregar_producto")
     public String agregar_producto(@ModelAttribute("producto") Producto producto){
@@ -169,12 +190,25 @@ public class Controlador {
     }
     @PostMapping(value = "validar_login")
     public String validar_login(@ModelAttribute Usuario usuario){
-        boolean valido = serviceUsuario.iniciarSesion(usuario.getCorreo(), usuario.getClave() );
-        if(valido){
+        Usuario valido = serviceUsuario.iniciarSesion(usuario.getCorreo(), usuario.getClave() );
+        if(valido != null){
+            usuarioLogeado = valido;
+            System.out.println(usuarioLogeado.getNombres());
+
             return "redirect:/home";
         }
         return "redirect:/login";
     }
+
+    @PostMapping(value = "cerrar_sesionUsuario")
+    public String cerrar_sesionUsuario(){
+        usuarioLogeado= null;
+        System.out.println(usuarioLogeado);
+        return "redirect:/home";
+    }
+
+
+
 
     @GetMapping("/login_admin")
     public String login_admin(){

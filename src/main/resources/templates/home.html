@@ -34,6 +34,10 @@
             <div class="dropdown-content">
               <a href="login">Cliente</a>
               <a href="login_admin">Administrador</a>
+
+              <form  th:action="@{/cerrar_sesionUsuario}" method="post">
+                <input class="form-control c-pointer" type="submit">
+              </form>
             </div>
           </div>
       </div>

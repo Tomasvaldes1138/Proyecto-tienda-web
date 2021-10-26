@@ -10,5 +10,5 @@ public interface IUsuarioService {
 
     public List<Usuario> Listar();
     public int guardar(Usuario a);
-    public boolean iniciarSesion(String correo, String clave);
+    public Usuario iniciarSesion(String correo, String clave);
 }
