@@ -9,5 +9,6 @@ import java.util.List;
 public interface IUsuarioService {
 
     public List<Usuario> Listar();
-    public int save(Usuario a);
+    public int guardar(Usuario a);
+    public boolean iniciarSesion(String correo, String clave);
 }

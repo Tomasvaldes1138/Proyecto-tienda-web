@@ -15,7 +15,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -164,9 +163,19 @@ public class Controlador {
 
 
     @GetMapping("/login")
-    public String login(){
+    public String login(Model model){
+        model.addAttribute("usuario", new Usuario());
         return "login";
     }
+    @PostMapping(value = "validar_login")
+    public String validar_login(@ModelAttribute Usuario usuario){
+        boolean valido = serviceUsuario.iniciarSesion(usuario.getCorreo(), usuario.getClave() );
+        if(valido){
+            return "redirect:/home";
+        }
+        return "redirect:/login";
+    }
+
     @GetMapping("/login_admin")
     public String login_admin(){
         return "login_admin";
@@ -210,7 +219,7 @@ public class Controlador {
 
     @PostMapping(value = "insertar_usuario")
     public String insertar_usuario(@ModelAttribute Usuario usuario){
-        serviceUsuario.save(usuario);
+        serviceUsuario.guardar(usuario);
         System.out.println(usuario.toString());
         return "login";
     }
