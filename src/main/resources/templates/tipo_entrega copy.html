@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css">
+    <!-- <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css"> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Play&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css"> -->
+    <link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css">
   </head>
   <body>
     <header class="header">
@@ -51,32 +51,33 @@
       </nav>
       <div class="container flex-space entrega-container">
           <div class="left">
-          <div class="seleccion flex-space">
-              <div class="radio-opcion">
-                  <input type="radio" name="tipo_envio" id="despacho" class="check-despacho">
-                  <label for="despacho">Despacho a Domicilio</label>
+
+          <form action="#" class="formulario content-border form-entrega">
+
+            
+              <div class="flex-space seleccion">
+                <div class="radio-opcion">
+                    <input type="radio" name="tipo_envio" id="despacho" value="1" class="check-despacho">
+                    <label for="despacho">Despacho a Domicilio</label>
+                </div>
+
+                <div class="radio-opcion">
+                    <input type="radio" name="tipo_envio" id="retiro" value="2">
+                    <label for="retiro">Retiro en Tienda</label>
+                </div>
+
               </div>
-
-              <div class="radio-opcion">
-                  <input type="radio" name="tipo_envio" id="retiro">
-                  <label for="retiro">Retiro en Tienda</label>
-              </div>
-
-          </div>
-
-          <form class="formulario content-border form-entrega1" th:object="${orden_compra}" th:action="@{/generar_orden_compra}" method="post">
-
-
-              <input type="hidden" th:field="*{tipoEntrega}"  id="tipo_entrega" class="input-form tipo-entrega" >
 
               <div class="form-entrega">
+
               <div class="field f-column-l">
                   <label for="region">Region:</label>
                   <select th:name="region" id="select-region" class="input-form" >
                       <option  th:each="region:${regiones}" th:value="${region.id_region}" th:text="${region.nombre_region}" class="option-region" ></option>
+
+
                   </select>
               </div>
-
 
               <div class="field f-column-l">
                   <label for="apellidos">Ciudad:</label>
@@ -86,27 +87,31 @@
               </div>
 
               <div class="field">
-                  <label for="email">Calle:</label>
-                  <input class="input-form" type="email" name="email" id="email">
+                  <label for="calle">Calle:</label>
+                  <input class="input-form" type="text" name="calle" id="calle">
               </div>
               <div class="field">
-                  <label for="rut">Depto/Oficina/Otros:</label>
-                  <input class="input-form" type="text" name="rut" id="rut">
+                  <label for="otros">Depto/Oficina/Otros:</label>
+                  <input class="input-form" type="text" name="otros" id="otros">
               </div>
               <div class="field">
-                  <label for="rut">Teléfono</label>
-                  <input class="input-form" type="text" name="rut" id="rut">
+                  <label for="telefono">Teléfono</label>
+                  <input class="input-form" type="tel" name="telefono" id="telefono">
               </div>
-            </div>
+
+              </div>
 
               <div class="flex-space">
-                  <div class="btn-agregar desc-btn">
-                      <a href="carrito" class="nombre-agregar ">VOLVER AL CARRO</a>
-                  </div>
-                  <div class="btn-agregar desc-btn">
+                <div class="btn-agregar desc-btn">
+                    <a href="carrito" class="nombre-agregar ">VOLVER AL CARRO</a>
+                </div>
+                <div class="btn-agregar desc-btn">
                     <input type="submit" value="ENVIAR ORDEN" class="btn-reset c-pointer nombre-agregar">
-                  </div>
+                </div>
               </div>
+
+
+
           </form>
 
 
@@ -196,7 +201,8 @@
           <p class="copyright">Copyright © 2021 PC Labs. Todos los Derechos Reservados.</p>
         </div>
       </footer>
-
-      <script th:src="@{/gulp_sass/src/js/script.js}"></script>
+<!-- 
+      <script th:src="@{/gulp_sass/src/js/script.js}"></script> -->
+      <script src="../static/gulp_sass/src/js/script.js"></script>
   </body>
   </html>

@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
 function iniciarApp(){
     const form_entrega = document.querySelector('.form-entrega');
+    const tipo_entrega = document.querySelector('.tipo-entrega');
+
     const input_container = document.querySelector('.seleccion');
     const despacho = document.querySelector('#despacho');
     const retiro = document.querySelector('#retiro');
@@ -21,9 +23,12 @@ function iniciarApp(){
         if(!despacho.checked){
             form_entrega.classList.add('hide-form');
             input_container.classList.add('mg-2');
+            tipo_entrega.value = 2;
         }else{
             form_entrega.classList.remove('hide-form');
             input_container.classList.remove('mg-2');
+            tipo_entrega.value = 1;
+            
         }
     }
 
