@@ -4,25 +4,27 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "administrador")
+
 public class Administrador {
 
     @Id
-    private String rut;
-    private String clave;
     private String correo;
     private String nombres;
     private String apellidos;
+    private String rut;
+    private String clave;
+
 
     public  Administrador(){
 
     }
 
-    public Administrador(String rut, String clave, String correo, String nombres, String apellidos) {
-        this.rut = rut;
-        this.clave = clave;
+    public Administrador(String correo, String nombres, String apellidos, String rut, String clave) {
         this.correo = correo;
         this.nombres = nombres;
         this.apellidos = apellidos;
+        this.rut = rut;
+        this.clave = clave;
     }
 
     public String getRut() {

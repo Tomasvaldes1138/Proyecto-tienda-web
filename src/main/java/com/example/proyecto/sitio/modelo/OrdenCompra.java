@@ -19,7 +19,6 @@ public class OrdenCompra {
     private String comprobante;
 
     public OrdenCompra() {
-
     }
 
     //public OrdenCompra(int id,String fecha,String cliente,Entrega tipoEntrega,String ordenCompra,String comprobantePago,int total) {

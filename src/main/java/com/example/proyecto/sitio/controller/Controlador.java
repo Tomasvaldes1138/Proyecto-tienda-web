@@ -43,6 +43,8 @@ public class Controlador {
 
     static Usuario usuarioLogeado = null;
 
+    static Administrador administradorLogeado = null;
+
 
 
 
@@ -55,6 +57,7 @@ public class Controlador {
     //*******************************************************
     //******************* HOME ******************************
     //*******************************************************
+
 
     @GetMapping("/home")
     public String home_productos(Model model){
@@ -275,8 +278,21 @@ public class Controlador {
 
 
     @GetMapping("/login_admin")
-    public String login_admin(){
+    public String login_admin(Model model){
+        model.addAttribute("administrador",new Administrador());
         return "login_admin";
+    }
+
+    @PostMapping(value = "validar_loginAdmin")
+    public String validar_loginAdmin(@ModelAttribute Administrador administrador){
+        Administrador valido = serviceAdmin.iniciarSesion(administrador.getCorreo(), administrador.getClave() );
+        if(valido != null){
+            administradorLogeado = valido;
+            System.out.println(administradorLogeado.getNombres());
+
+            return "redirect:/pedidos_realizados";
+        }
+        return "redirect:/login_admin";
     }
 
     @GetMapping("/info_productos")

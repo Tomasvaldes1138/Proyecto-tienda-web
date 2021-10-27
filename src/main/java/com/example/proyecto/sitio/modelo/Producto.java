@@ -45,14 +45,6 @@ public class Producto {
         this.categoria = categoria;
     }
 
-
-    public Producto(String nombre, int precio, int stock, String url_imagen) {
-        this.nombre = nombre;
-        this.stock = stock;
-        this.precio = precio;
-        this.url_imagen = url_imagen;
-    }
-
     public int getId() {
         return id;
     }
