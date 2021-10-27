@@ -179,10 +179,17 @@ public class Controlador {
 
         model.addAttribute("regiones", regiones);
         model.addAttribute("ciudades", ciudades);
+        model.addAttribute("orden_compra", new OrdenCompra());
 
         model.addAttribute("productos", productos);
         model.addAttribute("precio", productos.stream().mapToInt(Producto::getPrecio).sum() );
         return "tipo_entrega";
+    }
+
+    @PostMapping("/generar_orden_compra")
+    public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra){
+        serviceOrdenCompra.save(ordenCompra);
+        return "redirect:/orden_exitosa";
     }
 
     //****************************************************

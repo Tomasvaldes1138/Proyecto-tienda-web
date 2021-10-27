@@ -1,8 +1,6 @@
 package com.example.proyecto.sitio.modelo;
 
 import javax.persistence.*;
-import java.awt.*;
-import java.util.Date;
 
 @Entity
 @Table(name="orden_compra")
@@ -13,10 +11,12 @@ public class OrdenCompra {
     private int id;
     //private LocalDate fecha;
     //private Usuario cliente;
-    //private Entrega tipoEntrega;
+    @ManyToOne
+    @JoinColumn(name = "id_entrega" )
+    private TipoEntrega tipoEntrega;
     //private String ordenCompra;
     //private int total;
-    private String comprobante;
+    private String comprobantePago;
 
     public OrdenCompra() {
     }
@@ -34,7 +34,22 @@ public class OrdenCompra {
 
     public OrdenCompra(int id, String comprobante) {
         this.id = id;
-        this.comprobante = comprobante;
+        this.comprobantePago = comprobante;
+    }
+
+    public OrdenCompra(int id, TipoEntrega tipoEntrega) {
+        this.id = id;
+        this.tipoEntrega = tipoEntrega;
+    }
+
+    public OrdenCompra(int id, TipoEntrega tipoEntrega, String comprobantePago) {
+        this.id = id;
+        this.tipoEntrega = tipoEntrega;
+        this.comprobantePago = comprobantePago;
+    }
+
+    public OrdenCompra(TipoEntrega tipoEntrega) {
+        this.tipoEntrega = tipoEntrega;
     }
 
     public int getId() {
@@ -45,14 +60,28 @@ public class OrdenCompra {
         this.id = id;
     }
 
-    public String getComprobante() {
-        return comprobante;
+    public TipoEntrega getTipoEntrega() {
+        return tipoEntrega;
+    }
+
+    public void setTipoEntrega(TipoEntrega tipoEntrega) {
+        this.tipoEntrega = tipoEntrega;
+    }
+
+    public String getComprobantePago() {
+        return comprobantePago;
     }
 
     public void setComprobantePago(String comprobante) {
-        this.comprobante = comprobante;
+        this.comprobantePago = comprobante;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "OrdenCompra{" +
+                "id=" + id +
+                ", tipoEntrega=" + tipoEntrega +
+                ", comprobantePago='" + comprobantePago + '\'' +
+                '}';
+    }
 }
