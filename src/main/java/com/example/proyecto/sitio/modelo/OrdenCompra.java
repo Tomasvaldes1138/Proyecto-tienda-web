@@ -11,8 +11,8 @@ public class OrdenCompra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    //private String fecha;
-    //private String cliente;
+    //private LocalDate fecha;
+    //private Usuario cliente;
     //private Entrega tipoEntrega;
     //private String ordenCompra;
     //private int total;

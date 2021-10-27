@@ -624,6 +624,11 @@ a {
   margin-bottom: 2rem;
 }
 
+.cerrar_sesion {
+  padding: 1rem;
+  text-align: center;
+}
+
 .title {
   margin-bottom: 4rem;
   font-weight: 400;

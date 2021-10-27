@@ -34,7 +34,6 @@ public class Producto {
         this.precio_anterior = precio_anterior ;
     }
 
-
     public Producto(int id, String nombre, int stock, int precio, String url_imagen, int descuento, int precio_anterior, Categoria categoria) {
         this.id = id;
         this.nombre = nombre;

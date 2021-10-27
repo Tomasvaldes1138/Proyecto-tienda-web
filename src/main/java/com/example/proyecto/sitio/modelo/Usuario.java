@@ -1,10 +1,13 @@
 package com.example.proyecto.sitio.modelo;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 @Entity
 @Table(name = "usuario")
 
-public class Usuario {
+public class Usuario implements Serializable {
+
     @Id
     private String correo;
     private String nombres;
