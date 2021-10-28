@@ -27,12 +27,16 @@
           <div class="login-container dropdown">
               <div class="dropdown-btn flex-space">
                 <img th:src="@{/img/icons/login.svg}" alt="icon_carrito" width="18px">
-                <p class="h-logo mg-l-1" href="#">Login</p>
+                  <p class="h-logo mg-l-1" th:text="${nombre_cliente}"></p>
                 <div class="triangle"></div>
             </div>
             <div class="dropdown-content">
               <a href="login">Cliente</a>
               <a href="login_admin">Administrador</a>
+
+                <form th:if="${!#strings.equals(nombre_cliente, 'Login')}"  th:action="@{/cerrar_sesionUsuario}" class="cerrar_sesion" method="post">
+                    <input class="form-control c-pointer btn-reset underline" type="submit" value="Cerrar Sesión">
+                </form>
             </div>
           </div>
         </div>
@@ -86,16 +90,16 @@
               </div>
 
               <div class="field">
-                  <label for="email">Calle:</label>
-                  <input class="input-form" type="email" name="email" id="email">
+                  <label for="calle">Calle:</label>
+                  <input class="input-form" type="text" name="text" id="calle" required="required=">
               </div>
               <div class="field">
-                  <label for="rut">Depto/Oficina/Otros:</label>
+                  <label for="otros">Depto/Oficina/Otros:</label>
                   <input class="input-form" type="text" name="rut" id="rut">
               </div>
               <div class="field">
-                  <label for="rut">Teléfono</label>
-                  <input class="input-form" type="text" name="rut" id="rut">
+                  <label for="telefono">Teléfono</label>
+                  <input class="input-form" type="text" name="rut" id="telefono">
               </div>
             </div>
 

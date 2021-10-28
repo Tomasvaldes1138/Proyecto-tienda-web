@@ -3,7 +3,6 @@ package com.example.proyecto.sitio.service;
 import com.example.proyecto.sitio.interfaceService.IAdministradorService;
 import com.example.proyecto.sitio.interfaces.IAdministrador;
 import com.example.proyecto.sitio.modelo.Administrador;
-import com.example.proyecto.sitio.modelo.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -39,7 +39,6 @@ public class UsuarioService implements IUsuarioService {
             System.out.println("Los datos ingresados no coinciden");
             return null;
         }
-
         return usuarioEncontrado.get();
     }
 }

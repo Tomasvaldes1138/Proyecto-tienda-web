@@ -54,6 +54,55 @@ public class Controlador {
      * @return String que redirecciona a la vista index.html
      */
 
+    //****************************************************
+    //******************* REGISTRO USUARIO ***************
+    //****************************************************
+
+    @GetMapping("/registro")
+    public String registro(Model model){
+        model.addAttribute("usuario", new Usuario());
+        return "registro";
+    }
+
+    @PostMapping(value = "insertar_usuario")
+    public String insertar_usuario(@ModelAttribute Usuario usuario){
+        serviceUsuario.guardar(usuario);
+        return "login";
+    }
+
+    //****************************************************
+    //******************* LOGIN USUARIO ******************
+    //****************************************************
+
+    @GetMapping("/login")
+    public String login(Model model){
+        model.addAttribute("usuario", new Usuario());
+        return "login";
+    }
+
+    @PostMapping(value = "validar_login")
+    public String validar_login(@ModelAttribute Usuario usuario){
+        Usuario valido = serviceUsuario.iniciarSesion(usuario.getCorreo(), usuario.getClave() );
+        if(valido != null){
+            usuarioLogeado = valido;
+            return "redirect:/home";
+        }
+        return "redirect:/login";
+    }
+
+    @PostMapping(value = "cerrar_sesionUsuario")
+    public String cerrar_sesionUsuario(){
+        usuarioLogeado= null;
+        return "redirect:/home";
+    }
+
+    @PostMapping(value = "cerrar_sesionAdministrador")
+    public String cerrar_sesionAdministrador(){
+        usuarioLogeado= null;
+        return "redirect:/home";
+    }
+
+
     //*******************************************************
     //******************* HOME ******************************
     //*******************************************************
@@ -85,6 +134,9 @@ public class Controlador {
     public String categoria_procesadores(Model model){
         List<Producto> procesadores = filtroCategoria(service.listar(), "Procesadores" );
         model.addAttribute("productos", procesadores);
+
+        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+        model.addAttribute("nombre_cliente", contenido );
         return "categoria/procesadores";
     }
 
@@ -92,6 +144,9 @@ public class Controlador {
     public String categoria_fuentes_poder(Model model){
         List<Producto> fuentes_poder = filtroCategoria(service.listar(), "Fuentes de Poder" );
         model.addAttribute("productos", fuentes_poder);
+
+        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+        model.addAttribute("nombre_cliente", contenido );
         return "categoria/fuentes_poder";
     }
 
@@ -99,6 +154,9 @@ public class Controlador {
     public String categoria_gabinetes(Model model){
         List<Producto> gabinetes = filtroCategoria(service.listar(), "Gabinetes" );
         model.addAttribute("productos", gabinetes);
+
+        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+        model.addAttribute("nombre_cliente", contenido );
         return "categoria/gabinetes";
     }
 
@@ -106,6 +164,9 @@ public class Controlador {
     public String categoria_memorias_ram(Model model){
         List<Producto> memorias_ram = filtroCategoria(service.listar(), "Memorias Ram" );
         model.addAttribute("productos", memorias_ram);
+
+        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+        model.addAttribute("nombre_cliente", contenido );
         return "categoria/memorias_ram";
     }
 
@@ -113,6 +174,9 @@ public class Controlador {
     public String categoria_placas_madre(Model model){
         List<Producto> placas_madre = filtroCategoria(service.listar(), "Placas Madre" );
         model.addAttribute("productos", placas_madre);
+
+        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+        model.addAttribute("nombre_cliente", contenido );
         return "categoria/placas_madre";
     }
 
@@ -120,6 +184,9 @@ public class Controlador {
     public String categoria_tarjetas_graficas(Model model){
         List<Producto> tarjetas_graficas = filtroCategoria(service.listar(), "Tarjetas Graficas" );
         model.addAttribute("productos", tarjetas_graficas);
+
+        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+        model.addAttribute("nombre_cliente", contenido );
         return "categoria/tarjetas_graficas";
     }
 
@@ -138,6 +205,9 @@ public class Controlador {
         model.addAttribute("productos", productos_carrito);
         model.addAttribute("precio", productos_carrito.stream().mapToInt(Producto::getPrecio).sum() );
         model.addAttribute("cantidad", productos_carrito.size());
+
+        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+        model.addAttribute("nombre_cliente", contenido );
 
         return "carrito";
     }
@@ -183,6 +253,9 @@ public class Controlador {
 
         model.addAttribute("productos", productos);
         model.addAttribute("precio", productos.stream().mapToInt(Producto::getPrecio).sum() );
+
+        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+        model.addAttribute("nombre_cliente", contenido );
         return "tipo_entrega";
     }
 
@@ -191,6 +264,21 @@ public class Controlador {
         serviceOrdenCompra.save(ordenCompra);
         return "redirect:/orden_exitosa";
     }
+
+    //****************************************************
+    //******************* ORDEN EXITOSA ******************
+    //****************************************************
+
+    @GetMapping("/orden_exitosa")
+    public String orden_exitosa(Model model){
+        List<Producto> productos_carrito= get_productos_carrito();
+        model.addAttribute("orden_compra", new OrdenCompra());
+        model.addAttribute("precio", productos_carrito.stream().mapToInt(Producto::getPrecio).sum() );
+        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+        model.addAttribute("nombre_cliente", contenido );
+        return "orden_exitosa";
+    }
+
 
     //****************************************************
     //******************* COMPROBANTE ********************
@@ -222,65 +310,7 @@ public class Controlador {
     }
 
     //****************************************************
-    //******************* LOGIN USUARIO ******************
-    //****************************************************
-
-    @GetMapping("/login")
-    public String login(Model model){
-        model.addAttribute("usuario", new Usuario());
-        return "login";
-    }
-
-    @PostMapping(value = "validar_login")
-    public String validar_login(@ModelAttribute Usuario usuario){
-        Usuario valido = serviceUsuario.iniciarSesion(usuario.getCorreo(), usuario.getClave() );
-        if(valido != null){
-            usuarioLogeado = valido;
-            System.out.println(usuarioLogeado.getNombres());
-
-            return "redirect:/home";
-        }
-        return "redirect:/login";
-    }
-
-    @PostMapping(value = "cerrar_sesionUsuario")
-    public String cerrar_sesionUsuario(){
-        usuarioLogeado= null;
-        System.out.println(usuarioLogeado);
-        return "redirect:/home";
-    }
-
-    //****************************************************
-    //******************* REGISTRO USUARIO ***************
-    //****************************************************
-
-    @GetMapping("/registro")
-    public String registro(Model model){
-        model.addAttribute("usuario", new Usuario());
-        return "registro";
-    }
-
-    @PostMapping(value = "insertar_usuario")
-    public String insertar_usuario(@ModelAttribute Usuario usuario){
-        serviceUsuario.guardar(usuario);
-        System.out.println(usuario.toString());
-        return "login";
-    }
-
-    //****************************************************
-    //******************* ORDEN EXITOSA ******************
-    //****************************************************
-
-    @GetMapping("/orden_exitosa")
-    public String orden_exitosa(Model model){
-        List<Producto> productos_carrito= get_productos_carrito();
-        model.addAttribute("orden_compra", new OrdenCompra());
-        model.addAttribute("precio", productos_carrito.stream().mapToInt(Producto::getPrecio).sum() );
-        return "orden_exitosa";
-    }
-
-    //****************************************************
-    //******************* PANEL ADMINISTRADOR ************
+    //************* PANEL ADMINISTRADOR ******************
     //****************************************************
 
 
@@ -295,34 +325,57 @@ public class Controlador {
         Administrador valido = serviceAdmin.iniciarSesion(administrador.getCorreo(), administrador.getClave() );
         if(valido != null){
             administradorLogeado = valido;
-            System.out.println(administradorLogeado.getNombres());
-
             return "redirect:/pedidos_realizados";
         }
         return "redirect:/login_admin";
     }
+
 
     @GetMapping("/info_productos")
     public String info_productos(Model model){
 
         List<Producto> productos = service.listar();
         model.addAttribute("productos", productos);
+        String contenido = administradorLogeado==null ? "Login" : administradorLogeado.getNombres() ;
+        model.addAttribute("nombre_administrador", contenido );
         return "info_productos";
+    }
+
+    @RequestMapping( value ="/nuevo_producto")
+    public String nuevo_producto(Model model) {
+        model.addAttribute("producto", new Producto());
+        String contenido = administradorLogeado==null ? "Login" : administradorLogeado.getNombres() ;
+        model.addAttribute("nombre_administrador", contenido );
+        return "nuevo_producto";
+    }
+
+    @PostMapping(value="insertar_producto")
+    public String insertar_producto(@ModelAttribute Producto producto){
+        service.save(producto);
+        return "redirect:/info_productos";
     }
 
     @GetMapping("/nuevo_administrador")
     public String nuevo_administrador(Model model){
         model.addAttribute("administrador", new Administrador());
+        String contenido = administradorLogeado==null ? "Login" : administradorLogeado.getNombres() ;
+        model.addAttribute("nombre_administrador", contenido );
         return "nuevo_administrador";
     }
 
     @PostMapping(value="insertar_admin")
     public String insertar_admin(@ModelAttribute Administrador administrador){
-        //Necesito llamar a service de Administrador pero ya esta declarada por producto.
         serviceAdmin.save(administrador);
-        System.out.println(administrador.toString());
-        return "index";
+
+        return "redirect:/nuevo_administrador";
     }
+
+
+
+
+
+
+
 
     @GetMapping("/orden_compra")
     public String orden_compra(){
@@ -331,8 +384,8 @@ public class Controlador {
 
     @GetMapping("/pedidos_realizados")
     public String pedidos_realizados(Model model){
-       // List<OrdenCompra> ordenes = Arrays.asList(orden1, orden2, orden3, orden4);
-    //    model.addAttribute("ordenes", ordenes);
+        String contenido = administradorLogeado==null ? "Login" : administradorLogeado.getNombres() ;
+        model.addAttribute("nombre_administrador", contenido );
         return "pedidos_realizados";
     }
 
@@ -340,31 +393,11 @@ public class Controlador {
     public String actualizar_producto(Model model){
 
         model.addAttribute("producto", service.listar().get(8));
+
+        String contenido = administradorLogeado==null ? "Login" : administradorLogeado.getNombres() ;
+        model.addAttribute("nombre_administrador", contenido );
         return "actualizar_producto";
     }
-
-    @RequestMapping( value ="/nuevo_producto")
-    public String nuevo_producto(Model model) {
-        model.addAttribute("producto", new Producto());
-        return "nuevo_producto";
-    }
-
-    @PostMapping(value="insertar_producto")
-    public String insertar_producto(@ModelAttribute Producto producto){
-        System.out.println("Producto: " + producto.toString());
-        //Necesito llamar a service de Administrador pero ya esta declarada por producto.
-        service.save(producto);
-        return "index";
-    }
-
-
-
-
-
-
-
-
-
 
 
 }

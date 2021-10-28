@@ -14,7 +14,7 @@ public class OrdenCompra {
     @ManyToOne
     @JoinColumn(name = "id_entrega" )
     private TipoEntrega tipoEntrega;
-    //private String ordenCompra;
+    //private String listaProductos;
     //private int total;
     private String comprobantePago;
 
