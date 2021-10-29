@@ -10,7 +10,10 @@ public class OrdenCompra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     //private LocalDate fecha;
-    //private Usuario cliente;
+    @ManyToOne
+    @JoinColumn(name = "correo" )
+    private Usuario usuario;
+
     @ManyToOne
     @JoinColumn(name = "id_entrega" )
     private TipoEntrega tipoEntrega;
@@ -74,6 +77,14 @@ public class OrdenCompra {
 
     public void setComprobantePago(String comprobante) {
         this.comprobantePago = comprobante;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

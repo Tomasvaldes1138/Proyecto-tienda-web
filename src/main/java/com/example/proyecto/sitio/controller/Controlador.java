@@ -261,6 +261,7 @@ public class Controlador {
 
     @PostMapping("/generar_orden_compra")
     public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra){
+        ordenCompra.setUsuario(usuarioLogeado);
         serviceOrdenCompra.save(ordenCompra);
         return "redirect:/orden_exitosa";
     }
