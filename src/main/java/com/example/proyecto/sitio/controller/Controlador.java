@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -261,7 +264,9 @@ public class Controlador {
 
     @PostMapping("/generar_orden_compra")
     public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra){
+        LocalDateTime fechaActual = LocalDateTime.now(ZoneId.of("GMT-3"));
         ordenCompra.setUsuario(usuarioLogeado);
+        ordenCompra.setFecha(fechaActual);
         serviceOrdenCompra.save(ordenCompra);
         return "redirect:/orden_exitosa";
     }
