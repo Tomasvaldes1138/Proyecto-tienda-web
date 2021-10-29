@@ -1,7 +1,6 @@
 package com.example.proyecto.sitio.modelo;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
