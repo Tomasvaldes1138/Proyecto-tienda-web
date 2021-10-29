@@ -36,6 +36,14 @@ public class OrdenCompra {
     //}
 
 
+    public OrdenCompra(int id, LocalDateTime fecha, Usuario usuario, TipoEntrega tipoEntrega, String comprobantePago) {
+        this.id = id;
+        this.fecha = fecha;
+        this.usuario = usuario;
+        this.tipoEntrega = tipoEntrega;
+        this.comprobantePago = comprobantePago;
+    }
+
     public OrdenCompra(int id, String comprobante) {
         this.id = id;
         this.comprobantePago = comprobante;
