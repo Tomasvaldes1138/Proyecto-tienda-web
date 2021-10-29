@@ -1,6 +1,7 @@
 package com.example.proyecto.sitio.modelo;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="orden_compra")
@@ -9,7 +10,7 @@ public class OrdenCompra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    //private LocalDate fecha;
+    private LocalDateTime fecha;
     @ManyToOne
     @JoinColumn(name = "correo" )
     private Usuario usuario;
@@ -85,6 +86,14 @@ public class OrdenCompra {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
     }
 
     @Override

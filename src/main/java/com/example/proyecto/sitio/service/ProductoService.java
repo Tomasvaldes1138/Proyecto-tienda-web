@@ -6,9 +6,8 @@ import com.example.proyecto.sitio.modelo.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +40,15 @@ public class ProductoService implements IProductoService {
         List<Producto> productos = (List<Producto>) data.findAll();
         productos = productos.stream().filter(producto -> producto.getNombre().toLowerCase().contains(busqueda)).collect(Collectors.toList());
         return productos;
+    }
+
+    @Override
+    public Producto buscarPorId(int id) {
+         Optional<Producto> producto = data.findById(id);
+         if(producto.isEmpty()){
+             return null;
+         }
+        return producto.get();
     }
 
 
