@@ -3,7 +3,6 @@ package com.example.proyecto.sitio.controller;
 import com.example.proyecto.sitio.interfaceService.IProductoService;
 import com.example.proyecto.sitio.modelo.Carrito;
 import com.example.proyecto.sitio.modelo.Producto;
-import com.example.proyecto.sitio.modelo.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -139,7 +138,7 @@ public class ControladorProducto {
         System.out.println("LLamando a metodo buscarPorId");
 
 
-        carrito.anadirProducto( service.buscarPorId(producto.getId()) );
+        carrito.anadirProducto( service.buscarPorId(producto.getId_producto()) );
 
         return "redirect:/home";
     }

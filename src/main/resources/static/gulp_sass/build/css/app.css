@@ -892,6 +892,41 @@ a {
   font-weight: 700;
 }
 
+/*Mis Ordenes */
+.form-ordenes {
+  background-color: #fff;
+  padding: 2rem;
+  width: 60rem;
+}
+.form-ordenes .radio-opcion {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  column-gap: 2rem;
+}
+.form-ordenes .radio-opcion input {
+  border: 0px;
+  width: 10%;
+  height: 2.5rem;
+}
+.form-ordenes .radio-opcion p {
+  font-size: 1.8rem;
+}
+.form-ordenes .radio-opcion label {
+  font-size: 2rem;
+}
+.form-ordenes .btn-orden {
+  margin-left: 1.6rem;
+  margin-top: 1.5rem;
+  width: 20rem;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .listado-carro {
   width: 70rem;
   background-color: #fff;

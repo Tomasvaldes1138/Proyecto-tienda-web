@@ -9,8 +9,9 @@ public class OrdenCompra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id_orden;
     private LocalDateTime fecha;
+
     @ManyToOne
     @JoinColumn(name = "correo" )
     private Usuario usuario;
@@ -36,26 +37,26 @@ public class OrdenCompra {
     //}
 
 
-    public OrdenCompra(int id, LocalDateTime fecha, Usuario usuario, TipoEntrega tipoEntrega, String comprobantePago) {
-        this.id = id;
+    public OrdenCompra(int id_orden, LocalDateTime fecha, Usuario usuario, TipoEntrega tipoEntrega, String comprobantePago) {
+        this.id_orden = id_orden;
         this.fecha = fecha;
         this.usuario = usuario;
         this.tipoEntrega = tipoEntrega;
         this.comprobantePago = comprobantePago;
     }
 
-    public OrdenCompra(int id, String comprobante) {
-        this.id = id;
+    public OrdenCompra(int id_orden, String comprobante) {
+        this.id_orden = id_orden;
         this.comprobantePago = comprobante;
     }
 
-    public OrdenCompra(int id, TipoEntrega tipoEntrega) {
-        this.id = id;
+    public OrdenCompra(int id_orden, TipoEntrega tipoEntrega) {
+        this.id_orden = id_orden;
         this.tipoEntrega = tipoEntrega;
     }
 
-    public OrdenCompra(int id, TipoEntrega tipoEntrega, String comprobantePago) {
-        this.id = id;
+    public OrdenCompra(int id_orden, TipoEntrega tipoEntrega, String comprobantePago) {
+        this.id_orden = id_orden;
         this.tipoEntrega = tipoEntrega;
         this.comprobantePago = comprobantePago;
     }
@@ -64,12 +65,12 @@ public class OrdenCompra {
         this.tipoEntrega = tipoEntrega;
     }
 
-    public int getId() {
-        return id;
+    public int getId_orden() {
+        return id_orden;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_orden(int id) {
+        this.id_orden = id;
     }
 
     public TipoEntrega getTipoEntrega() {
@@ -107,7 +108,9 @@ public class OrdenCompra {
     @Override
     public String toString() {
         return "OrdenCompra{" +
-                "id=" + id +
+                "id_orden=" + id_orden +
+                ", fecha=" + fecha +
+                ", usuario=" + usuario +
                 ", tipoEntrega=" + tipoEntrega +
                 ", comprobantePago='" + comprobantePago + '\'' +
                 '}';

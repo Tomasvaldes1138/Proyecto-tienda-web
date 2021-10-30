@@ -1,9 +1,11 @@
 package com.example.proyecto.sitio.controller;
 
 import com.example.proyecto.sitio.interfaceService.IOrdenCompraService;
+import com.example.proyecto.sitio.interfaceService.IUsuarioProductoService;
 import com.example.proyecto.sitio.modelo.OrdenCompra;
 import com.example.proyecto.sitio.modelo.Producto;
 import com.example.proyecto.sitio.modelo.Usuario;
+import com.example.proyecto.sitio.modelo.UsuarioProducto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,9 @@ public class ControladorOrdenCompra {
     @Autowired
     private IOrdenCompraService serviceOrdenCompra;
 
+    @Autowired
+    private IUsuarioProductoService serviceUsuarioProducto;
+
 
 
 
@@ -40,7 +45,20 @@ public class ControladorOrdenCompra {
         ordenCompra.setUsuario(usuarioLogeado);
         ordenCompra.setFecha(fechaActual);
         serviceOrdenCompra.save(ordenCompra);
+        //Aqui deberiamos guardar los productos que teniamos en el carrito.
+        guardarOrdenMasProducto(ordenCompra);
         return "redirect:/orden_exitosa";
+    }
+
+    public void guardarOrdenMasProducto(OrdenCompra ordenCompra){
+        carrito.getProductos().forEach(producto-> {
+            System.out.println("Producto en Carrito: " + producto.toString());
+            UsuarioProducto usuario_producto = new UsuarioProducto();
+            usuario_producto.setOrdenCompra(ordenCompra);
+            usuario_producto.setProducto(producto);
+            serviceUsuarioProducto.guardar(usuario_producto);
+        } );
+        System.out.println("Ya deberian estar guardados");
     }
 
 
@@ -87,7 +105,13 @@ public class ControladorOrdenCompra {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                serviceOrdenCompra.save(ordenCompra);
+
+                OrdenCompra actualizada = serviceOrdenCompra.buscarPorId(7);  //este ID deberia venir de un formulario
+                actualizada.setComprobantePago( ordenCompra.getComprobantePago() );
+
+                serviceUsuarioProducto.get_orden_producto(14);
+
+                serviceOrdenCompra.save(actualizada);
             }
             return "redirect:/home";
         }

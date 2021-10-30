@@ -55,43 +55,32 @@
     </div>
     </nav>
     <div class="container">
-      <p class="page-name" >Home</p>
+      <p class="page-name" >Ordenes</p>
       
-      <h1 class="title" >Productos</h1>
+      <h1 class="title" >Mis Ordenes</h1>
 
-      <div class="grid-productos">
-
-
-      <div class="producto-container" th:each="producto:${productos}">
-        <div class="descuento-container">
-          <p class="descuento"th:text="${producto.descuento + '%'}" ></p>
+      <form action="" class="form-ordenes f-column-l">
+        <div class="radio-opcion">
+          <input type="radio" name="orden" id="modificarEsto">
+          <label for="">Orden 1</label>
+          <p>$79990</p>
         </div>
-        <div class="img-container">
-            <img th:src="${producto.url_imagen}" alt="" width="150px" height="150px">
+        <div class="radio-opcion">
+          <input type="radio" name="orden" id="" >
+          <label for="">Orden 2</label>
+          <p>$179990</p>
+
         </div>
-        <div class="info">
-              <h2 class="nombre-producto"  th:text="${producto.nombre}" ></h2>
-              <p class="tipo-categoria" th:text="${producto.categoria.nombre_categoria}"></p>
-           
-            <div class="pb-container flex-space mg-2">
-              <div class="precios flex-space ">
-                <p  class="precio-anterior" th:text="${producto.precio_anterior}" ></p>
-                <p class="precio-actual" th:text="${producto.precio}"></p>
-              </div>
+        <div class="radio-opcion">
+          <input type="radio" name="orden" >
+          <label for="">Orden 3</label>
+          <p>$1179990</p>
 
-              <form class="btn-agregar c-pointer" th:action="@{/agregar_producto}" method="POST"  >
-                <input type="hidden" th:value="${producto.id_producto}" th:name="id_producto" th:id="id" >
-                <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
-                <input class="btn-reset btn-enviar c-pointer" type="submit" value="Agregar">
-              </form>
-            </div>
         </div>
-      </div>
 
+        <input type="submit" value="Ver Orden" class="btn-reset btn-agregar btn-orden c-pointer">
+      </form>
 
-
-
-    </div>
     </div>
     <footer class="footer">
       <div class="container flex-space f-start gap-column">

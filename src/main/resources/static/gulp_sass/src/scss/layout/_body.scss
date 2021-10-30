@@ -279,3 +279,44 @@
     font-weight: $bold;
 }
 
+/*Mis Ordenes */
+.form-ordenes{
+    background-color: $white;
+    padding: 2rem;
+    width: 60rem;
+    
+
+    .radio-opcion{
+        padding: 1rem 0;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        column-gap: 2rem;
+
+        input{
+            border: 0px;
+            width: 10%;
+            height: 2.5rem;
+        }
+
+        p{
+            font-size: 1.8rem;
+        }
+
+        label{
+            font-size: 2rem;
+        }
+    }
+
+    .btn-orden{
+        margin-left: 1.6rem;
+        margin-top: 1.5rem;
+        width: 20rem;
+        color: $white;
+        border-radius: 6px;
+        font-size: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;    
+    }
+}
+

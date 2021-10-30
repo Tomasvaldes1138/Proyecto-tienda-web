@@ -85,13 +85,13 @@
           <th class="nombre-columna" >Total</th>
         </tr>
         <tr th:each="orden:${ordenes}">
-          <td th:text="${orden.id}"></td>
+          <td th:text="${orden.id_orden}"></td>
           <td th:text="${orden.fecha}"></td>
-          <td th:text="${orden.cliente}"></td>
-          <td th:text="${orden.tipoEntrega}"></td>
+          <td th:text="${orden.usuario.nombres}"></td>
+          <td th:text="${orden.tipoEntrega.nombre_entrega}"></td>
           <td><a href="orden_compra">Ver Orden</a></td>
           <td><a href="comprobante">Ver Comprobante</a></td>
-          <td th:text="${'$'+orden.total}"></td>
+          <td th:text="${'$'}"></td>
         </tr>
 
       </table>

@@ -1,6 +1,7 @@
 package com.example.proyecto.sitio.controller;
 
 import com.example.proyecto.sitio.interfaceService.IAdministradorService;
+import com.example.proyecto.sitio.interfaceService.IOrdenCompraService;
 import com.example.proyecto.sitio.interfaceService.IProductoService;
 import com.example.proyecto.sitio.modelo.Administrador;
 import com.example.proyecto.sitio.modelo.Producto;
@@ -24,6 +25,9 @@ public class ControladorAdministrador {
 
     @Autowired
     private IProductoService service;
+
+    @Autowired
+    private IOrdenCompraService serviceOrdenCompra;
 
     static Administrador administradorLogeado = null;
 
@@ -97,6 +101,10 @@ public class ControladorAdministrador {
     public String pedidos_realizados(Model model){
         String contenido = administradorLogeado==null ? "Login" : administradorLogeado.getNombres() ;
         model.addAttribute("nombre_administrador", contenido );
+        System.out.println("Listando las ordenes");
+        serviceOrdenCompra.listar().forEach(orden -> System.out.println(orden.toString()));
+        model.addAttribute("ordenes", serviceOrdenCompra.listar());
+
         return "pedidos_realizados";
     }
 

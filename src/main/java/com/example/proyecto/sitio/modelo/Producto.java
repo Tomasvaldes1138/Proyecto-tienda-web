@@ -8,7 +8,7 @@ public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id_producto;
     private String nombre;
     private int stock;
     private int precio;
@@ -24,8 +24,8 @@ public class Producto {
 
     }
 
-    public Producto(int id, String nombre, int stock, int precio, String url_imagen, int descuento, int precio_anterior) {
-        this.id = id;
+    public Producto(int id_producto, String nombre, int stock, int precio, String url_imagen, int descuento, int precio_anterior) {
+        this.id_producto = id_producto;
         this.nombre = nombre;
         this.stock = stock;
         this.precio = precio;
@@ -34,8 +34,8 @@ public class Producto {
         this.precio_anterior = precio_anterior ;
     }
 
-    public Producto(int id, String nombre, int stock, int precio, String url_imagen, int descuento, int precio_anterior, Categoria categoria) {
-        this.id = id;
+    public Producto(int id_producto, String nombre, int stock, int precio, String url_imagen, int descuento, int precio_anterior, Categoria categoria) {
+        this.id_producto = id_producto;
         this.nombre = nombre;
         this.stock = stock;
         this.precio = precio;
@@ -45,12 +45,12 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    public int getId() {
-        return id;
+    public int getId_producto() {
+        return id_producto;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_producto(int id) {
+        this.id_producto = id;
     }
 
     public String getNombre() {
@@ -112,7 +112,7 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" +
-                "id=" + id +
+                "id=" + id_producto +
                 ", nombre='" + nombre + '\'' +
                 ", categoria=" + categoria +
                 ", stock=" + stock +

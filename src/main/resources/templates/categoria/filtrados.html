@@ -73,7 +73,7 @@
                     </div>
 
                     <form class="btn-agregar c-pointer" th:action="@{/agregar_producto}" method="POST"  >
-                        <input type="hidden" th:value="${producto.id}" th:name="id" th:id="id" >
+                        <input type="hidden" th:value="${producto.id_producto}" th:name="id_producto" th:id="id" >
                         <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
                         <input class="btn-reset btn-enviar c-pointer" type="submit" value="Agregar">
                     </form>
