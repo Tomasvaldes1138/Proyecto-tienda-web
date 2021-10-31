@@ -8,7 +8,7 @@ public class Ciudad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id_ciudad;
     private String nombre;
     @ManyToOne
     @JoinColumn(name = "id_region" )
@@ -18,8 +18,8 @@ public class Ciudad {
 
     }
 
-    public Ciudad(int id, String nombre, Region region) {
-        this.id = id;
+    public Ciudad(int id_ciudad, String nombre, Region region) {
+        this.id_ciudad = id_ciudad;
         this.nombre = nombre;
         this.region = region;
     }
@@ -40,11 +40,11 @@ public class Ciudad {
         this.region = region;
     }
 
-    public int getId() {
-        return id;
+    public int getId_ciudad() {
+        return id_ciudad;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_ciudad(int id) {
+        this.id_ciudad = id;
     }
 }

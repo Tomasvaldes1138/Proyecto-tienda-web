@@ -74,34 +74,33 @@
               <input type="hidden" th:field="*{tipoEntrega}"  id="tipo_entrega" class="input-form tipo-entrega" >
 
               <div class="form-entrega">
-              <div class="field f-column-l">
-                  <label for="region">Region:</label>
-                  <select th:name="region" id="select-region" class="input-form" >
-                      <option  th:each="region:${regiones}" th:value="${region.id_region}" th:text="${region.nombre_region}" class="option-region" ></option>
-                  </select>
-              </div>
+                  <div class="field f-column-l">
+                      <label for="region">Region:</label>
+                      <select th:name="region" id="select-region" class="input-form" >
+                          <option  th:each="region:${regiones}" th:value="${region.id_region}" th:text="${region.nombre_region}" class="option-region" ></option>
+                      </select>
+                  </div>
 
 
-              <div class="field f-column-l">
-                  <label for="apellidos">Ciudad:</label>
-                  <select name="ciudad" id="select-ciudad" class="input-form">
-                      <option  th:each="ciudad:${ciudades}" th:text="${ciudad.nombre}" th:class="'option-ciudad ' + ${ciudad.region.id_region}" th:value="${ciudad.id}" ></option>
-                  </select>
+                  <div class="field f-column-l">
+                      <label for="apellidos">Ciudad:</label>
+                      <select name="ciudad" id="select-ciudad" class="input-form" required="required">
+                          <option  th:each="ciudad:${ciudades}" th:text="${ciudad.nombre}" th:class="'option-ciudad ' + ${ciudad.region.id_region}" th:value="${ciudad.id_ciudad}" ></option>
+                      </select>
+                  </div>
+
+                  <div class="field">
+                      <label for="calle">Calle:</label>
+                      <input class="input-form" th:field="*{calle}" type="text" name="text" id="calle" required="required=">
+                  </div>
+
               </div>
 
-              <div class="field">
-                  <label for="calle">Calle:</label>
-                  <input class="input-form" type="text" name="text" id="calle" required="required=">
-              </div>
-              <div class="field">
-                  <label for="otros">Depto/Oficina/Otros:</label>
-                  <input class="input-form" type="text" name="rut" id="rut">
-              </div>
               <div class="field">
                   <label for="telefono">Teléfono</label>
-                  <input class="input-form" type="text" name="rut" id="telefono">
+                  <input class="input-form" th:field="*{telefono}" type="text" name="rut" id="telefono">
               </div>
-            </div>
+
 
               <div class="flex-space">
                   <div class="btn-agregar desc-btn">

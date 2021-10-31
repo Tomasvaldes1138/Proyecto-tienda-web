@@ -89,8 +89,8 @@
           <td th:text="${orden.fecha}"></td>
           <td th:text="${orden.usuario.nombres}"></td>
           <td th:text="${orden.tipoEntrega.nombre_entrega}"></td>
-          <td><a href="orden_compra">Ver Orden</a></td>
-          <td><a href="comprobante">Ver Comprobante</a></td>
+          <td><a th:href="@{orden_compra(id_orden=${orden.id_orden})}">Ver Orden</a></td>
+          <td><a th:href="@{comprobante(id_orden=${orden.id_orden})}">Ver Comprobante</a></td>
           <td th:text="${'$'}"></td>
         </tr>
 

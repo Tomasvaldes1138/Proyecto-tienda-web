@@ -10,6 +10,10 @@ function iniciarApp(){
     const input_container = document.querySelector('.seleccion');
     const despacho = document.querySelector('#despacho');
     const retiro = document.querySelector('#retiro');
+
+    const calle = document.querySelector('#calle');
+    const ciudad = document.querySelector('#select-ciudad');
+
     hideForm();
 
     despacho.onclick = () => {
@@ -21,13 +25,21 @@ function iniciarApp(){
 
     function hideForm(checked){
         if(!despacho.checked){
+            
+            ciudad.value = '';
+            calle.required = false;
+            ciudad.required = false;
+
             form_entrega.classList.add('hide-form');
             input_container.classList.add('mg-2');
             tipo_entrega.value = 2;
+        
         }else{
             form_entrega.classList.remove('hide-form');
             input_container.classList.remove('mg-2');
             tipo_entrega.value = 1;
+            calle.required = true;
+            ciudad.required = true;
             
         }
     }

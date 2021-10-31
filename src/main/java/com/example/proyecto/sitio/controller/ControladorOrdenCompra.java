@@ -42,6 +42,7 @@ public class ControladorOrdenCompra {
     @PostMapping("/generar_orden_compra")
     public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra) {
         LocalDateTime fechaActual = LocalDateTime.now(ZoneId.of("GMT-3"));
+        System.out.println("Deberia venir la ciudad seleccionada: " + ordenCompra.getCiudad());
         ordenCompra.setUsuario(usuarioLogeado);
         ordenCompra.setFecha(fechaActual);
         serviceOrdenCompra.save(ordenCompra);
@@ -86,7 +87,13 @@ public class ControladorOrdenCompra {
         //****************************************************
 
         @GetMapping("/comprobante")
-        public String comprobante () {
+        public String comprobante (@RequestParam(name="id_orden", required = false) int id_orden, Model model) {
+            System.out.println("Viene un ID de : "+ id_orden);
+           // String comprobante = "/comprobantes/";
+            String comprobante = serviceOrdenCompra.buscarPorId(id_orden).getComprobantePago();
+            System.out.println(comprobante);
+
+            model.addAttribute("comprobante", comprobante);
             return "comprobante";
         }
 
@@ -118,7 +125,11 @@ public class ControladorOrdenCompra {
 
 
         @GetMapping("/orden_compra")
-        public String orden_compra () {
+        public String orden_compra (@RequestParam(name="id_orden", required = false) int id_orden, Model model) {
+
+            OrdenCompra ordenCompra = serviceOrdenCompra.buscarPorId(id_orden);
+            System.out.println("Orden Compra encontrada" + ordenCompra.toString());
+            model.addAttribute("orden", ordenCompra);
 
             return "orden_compra";
         }
