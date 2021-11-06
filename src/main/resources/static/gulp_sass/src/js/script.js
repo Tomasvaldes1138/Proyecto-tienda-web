@@ -36,7 +36,7 @@ function iniciarApp(){
         
         }else{
             form_entrega.classList.remove('hide-form');
-            input_container.classList.remove('mg-2');
+            input_container.classList.removeffffff('mg-2');
             tipo_entrega.value = 1;
             calle.required = true;
             ciudad.required = true;

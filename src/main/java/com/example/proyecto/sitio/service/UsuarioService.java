@@ -41,4 +41,15 @@ public class UsuarioService implements IUsuarioService {
         }
         return usuarioEncontrado.get();
     }
+
+    @Override
+    public boolean validarLogin() {
+
+
+
+
+        return false;
+    }
+
+
 }

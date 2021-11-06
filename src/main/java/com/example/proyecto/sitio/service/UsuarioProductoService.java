@@ -39,12 +39,19 @@ public class UsuarioProductoService  implements IUsuarioProductoService {
 
         List<UsuarioProducto> listado = (List<UsuarioProducto>) data.findAll();
         listado = listado.stream().filter( fila -> fila.getOrdenCompra().getId_orden() == id_orden).collect(Collectors.toList());
+        return listado;
+    }
 
-        System.out.println("deberiamos tener una lista con los productos asociados a una compra con id: " + id_orden);
+    @Override
+    public int getTotal(int id_orden){
+        List<UsuarioProducto> listado = get_orden_producto(id_orden);
+        int total = 0;
+        for (UsuarioProducto up : listado){
+            total += up.getCantidad() * up.getProducto().getPrecio();
+        }
 
-        listado.forEach(fila -> System.out.println(fila.toString()));
-
-        return null;
+        System.err.println("EL TOTAL EN USUARIO P ES: " + total);
+        return total;
     }
 
 

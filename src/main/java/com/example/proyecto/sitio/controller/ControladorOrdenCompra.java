@@ -2,10 +2,7 @@ package com.example.proyecto.sitio.controller;
 
 import com.example.proyecto.sitio.interfaceService.IOrdenCompraService;
 import com.example.proyecto.sitio.interfaceService.IUsuarioProductoService;
-import com.example.proyecto.sitio.modelo.OrdenCompra;
-import com.example.proyecto.sitio.modelo.Producto;
-import com.example.proyecto.sitio.modelo.Usuario;
-import com.example.proyecto.sitio.modelo.UsuarioProducto;
+import com.example.proyecto.sitio.modelo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -42,7 +39,6 @@ public class ControladorOrdenCompra {
     @PostMapping("/generar_orden_compra")
     public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra) {
         LocalDateTime fechaActual = LocalDateTime.now(ZoneId.of("GMT-3"));
-        System.out.println("Deberia venir la ciudad seleccionada: " + ordenCompra.getCiudad());
         ordenCompra.setUsuario(usuarioLogeado);
         ordenCompra.setFecha(fechaActual);
         serviceOrdenCompra.save(ordenCompra);
@@ -52,30 +48,27 @@ public class ControladorOrdenCompra {
     }
 
     public void guardarOrdenMasProducto(OrdenCompra ordenCompra){
-        carrito.getProductos().forEach(producto-> {
-            System.out.println("Producto en Carrito: " + producto.toString());
+
+        carrito.getProductos().forEach(p_cantidad-> {
             UsuarioProducto usuario_producto = new UsuarioProducto();
             usuario_producto.setOrdenCompra(ordenCompra);
-            usuario_producto.setProducto(producto);
+            usuario_producto.setProducto( p_cantidad.getProducto() );
+            usuario_producto.setCantidad( p_cantidad.getCantidad() );
             serviceUsuarioProducto.guardar(usuario_producto);
         } );
         System.out.println("Ya deberian estar guardados");
     }
 
-
         //****************************************************
         //******************* ORDEN EXITOSA ******************
         //****************************************************
 
-
-
         @GetMapping("/orden_exitosa") //PELIGRO!!
         public String orden_exitosa (Model model){
  //           List<Producto> productos_carrito = get_productos_carrito();
-            List<Producto> productos_carrito = carrito.getProductos();
 
             model.addAttribute("orden_compra", new OrdenCompra());
-            model.addAttribute("precio", productos_carrito.stream().mapToInt(Producto::getPrecio).sum());
+            model.addAttribute("precio", carrito.getTotal() );
             String contenido = usuarioLogeado == null ? "Login" : usuarioLogeado.getNombres();
             model.addAttribute("nombre_cliente", contenido);
             return "orden_exitosa";
@@ -128,10 +121,16 @@ public class ControladorOrdenCompra {
         public String orden_compra (@RequestParam(name="id_orden", required = false) int id_orden, Model model) {
 
             OrdenCompra ordenCompra = serviceOrdenCompra.buscarPorId(id_orden);
-            System.out.println("Orden Compra encontrada" + ordenCompra.toString());
+            List<UsuarioProducto> usuarioProducto = serviceUsuarioProducto.get_orden_producto(id_orden);
+
+
             model.addAttribute("orden", ordenCompra);
+            model.addAttribute("precio_total", serviceUsuarioProducto.getTotal(id_orden) );
+            model.addAttribute("usuarioProducto", usuarioProducto);
 
             return "orden_compra";
         }
+
+
 
 }

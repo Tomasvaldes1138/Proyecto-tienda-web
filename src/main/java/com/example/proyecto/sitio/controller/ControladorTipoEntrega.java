@@ -32,7 +32,14 @@ public class ControladorTipoEntrega {
 
     @GetMapping("/tipo_entrega")
     public String tipo_entrega(Model model){
-        List<Producto> productos = carrito.getProductos();
+
+
+        if( usuarioLogeado == null  || carrito.getProductos().isEmpty() ){
+            System.err.println("DEBES INICIAR SESION O CARRITO VACIO");
+            return "redirect:/carrito";
+        }
+
+        List<PCantidad> p_cantidad = carrito.getProductos();
         List<Region> regiones = service_region.listar();
         List<Ciudad> ciudades = service_ciudad.listar();
 
@@ -40,8 +47,8 @@ public class ControladorTipoEntrega {
         model.addAttribute("ciudades", ciudades);
         model.addAttribute("orden_compra", new OrdenCompra());
 
-        model.addAttribute("productos", productos);
-        model.addAttribute("precio", productos.stream().mapToInt(Producto::getPrecio).sum() );
+        model.addAttribute("p_cantidades", p_cantidad);
+        model.addAttribute("precio_total", carrito.getTotal() );
 
         String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
         model.addAttribute("nombre_cliente", contenido );

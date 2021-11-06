@@ -62,7 +62,7 @@
               </div>
 
               <div class="radio-opcion">
-                  <input type="radio" name="tipo_envio" id="retiro">
+                  <input type="radio" name="tipo_envio" id="retiro" checked>
                   <label for="retiro">Retiro en Tienda</label>
               </div>
 
@@ -118,20 +118,20 @@
 
       <div class="right">
 
-          <div class="row-producto flex-space" th:each="producto:${productos}">
+          <div class="row-producto flex-space" th:each="p_cantidad:${p_cantidades}">
             
             <div class="flex-space">
               <div class="c-cantidad">
-                  <p>1</p>
+                  <p th:text="${p_cantidad.cantidad}">1</p>
               </div>
-              <p class="nombre-2" th:text="${producto.nombre}"></p>
+              <p class="nombre-2" th:text="${p_cantidad.producto.nombre}"></p>
             </div>
-              <p class="precio" th:text="${'$' + producto.precio}"></p>
+              <p class="precio" th:text="${'$' + p_cantidad.producto.precio * p_cantidad.cantidad}"></p>
           </div>
 
           <div class="flex-space total">
               <p class="bold">Total</p>
-              <p th:text="${'$' + precio}" class="bold"></p>
+              <p th:text="${'$' + precio_total}" class="bold"></p>
           </div>
       </div>
 
