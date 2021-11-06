@@ -18,6 +18,8 @@ public class UsuarioProducto {
     @JoinColumn(name = "id_producto" )
     private Producto producto;
 
+    private int cantidad;
+
     public UsuarioProducto() {
 
     }
@@ -46,12 +48,21 @@ public class UsuarioProducto {
         this.producto = producto;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     @Override
     public String toString() {
         return "UsuarioProducto{" +
                 "id=" + id +
                 ", ordenCompra=" + ordenCompra +
                 ", producto=" + producto +
+                ", cantidad=" + cantidad +
                 '}';
     }
 }

@@ -2,6 +2,7 @@ package com.example.proyecto.sitio.controller;
 
 import com.example.proyecto.sitio.interfaceService.IProductoService;
 import com.example.proyecto.sitio.modelo.Carrito;
+import com.example.proyecto.sitio.modelo.PCantidad;
 import com.example.proyecto.sitio.modelo.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -118,11 +119,11 @@ public class ControladorProducto {
 
     @GetMapping("/carrito")
     public String carrito(Model model){
-        List<Producto> productos_carrito= carrito.getProductos();
+        List<PCantidad> productos_carrito= carrito.getProductos();
 
         model.addAttribute("productos", productos_carrito);
-        model.addAttribute("precio", productos_carrito.stream().mapToInt(Producto::getPrecio).sum() );
-        model.addAttribute("cantidad", productos_carrito.size());
+        model.addAttribute("precio_total", carrito.getTotal() );
+        model.addAttribute("cantidad", carrito.getCantidad() );
 
         String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
         model.addAttribute("nombre_cliente", contenido );
@@ -133,12 +134,10 @@ public class ControladorProducto {
     @PostMapping(value="agregar_producto")
     public String agregar_producto(@ModelAttribute("producto") Producto producto){
 
-        //Aqui deberia venir el objeto producto
-        System.out.println("Producto: " + producto.toString() );
-        System.out.println("LLamando a metodo buscarPorId");
+        int id_producto = producto.getId_producto();
+        Producto productoEncontrado = service.buscarPorId( id_producto );
 
-
-        carrito.anadirProducto( service.buscarPorId(producto.getId_producto()) );
+        carrito.anadirProducto( productoEncontrado );
 
         return "redirect:/home";
     }
@@ -149,19 +148,6 @@ public class ControladorProducto {
         return "redirect:/info_productos";
     }
 
-     /*
-    public List<Producto> get_productos_carrito(){
-        List<Producto> productos_carrito= new ArrayList<>();
-
-        for (int id : productos_id) {
-            Producto producto2 = service.listar().stream().filter(producto -> producto.getId() == id).findAny().get();
-            productos_carrito.add(producto2);
-        }
-
-        return productos_carrito;
-
-    }
-    */
 
 
     @PostMapping(value = "continuar_despacho")
@@ -171,4 +157,25 @@ public class ControladorProducto {
         }
         return "redirect:/carrito";
     }
+
+    @GetMapping("/remover_producto")
+    public String removerProducto(@RequestParam(name="id_producto", required = false) int id_producto){
+        carrito.removerProducto(  carrito.obtenerProductoPorId(id_producto) );
+        return "redirect:/carrito";
+
+    }
+
+    @GetMapping("/aumentar_cantidad")
+    public String aumentar_cantidad(@RequestParam(name="id_producto", required = false) int id_producto){
+        carrito.aumentar_cantidad(id_producto);
+        return "redirect:/carrito";
+    }
+
+    @GetMapping("/disminuir_cantidad")
+    public String disminuir_cantidad(@RequestParam(name="id_producto", required = false) int id_producto){
+        carrito.disminuir_cantidad(id_producto);
+        return "redirect:/carrito";
+    }
+
+
 }

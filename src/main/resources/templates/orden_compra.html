@@ -120,24 +120,18 @@
           <th class="head-listado w-s" id="col-cantidad">Cant.</th>
           <th class="head-listado w-m" id="col-valor">Valor</th>
         </tr>
-        <tr>
-          <td class="info-row">1</td>
-          <td class="info-row">NZXT S340 dark + blue</td>
-          <td class="info-row">1</td>
-          <td class="info-row">$19.990</td>
-        </tr>
-        <tr>
-          <td class="info-row">1</td>
-          <td class="info-row">Cpu intel i5 10400</td>
-          <td class="info-row">1</td>
-          <td class="info-row">$119.990</td>
+        <tr th:each="orden_producto:${usuarioProducto}">
+          <td class="info-row" th:text="${orden_producto.producto.id_producto}"></td>
+          <td class="info-row" th:text="${orden_producto.producto.nombre}"></td>
+          <td class="info-row" th:text="${orden_producto.cantidad}">1</td>
+          <td class="info-row" th:text="${ '$' + orden_producto.producto.precio * orden_producto.cantidad }"></td>
         </tr>
         <tfoot>
           <tr class="t-foot">
             <td colspan="1">Total:</td>
             <td></td>
             <td></td>
-            <td>$138.990</td>
+            <td th:text="${ '$' + precio_total}"></td>
           </tr>
         </tfoot>
       </table>

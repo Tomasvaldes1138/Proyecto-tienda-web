@@ -60,26 +60,26 @@
             
         <div class="listado-carro">
           
-          <div class="producto-btn-container flex-space" th:each="producto:${productos}">
+          <div class="producto-btn-container flex-space" th:each="pCantidad:${productos}">
             <div class="producto-carro">
               
-            <img th:src="${producto.url_imagen}" alt="" width="125px" height="125px">
+            <img th:src="${pCantidad.producto.url_imagen}" alt="" width="125px" height="125px">
                 <div>
-                    <p class="name-producto" th:text="${producto.nombre}"></p>
+                    <p class="name-producto" th:text="${pCantidad.producto.nombre}"></p>
                     <div class="precios flex-space precios-carro">
-                        <p class="precio-anterior mg-r-2" th:text="${'$' + producto.precio_anterior}"></p>
-                        <p class="precio-actual" th:text="${'$' +producto.precio}"></p>
+                        <p class="precio-anterior mg-r-2" th:text="${'$' + pCantidad.producto.precio_anterior}"></p>
+                        <p class="precio-actual" th:text="${'$' +pCantidad.producto.precio * pCantidad.cantidad}"></p>
                     </div>
                     <div class="edit-cantidad flex-space">
-                        <button class="btn-reset btn-edit btn-menos">➖</button>
-                        <input class="cantidad" type="number" name="cantidad" id="cantidad" value="1">
-                        <button class="btn-reset btn-edit btn-mas">➕</button>
+                        <a class="btn-reset btn-edit btn-menos" th:href="@{disminuir_cantidad(id_producto=${pCantidad.producto.id_producto})}">➖</a>
+                        <input class="cantidad" type="number" name="cantidad" id="cantidad" th:value="${pCantidad.cantidad}">
+                        <a class="btn-reset btn-edit btn-mas" th:href="@{aumentar_cantidad(id_producto=${pCantidad.producto.id_producto})}" >➕</a>
                     </div>
                 </div>
             </div>
 
             <div class="btn-agregar c-pointer remover-btn ">
-                <a class="nombre-agregar">REMOVER</a>
+                <a class="nombre-agregar" th:href="@{remover_producto(id_producto=${pCantidad.producto.id_producto})}" >REMOVER</a>
             </div>
           </div>
 
@@ -95,7 +95,7 @@
             <p class="mg-2">Resumen</p>
             <div class="flex-space row-resumen mg-2">
                 <p  th:text="${'Precio (' + cantidad + ' items)'}" >Precio (3 items)</p>
-                <p th:text="${'$' + precio}"></p>
+                <p th:text="${'$' + precio_total}"></p>
             </div>
             <div class="flex-space row-resumen mg-2">
                 <p>Descuentos</p>
@@ -103,7 +103,7 @@
             </div>
             <div class="flex-space row-resumen mg-2">
                 <p>Precio Total</p>
-                <p th:text="${'$' + precio}"></p>
+                <p th:text="${'$' + precio_total}"></p>
             </div>
             <div class="flex-space">
                 <div class="btn-agregar desc-btn">
