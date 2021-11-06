@@ -57,7 +57,8 @@
       <h1 class="title mg-t-4">Comprobante de pago</h1>
         <div class="comprobante-area">
 
-            <img th:src="@{/img/comprobante.jpg}" alt="comprobante" width="550px" height="800px">
+            <!--<img th:src="@{/img/comprobante.jpg}" alt="comprobante" width="550px" height="800px">  -->
+            <img th:src="@{${'/comprobantes/' + comprobante} } " alt="comprobante" width="550px" height="800px">
 
         </div>
 

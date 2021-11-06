@@ -19,9 +19,17 @@ public class OrdenCompra {
     @ManyToOne
     @JoinColumn(name = "id_entrega" )
     private TipoEntrega tipoEntrega;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ciudad" )
+    private Ciudad ciudad;
     //private String listaProductos;
     //private int total;
     private String comprobantePago;
+
+    private String calle;
+
+    private String telefono;
 
     public OrdenCompra() {
     }
@@ -105,6 +113,30 @@ public class OrdenCompra {
         this.fecha = fecha;
     }
 
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getCalle() {
+        return calle;
+    }
+
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     @Override
     public String toString() {
         return "OrdenCompra{" +
@@ -112,7 +144,10 @@ public class OrdenCompra {
                 ", fecha=" + fecha +
                 ", usuario=" + usuario +
                 ", tipoEntrega=" + tipoEntrega +
+                ", ciudad=" + ciudad +
                 ", comprobantePago='" + comprobantePago + '\'' +
+                ", calle='" + calle + '\'' +
+                ", telefono='" + telefono + '\'' +
                 '}';
     }
 }

@@ -64,23 +64,23 @@
         </tr>
         <tr>
           <th class="head-row" id="n-orden">Numero de orden:</th>
-          <td class="info-row">627382</td>
+          <td class="info-row" th:text="${orden.id_orden}"></td>
         </tr>
         <tr>
           <th class="head-row" id="f-emision">Fecha de emisión:</hd>
-          <td class="info-row">22-09-2021 16:40</td>
+          <td class="info-row" th:text="${orden.fecha}"></td>
         </tr>
         <tr>
           <th class="head-row" id="nombres">Nombres:</th>
-          <td class="info-row">Juan Diego</td>
+          <td class="info-row" th:text="${orden.usuario.nombres}">Juan Diego</td>
         </tr>
         <tr>
           <th class="head-row" id="apellidos">Apellidos:</th>
-          <td class="info-row">Perez Diaz</td>
+          <td class="info-row" th:text="${orden.usuario.apellidos}"></td>
         </tr>
         <tr>
           <th class="head-row" id="rut">Rut:</th>
-          <td class="info-row">17.234.123-4</td>
+          <td class="info-row" th:text="${orden.usuario.rut}"></td>
         </tr>
       </table>
 
@@ -91,23 +91,23 @@
         </tr>
         <tr>
           <th class="head-row" id="despacho">Despacho:</th>
-          <td class="info-row">Retiro en tienda</td>
+          <td class="info-row" th:text="${orden.tipoEntrega.nombre_entrega}">Retiro en tienda</td>
         </tr>
         <tr>
           <th class="head-row" id="region">Región:</hd>
-          <td class="info-row">--------</td>
+          <td class="info-row" th:text="${orden.ciudad==null ? '-----': orden.ciudad.region.nombre_region }" >--------</td>
         </tr>
         <tr>
-          <th class="head-row" id="ciudad">Ciudad:</th>
-          <td class="info-row">--------</td>
+          <th class="head-row" id="ciudad" >Ciudad:</th>
+          <td class="info-row" th:text="${orden.ciudad ==null ? '-----' : orden.ciudad.nombre  }">--------</td>
         </tr>
         <tr>
-          <th class="head-row" id="direccion">Dirección:</th>
-          <td class="info-row">Alemania 432</td>
+          <th class="head-row" id="direccion">Calle:</th>
+          <td class="info-row" th:text="${orden.calle ==null ? 'Tienda: Alemania 432' : orden.calle  }" ></td>
         </tr>
         <tr>
           <th class="head-row" id="telefono">Teléfono:</th>
-          <td class="info-row">972832734</td>
+          <td class="info-row" th:text="${orden.calle ==null ? 'No registrado' : orden.telefono  }"></td>
         </tr>
       </table>
 
