@@ -132,14 +132,21 @@ public class ControladorProducto {
     }
 
     @PostMapping(value="agregar_producto")
-    public String agregar_producto(@ModelAttribute("producto") Producto producto){
+    public String agregar_producto(@ModelAttribute("producto") Producto producto,
+                                   @RequestParam(name="archivoHTML") String archivoHTML){
 
         int id_producto = producto.getId_producto();
         Producto productoEncontrado = service.buscarPorId( id_producto );
 
         carrito.anadirProducto( productoEncontrado );
 
-        return "redirect:/home";
+        if(archivoHTML.equals("home")){
+            carrito.anadirProducto( service.buscarPorId(producto.getId_producto()) );
+            return "redirect:/home";
+        }else{
+            carrito.anadirProducto( service.buscarPorId(producto.getId_producto()) );
+            return "redirect:categoria/"+archivoHTML;
+        }
     }
 
     @PostMapping(value="insertar_producto")
