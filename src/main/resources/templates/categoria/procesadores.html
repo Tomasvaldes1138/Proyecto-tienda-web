@@ -13,8 +13,8 @@
   <header class="header">
       <div class="container flex-space">
       <a class="logo c-pointer" href="../home">PC Labs</a>
-      
-        <form action="#" class="barra-container">
+
+        <form th:action="@{/buscar_productos}" class="barra-container" method="post">
           <input class="barra-busqueda" type="text" name="busqueda" id="busqueda" placeholder="Buscar Productos">
           <input type="submit" value="🔍" class="lupa">
         </form>
@@ -76,7 +76,7 @@
                 <p class="precio-actual" th:text="${producto.precio}"></p>
               </div>
 
-              <form class="btn-agregar c-pointer" th:action="@{/agregar_producto}" method="POST"  >
+              <form class="btn-agregar c-pointer" th:action="@{/agregar_producto(archivoHTML=${'procesadores'})}" method="POST"  >
                 <input type="hidden" th:value="${producto.id_producto}" th:name="id_producto" th:id="id" >
                 <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
                 <input class="btn-reset btn-enviar c-pointer" type="submit" value="Agregar">
