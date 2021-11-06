@@ -59,23 +59,11 @@
       
       <h1 class="title" >Comprobantes Pendientes</h1>
 
-      <form action="" class="form-ordenes f-column-l">
-        <div class="radio-opcion">
-          <input type="radio" name="orden" id="modificarEsto">
-          <label for="">Orden 1</label>
-          <p>$79990</p>
-        </div>
-        <div class="radio-opcion">
-          <input type="radio" name="orden" id="" >
-          <label for="">Orden 2</label>
-          <p>$179990</p>
-
-        </div>
-        <div class="radio-opcion">
-          <input type="radio" name="orden" >
-          <label for="">Orden 3</label>
-          <p>$1179990</p>
-
+      <form action="" class="form-ordenes f-column-l" th:action="@{/orden_comprobante}" method="POST">
+        <div class="radio-opcion" th:each="orden:${ordenes}">
+          <input type="radio" name="orden" id="modificarEsto" th:name="id_orden" th:value="${orden.id_orden}">
+          <label for="" th:text="'Orden ' + ${orden.fecha}"></label>
+          <p th:text="'$' + ${orden.total}"></p>
         </div>
 
         <input type="submit" value="Subir Comprobante" class="btn-reset btn-agregar btn-orden c-pointer">

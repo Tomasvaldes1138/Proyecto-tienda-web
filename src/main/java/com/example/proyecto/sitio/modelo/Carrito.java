@@ -21,7 +21,7 @@ public class Carrito {
 
     public void anadirProducto(Producto producto){
 
-        PCantidad producto1 = new PCantidad(producto, 1);
+       PCantidad producto1 = new PCantidad(producto, 1);
        PCantidad productoE = obtenerProductoPorId( producto.getId_producto() );
        if ( productoE  != null ){
            System.err.println("PRODUCTO DUPLICADO!!");
@@ -29,7 +29,8 @@ public class Carrito {
             int cantidad = productoE.getCantidad();
             productos2.get(index).setCantidad(++cantidad);
        }else{
-        productos2.add(producto1);
+           System.err.println("PRODUCTO NO DUPLICADO!");
+           productos2.add(producto1);
        }
 
     }

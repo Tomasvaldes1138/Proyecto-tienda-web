@@ -1,10 +1,10 @@
 package com.example.proyecto.sitio.controller;
 
 import com.example.proyecto.sitio.interfaceService.IOrdenCompraService;
+import com.example.proyecto.sitio.interfaceService.IProductoService;
 import com.example.proyecto.sitio.interfaceService.IUsuarioProductoService;
 import com.example.proyecto.sitio.modelo.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,12 +26,14 @@ import static com.example.proyecto.sitio.controller.ControladorUsuario.usuarioLo
 @RequestMapping
 public class ControladorOrdenCompra {
 
-    //@Qualifier("IOrdenCompraService")
     @Autowired
     private IOrdenCompraService serviceOrdenCompra;
 
     @Autowired
     private IUsuarioProductoService serviceUsuarioProducto;
+
+    @Autowired
+    private IProductoService service;
 
 
 
@@ -40,11 +42,12 @@ public class ControladorOrdenCompra {
     public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra) {
         LocalDateTime fechaActual = LocalDateTime.now(ZoneId.of("GMT-3"));
         ordenCompra.setUsuario(usuarioLogeado);
+        ordenCompra.setTotal( serviceUsuarioProducto.getTotal(ordenCompra.getId_orden()) );
         ordenCompra.setFecha(fechaActual);
         serviceOrdenCompra.save(ordenCompra);
-        //Aqui deberiamos guardar los productos que teniamos en el carrito.
+        //Aqui falta disminuir el stock del producto
         guardarOrdenMasProducto(ordenCompra);
-        return "redirect:/orden_exitosa";
+        return "redirect:/orden_exitosa?id_orden="+ordenCompra.getId_orden() ;
     }
 
     public void guardarOrdenMasProducto(OrdenCompra ordenCompra){
@@ -54,6 +57,7 @@ public class ControladorOrdenCompra {
             usuario_producto.setOrdenCompra(ordenCompra);
             usuario_producto.setProducto( p_cantidad.getProducto() );
             usuario_producto.setCantidad( p_cantidad.getCantidad() );
+            service.disminuir_stock(p_cantidad.getCantidad(), p_cantidad.getProducto().getId_producto() ); //disminuyendo stock
             serviceUsuarioProducto.guardar(usuario_producto);
         } );
         System.out.println("Ya deberian estar guardados");
@@ -64,11 +68,12 @@ public class ControladorOrdenCompra {
         //****************************************************
 
         @GetMapping("/orden_exitosa") //PELIGRO!!
-        public String orden_exitosa (Model model){
- //           List<Producto> productos_carrito = get_productos_carrito();
+        public String orden_exitosa (@RequestParam(name="id_orden") int id_orden, Model model){
+            OrdenCompra orden_compra = new OrdenCompra();
+            orden_compra.setId_orden(id_orden);
 
-            model.addAttribute("orden_compra", new OrdenCompra());
-            model.addAttribute("precio", carrito.getTotal() );
+            model.addAttribute("orden_compra", orden_compra);
+            model.addAttribute("precio", serviceUsuarioProducto.getTotal(id_orden) );
             String contenido = usuarioLogeado == null ? "Login" : usuarioLogeado.getNombres();
             model.addAttribute("nombre_cliente", contenido);
             return "orden_exitosa";
@@ -81,11 +86,8 @@ public class ControladorOrdenCompra {
 
         @GetMapping("/comprobante")
         public String comprobante (@RequestParam(name="id_orden", required = false) int id_orden, Model model) {
-            System.out.println("Viene un ID de : "+ id_orden);
-           // String comprobante = "/comprobantes/";
             String comprobante = serviceOrdenCompra.buscarPorId(id_orden).getComprobantePago();
             System.out.println(comprobante);
-
             model.addAttribute("comprobante", comprobante);
             return "comprobante";
         }
@@ -106,10 +108,8 @@ public class ControladorOrdenCompra {
                     e.printStackTrace();
                 }
 
-                OrdenCompra actualizada = serviceOrdenCompra.buscarPorId(7);  //este ID deberia venir de un formulario
+                OrdenCompra actualizada = serviceOrdenCompra.buscarPorId(  ordenCompra.getId_orden()  );  //este ID deberia venir de un formulario
                 actualizada.setComprobantePago( ordenCompra.getComprobantePago() );
-
-                serviceUsuarioProducto.get_orden_producto(14);
 
                 serviceOrdenCompra.save(actualizada);
             }
@@ -118,11 +118,10 @@ public class ControladorOrdenCompra {
 
 
         @GetMapping("/orden_compra")
-        public String orden_compra (@RequestParam(name="id_orden", required = false) int id_orden, Model model) {
+        public String orden_compra (@RequestParam(name="id_orden") int id_orden, Model model) {
 
             OrdenCompra ordenCompra = serviceOrdenCompra.buscarPorId(id_orden);
             List<UsuarioProducto> usuarioProducto = serviceUsuarioProducto.get_orden_producto(id_orden);
-
 
             model.addAttribute("orden", ordenCompra);
             model.addAttribute("precio_total", serviceUsuarioProducto.getTotal(id_orden) );
@@ -130,6 +129,41 @@ public class ControladorOrdenCompra {
 
             return "orden_compra";
         }
+
+        //****************************************************
+        //***********COMPROBANTES Y ORDENES ******************
+        //****************************************************
+
+        @GetMapping(value = "mis_comprobantes")
+        public String mis_comprobantes(Model model){
+            if(usuarioLogeado==null){
+                return "redirect:/login";
+            }
+            List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(usuarioLogeado.getCorreo());
+            model.addAttribute("ordenes", ordenes);
+            return "mis_comprobantes";
+        }
+
+        @PostMapping("/orden_comprobante")
+        public String orden_comprobante(@RequestParam(name="id_orden") int id_orden) {
+            System.err.println("COMPROBANTE PARA ORDEN: " + id_orden);
+            return "redirect:/orden_exitosa?id_orden="+id_orden;
+        }
+
+        @GetMapping("/mis_ordenes")
+        public String mis_ordenes(Model model){
+            if(usuarioLogeado==null){
+                return "redirect:/login";
+            }
+            List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(usuarioLogeado.getCorreo());
+            model.addAttribute("ordenes", ordenes);
+            return "mis_ordenes";
+        }
+
+    @PostMapping("/ver_orden_usuario")
+    public String ver_orden_usuario(@RequestParam(name="id_orden") int id_orden) {
+        return "redirect:/orden_compra?id_orden="+id_orden;
+    }
 
 
 

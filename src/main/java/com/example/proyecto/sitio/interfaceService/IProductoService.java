@@ -12,6 +12,7 @@ public interface IProductoService {
     public int save(Producto a);
     public List<Producto> filtrar(String busqueda);
     public Producto buscarPorId(int id);
+    public void disminuir_stock(int cantidad, int id_producto);
 
 
 }

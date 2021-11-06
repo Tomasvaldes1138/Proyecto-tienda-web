@@ -51,6 +51,11 @@ public class ProductoService implements IProductoService {
         return producto.get();
     }
 
+    @Override
+    public void disminuir_stock(int cantidad, int id_producto) {
+        Producto producto = buscarPorId(id_producto);
+        producto.setStock(producto.getStock() - cantidad);
+    }
 
 
 }

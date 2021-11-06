@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class OrdenCompraService implements IOrdenCompraService {
@@ -45,5 +46,12 @@ public class OrdenCompraService implements IOrdenCompraService {
             return null;
         }
         return orden_compra.get();
+    }
+
+    @Override
+    public List<OrdenCompra> buscarPorCorreo(String correo) {
+        return ( (List<OrdenCompra>) data.findAll() ).stream().
+                                    filter(oc -> oc.getUsuario().getCorreo().equals(correo))
+                                    .collect(Collectors.toList());
     }
 }

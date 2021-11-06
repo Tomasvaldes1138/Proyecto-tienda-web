@@ -49,8 +49,6 @@ public class UsuarioProductoService  implements IUsuarioProductoService {
         for (UsuarioProducto up : listado){
             total += up.getCantidad() * up.getProducto().getPrecio();
         }
-
-        System.err.println("EL TOTAL EN USUARIO P ES: " + total);
         return total;
     }
 

@@ -2,6 +2,7 @@ package com.example.proyecto.sitio.modelo;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name="orden_compra")
@@ -30,6 +31,8 @@ public class OrdenCompra {
     private String calle;
 
     private String telefono;
+
+    private int total;
 
     public OrdenCompra() {
     }
@@ -105,8 +108,8 @@ public class OrdenCompra {
         this.usuario = usuario;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha;
+    public String getFecha() {
+        return fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
     }
 
     public void setFecha(LocalDateTime fecha) {
@@ -137,6 +140,14 @@ public class OrdenCompra {
         this.telefono = telefono;
     }
 
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
     @Override
     public String toString() {
         return "OrdenCompra{" +
@@ -148,6 +159,7 @@ public class OrdenCompra {
                 ", comprobantePago='" + comprobantePago + '\'' +
                 ", calle='" + calle + '\'' +
                 ", telefono='" + telefono + '\'' +
+                ", total=" + total +
                 '}';
     }
 }
