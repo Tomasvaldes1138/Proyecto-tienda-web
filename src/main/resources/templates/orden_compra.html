@@ -91,7 +91,7 @@
         </tr>
         <tr>
           <th class="head-row" id="despacho">Despacho:</th>
-          <td class="info-row" th:text="${orden.tipoEntrega.nombre_entrega}">Retiro en tienda</td>
+          <td class="info-row" th:text="${ orden.ciudad==null ? 'Retiro en tienda': 'Despacho' }"></td>
         </tr>
         <tr>
           <th class="head-row" id="region">Región:</hd>
