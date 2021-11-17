@@ -138,6 +138,9 @@ public class ControladorOrdenCompra {
 
         @GetMapping(value = "mis_comprobantes")
         public String mis_comprobantes(Model model){
+            String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+            model.addAttribute("nombre_cliente", contenido );
+
             if(usuarioLogeado==null){
                 return "redirect:/login";
             }
@@ -154,6 +157,8 @@ public class ControladorOrdenCompra {
 
         @GetMapping("/mis_ordenes")
         public String mis_ordenes(Model model){
+            String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+            model.addAttribute("nombre_cliente", contenido );
             if(usuarioLogeado==null){
                 return "redirect:/login";
             }
