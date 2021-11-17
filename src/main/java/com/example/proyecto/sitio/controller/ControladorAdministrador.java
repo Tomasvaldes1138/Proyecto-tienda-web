@@ -8,10 +8,7 @@ import com.example.proyecto.sitio.modelo.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -101,22 +98,29 @@ public class ControladorAdministrador {
     public String pedidos_realizados(Model model){
         String contenido = administradorLogeado==null ? "Login" : administradorLogeado.getNombres() ;
         model.addAttribute("nombre_administrador", contenido );
-        System.out.println("Listando las ordenes");
-        serviceOrdenCompra.listar().forEach(orden -> System.out.println(orden.toString()));
         model.addAttribute("ordenes", serviceOrdenCompra.listar());
 
         return "pedidos_realizados";
     }
 
     @GetMapping("/actualizar_producto")
-    public String actualizar_producto(Model model){
-
-       // model.addAttribute("producto", service.listar().get(8));
-
+    public String actualizar_producto(@RequestParam(name="id_producto") int id_producto, Model model){
         String contenido = administradorLogeado==null ? "Login" : administradorLogeado.getNombres() ;
+
+        model.addAttribute("producto", service.buscarPorId(id_producto) );
+        model.addAttribute("producto_actualizado", new Producto());
         model.addAttribute("nombre_administrador", contenido );
         return "actualizar_producto";
     }
+
+    @PostMapping("/actualizar_producto_post")
+    public String actualizar_producto_post(@ModelAttribute Producto producto){
+        service.save(producto);
+        return "redirect:/info_productos";
+    }
+
+
+
 
 
 

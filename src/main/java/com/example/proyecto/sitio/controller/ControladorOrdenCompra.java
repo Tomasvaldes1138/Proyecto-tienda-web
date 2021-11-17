@@ -60,7 +60,6 @@ public class ControladorOrdenCompra {
             service.disminuir_stock(p_cantidad.getCantidad(), p_cantidad.getProducto().getId_producto() ); //disminuyendo stock
             serviceUsuarioProducto.guardar(usuario_producto);
         } );
-        System.out.println("Ya deberian estar guardados");
     }
 
         //****************************************************

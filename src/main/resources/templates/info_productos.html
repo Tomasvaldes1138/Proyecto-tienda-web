@@ -90,7 +90,7 @@
           <td th:text="${producto.precio}"></td>
           <td th:text="${producto.descuento}+'%'"></td>
           <td th:text="${producto.stock}">12</td>
-          <td class="btn-editar"><a href="/actualizar_producto">⚙</a></td>
+          <td class="btn-editar"> <a th:href="@{actualizar_producto(id_producto = ${producto.id_producto})}">⚙</a> </td>
         </tr>
 
 

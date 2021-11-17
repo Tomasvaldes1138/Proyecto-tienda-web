@@ -24,8 +24,7 @@ public class OrdenCompra {
     @ManyToOne
     @JoinColumn(name = "id_ciudad" )
     private Ciudad ciudad;
-    //private String listaProductos;
-    //private int total;
+
     private String comprobantePago;
 
     private String calle;
@@ -36,16 +35,6 @@ public class OrdenCompra {
 
     public OrdenCompra() {
     }
-
-    //public OrdenCompra(int id,String fecha,String cliente,Entrega tipoEntrega,String ordenCompra,String comprobantePago,int total) {
-    //    this.id = id;
-    //     this.fecha = fecha;
-    //     this.cliente = cliente;
-    //     this.tipoEntrega = tipoEntrega;
-    //     this.ordenCompra = ordenCompra;
-    //     this.comprobantePago = comprobantePago;
-    //     this.total = total;
-    //}
 
 
     public OrdenCompra(int id_orden, LocalDateTime fecha, Usuario usuario, TipoEntrega tipoEntrega, String comprobantePago) {

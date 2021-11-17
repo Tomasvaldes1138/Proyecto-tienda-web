@@ -25,7 +25,6 @@ public class UsuarioProductoService  implements IUsuarioProductoService {
 
     @Override
     public int guardar(UsuarioProducto a) {
-        System.out.println("Guardando ID orden con ID Producto");
         int respuesta = 0;
         UsuarioProducto usuario_producto = data.save(a);
         if(!usuario_producto.equals(null)){

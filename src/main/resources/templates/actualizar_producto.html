@@ -71,7 +71,7 @@
       </div>
     </div>
 
-    <form action="#" class="formulario content-border">
+    <div action="#" class="formulario content-border">
       <p class="page-name" >Datos Actuales</p>
 
         <table class="tabla-pedidos datos-actualizar">
@@ -93,32 +93,52 @@
 
         <p class="page-name" >Actualización de los datos</p>
 
+        <form th:object="${producto_actualizado}" th:action="@{/actualizar_producto_post}" method="post">
+          <input type="hidden" name="id_producto" th:value="${producto.id_producto}">
 
-        <div class="field">
-            <label for="nombre">Nombre Producto</label>
-            <input class="input-form" type="text" name="nombre" id="nombre" th:value="${producto.nombre}">
-        </div>
-        <div class="field">
-            <label for="precio">Precio</label>
-            <input class="input-form" type="number" name="precio" id="precio" th:value="${producto.precio}">
-        </div>
-        <div class="field">
-            <label for="stock">Stock</label>
-            <input class="input-form" type="stock" name="stock" id="stock" th:value="${producto.stock}">
-        </div>
-        <div class="field">
-            <label for="descuento">Descuento</label>
-            <input class="input-form" type="number" name="descuento" id="descuento" th:value="${producto.descuento}">
-        </div>
-        <div class="field">
-            <label for="url-imagen">URL Imagen</label>
-            <input class="input-form" type="text" name="url-imagen" id="url-imagen" th:value="${producto.url_imagen}">
-        </div>
+          <div class="field">
+              <label for="nombre">Nombre Producto</label>
+              <input class="input-form" type="text" name="nombre" id="nombre" th:value="${producto.nombre}">
+          </div>
 
-        <div class="flex-center">
-            <input class="btn-enviar c-pointer" type="submit" value="Actualizar">
-        </div>
-    </form>
+          <div class="field">
+            <label for="stock">Categoría</label>
+            <select th:field="*{categoria}" name="stock" id="stock" class="input-form">
+              <option value="1">Procesadores</option>
+              <option value="2">Tarjetas Graficas</option>
+              <option value="3">Memorias Ram</option>
+              <option value="4">Placas Madre</option>
+              <option value="5">Fuentes de Poder</option>
+              <option value="6">Gabinetes</option>
+            </select>
+          </div>
+
+
+          <div class="field">
+              <label for="precio">Precio</label>
+              <input class="input-form" type="number" name="precio" id="precio" th:value="${producto.precio}">
+          </div>
+          <div class="field">
+              <label for="stock">Stock</label>
+              <input class="input-form" type="stock" name="stock" id="stock" th:value="${producto.stock}">
+          </div>
+          <div class="field">
+              <label for="descuento">Descuento</label>
+              <input class="input-form" type="number" name="descuento" id="descuento" th:value="${producto.descuento}">
+          </div>
+          <div class="field">
+              <label for="url-imagen">URL Imagen</label>
+              <input class="input-form" type="text" name="url_imagen" id="url_imagen" th:value="${producto.url_imagen}">
+          </div>
+
+          <div class="flex-center">
+              <input class="btn-enviar c-pointer" type="submit" value="Actualizar">
+          </div>
+        </form>
+
+    </div>
+
+
     </div>
 
 
