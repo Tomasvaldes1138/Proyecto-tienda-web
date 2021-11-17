@@ -24,12 +24,10 @@ public class Carrito {
        PCantidad producto1 = new PCantidad(producto, 1);
        PCantidad productoE = obtenerProductoPorId( producto.getId_producto() );
        if ( productoE  != null ){
-           System.err.println("PRODUCTO DUPLICADO!!");
             int index = productos2.indexOf(productoE);
             int cantidad = productoE.getCantidad();
             productos2.get(index).setCantidad(++cantidad);
        }else{
-           System.err.println("PRODUCTO NO DUPLICADO!");
            productos2.add(producto1);
        }
 
@@ -82,6 +80,10 @@ public class Carrito {
 
     public boolean removerProducto(PCantidad producto){
         return productos2.remove(producto);
+    }
+
+    public void limpiarCarrito(){
+        productos2.clear();
     }
 
 

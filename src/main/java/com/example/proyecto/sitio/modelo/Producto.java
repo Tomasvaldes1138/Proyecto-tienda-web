@@ -134,4 +134,8 @@ public class Producto {
         return new String(arr);
     }
 
+    public void aplicarDescuento(){
+        this.precio_anterior = this.precio + (this.precio/100 * this.descuento );
+    }
+
 }

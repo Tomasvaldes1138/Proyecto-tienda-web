@@ -115,6 +115,8 @@ public class ControladorAdministrador {
 
     @PostMapping("/actualizar_producto_post")
     public String actualizar_producto_post(@ModelAttribute Producto producto){
+        producto.aplicarDescuento();
+        System.out.println("PRODUCTO!: "+ producto);
         service.save(producto);
         return "redirect:/info_productos";
     }

@@ -42,11 +42,13 @@ public class ControladorOrdenCompra {
     public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra) {
         LocalDateTime fechaActual = LocalDateTime.now(ZoneId.of("GMT-3"));
         ordenCompra.setUsuario(usuarioLogeado);
-        ordenCompra.setTotal( serviceUsuarioProducto.getTotal(ordenCompra.getId_orden()) );
+        ordenCompra.setTotal( carrito.getTotal() );
         ordenCompra.setFecha(fechaActual);
         serviceOrdenCompra.save(ordenCompra);
         //Aqui falta disminuir el stock del producto
         guardarOrdenMasProducto(ordenCompra);
+        //Limpiando carrito
+        carrito.limpiarCarrito();
         return "redirect:/orden_exitosa?id_orden="+ordenCompra.getId_orden() ;
     }
 
@@ -73,6 +75,7 @@ public class ControladorOrdenCompra {
 
             model.addAttribute("orden_compra", orden_compra);
             model.addAttribute("precio", serviceUsuarioProducto.getTotal(id_orden) );
+
             String contenido = usuarioLogeado == null ? "Login" : usuarioLogeado.getNombres();
             model.addAttribute("nombre_cliente", contenido);
             return "orden_exitosa";
