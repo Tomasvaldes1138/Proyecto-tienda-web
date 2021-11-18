@@ -34,12 +34,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .httpBasic();
-
+    //    http
+    //        .authorizeRequests()
+    //        .anyRequest()
+    //        .authenticated()
+    //        .and()
+    //        .httpBasic();
+        http.authorizeRequests().antMatchers("/home","/img/**","/gulp_sass/**" ).permitAll() //Aqui se indican las paginas de acceso publico (tambien los archivos estaticos como CSS)
+                .antMatchers("/mis_comprobantes/").hasAnyRole("USER") //Vistas disponibles segun roles
+                .antMatchers("/pedidos_realizados").hasAnyRole("ADMIN")
+                .anyRequest().authenticated();    //Indicando que cualquier solicitud debe ser AUTENTICADA
     }
 }
