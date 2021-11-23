@@ -211,7 +211,7 @@ public class ControladorOrdenCompra {
         if(usuarioLogeado==null){
             return "redirect:/login";
         }
-        List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(usuarioLogeado.getCorreo());
+        List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorUsername(usuarioLogeado.getUsername());
         model.addAttribute("ordenes", ordenes);
         return "mis_comprobantes";
     }// cierra funcion
@@ -230,7 +230,7 @@ public class ControladorOrdenCompra {
         if(usuarioLogeado==null){
             return "redirect:/login";
         }
-        List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(usuarioLogeado.getCorreo());
+        List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorUsername(usuarioLogeado.getUsername());
         model.addAttribute("ordenes", ordenes);
         return "mis_ordenes";
     }// cierra funcion

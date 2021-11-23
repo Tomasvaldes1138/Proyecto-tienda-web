@@ -47,7 +47,7 @@ public class Administrador {
         return correo;
     }
 
-    public void setCorreo(String correo) {
+    public void setUsername(String correo) {
         this.correo = correo;
     }
 

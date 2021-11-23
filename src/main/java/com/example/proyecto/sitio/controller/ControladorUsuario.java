@@ -3,15 +3,12 @@ package com.example.proyecto.sitio.controller;
 import com.example.proyecto.sitio.interfaceService.IUsuarioService;
 import com.example.proyecto.sitio.modelo.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.ArrayList;
 
 @Controller
 @RequestMapping
@@ -52,7 +49,7 @@ public class ControladorUsuario {
 
     @PostMapping(value = "validar_login")
     public String validar_login(@ModelAttribute Usuario usuario){
-        Usuario valido = serviceUsuario.iniciarSesion(usuario.getCorreo(), usuario.getClave() );
+        Usuario valido = serviceUsuario.iniciarSesion(usuario.getUsername(), usuario.getPassword() );
         if(valido != null){
             usuarioLogeado = valido;
             return "redirect:/home";

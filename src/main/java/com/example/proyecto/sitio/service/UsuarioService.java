@@ -31,9 +31,9 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Usuario iniciarSesion(String correo, String clave) {
+    public Usuario iniciarSesion(String username, String password) {
         List<Usuario> usuarios = (List<Usuario>) data.findAll();
-        Optional<Usuario> usuarioEncontrado = usuarios.stream().filter(usuario-> usuario.getCorreo().equals(correo) && usuario.getClave().equals(clave)).findFirst();
+        Optional<Usuario> usuarioEncontrado = usuarios.stream().filter(usuario-> usuario.getUsername().equals(username) && usuario.getPassword().equals(password)).findFirst();
 
         if(usuarioEncontrado.isEmpty()){
             System.out.println("Los datos ingresados no coinciden");

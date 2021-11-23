@@ -9,23 +9,25 @@ import javax.persistence.*;
 public class Usuario  {
 
     @Id
-    private String correo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String username;
     private String nombres;
     private String apellidos;
     private String rut;
-    private String clave;
+    private String password;
 
 
     public Usuario() {
 
     }
 
-    public Usuario(String correo, String nombres, String apellidos, String rut, String clave) {
-        this.correo = correo;
+    public Usuario(String username, String nombres, String apellidos, String rut, String password) {
+        this.username = username;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.rut = rut;
-        this.clave = clave;
+        this.password = password;
     }
 
     public String getNombres() {
@@ -52,19 +54,19 @@ public class Usuario  {
         this.rut = rut;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getClave() {
-        return clave;
+    public String getPassword() {
+        return password;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
