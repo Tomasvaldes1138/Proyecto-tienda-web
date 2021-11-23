@@ -59,6 +59,7 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
 
     @Override //Aqui debemos indicar a security de donde sacar los datos
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("Buscando con el correo" + username);
         Usuario usuario = data.findByCorreo(username);
         List<GrantedAuthority> roles = new ArrayList<>();
         roles.add(new SimpleGrantedAuthority("ADMIN"));

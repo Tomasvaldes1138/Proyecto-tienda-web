@@ -50,7 +50,7 @@ public class ControladorUsuario {
 
     @GetMapping("/login")
     public String login(Model model){
-        model.addAttribute("usuario", new Usuario());
+        //model.addAttribute("usuario", new Usuario());
         return "login";
     }
 
