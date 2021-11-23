@@ -17,6 +17,12 @@ import static com.example.proyecto.sitio.controller.ControladorUsuario.usuarioLo
 
 @Controller
 @RequestMapping
+
+/**
+ * Esta clase contiene todos los metodos necesarios para el funcionamiento del tipo de entrega
+ * @version 23/11/2021
+ */
+
 public class ControladorTipoEntrega {
 
     @Autowired

@@ -24,6 +24,12 @@ import static com.example.proyecto.sitio.controller.ControladorUsuario.usuarioLo
 
 @Controller
 @RequestMapping
+
+/**
+ * Esta clase contiene todos los metodos necesarios para el funcionamiento de la orden de compra
+ * @version 23/11/2021
+ */
+
 public class ControladorOrdenCompra {
 
     @Autowired
@@ -233,4 +239,4 @@ public class ControladorOrdenCompra {
         return "mis_ordenes";
     }// cierra funcion
 
-}
+}// cierre clase

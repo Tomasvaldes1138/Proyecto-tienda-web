@@ -17,6 +17,12 @@ import static com.example.proyecto.sitio.controller.ControladorUsuario.usuarioLo
 
 @Controller
 @RequestMapping
+
+/**
+ * Esta clase contiene todos los metodos necesarios para el funcionamiento de los productos
+ * @version 23/11/2021
+ */
+
 public class ControladorProducto {
 
     @Autowired
@@ -278,4 +284,4 @@ public class ControladorProducto {
         return "redirect:/carrito";
     }// cierra funcion
 
-}// cierra clase
+}// cierre clase
