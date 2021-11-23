@@ -141,10 +141,10 @@ public class ControladorOrdenCompra {
             String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
             model.addAttribute("nombre_cliente", contenido );
 
-            if(usuarioLogeado==null){
+/*            if(usuarioLogeado==null){
                 return "redirect:/login";
-            }
-            List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(usuarioLogeado.getCorreo());
+            }*/
+            List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorUsername(usuarioLogeado.getUsername());
             model.addAttribute("ordenes", ordenes);
             return "mis_comprobantes";
         }
@@ -157,12 +157,12 @@ public class ControladorOrdenCompra {
 
         @GetMapping("/mis_ordenes")
         public String mis_ordenes(Model model){
-            String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-            model.addAttribute("nombre_cliente", contenido );
-            if(usuarioLogeado==null){
+           // String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
+            model.addAttribute("nombre_cliente", "asf" );
+/*            if(usuarioLogeado==null){
                 return "redirect:/login";
-            }
-            List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(usuarioLogeado.getCorreo());
+            }*/
+            List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorUsername(usuarioLogeado.getUsername());
             model.addAttribute("ordenes", ordenes);
             return "mis_ordenes";
         }

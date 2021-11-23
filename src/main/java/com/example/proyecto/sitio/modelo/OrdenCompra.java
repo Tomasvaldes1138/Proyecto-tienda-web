@@ -14,7 +14,7 @@ public class OrdenCompra {
     private LocalDateTime fecha;
 
     @ManyToOne
-    @JoinColumn(name = "correo" )
+    @JoinColumn(name = "id" )
     private Usuario usuario;
 
     @ManyToOne

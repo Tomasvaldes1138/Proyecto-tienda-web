@@ -12,7 +12,7 @@ public interface IOrdenCompraService {
     public int save(OrdenCompra a);
     public void set_comprobante_pago(String comprobantePago);
     public OrdenCompra buscarPorId(int id);
-    public List<OrdenCompra> buscarPorCorreo(String correo);
+    public List<OrdenCompra> buscarPorUsername(String username);
 
 
 }

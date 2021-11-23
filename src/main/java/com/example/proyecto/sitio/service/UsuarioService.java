@@ -17,7 +17,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioService implements IUsuarioService, UserDetailsService {
+//public class UsuarioService implements IUsuarioService, UserDetailsService {
+    public class UsuarioService implements IUsuarioService{
 
     @Autowired
     private IUsuario data;
@@ -40,9 +41,9 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
     }
 
     @Override
-    public Usuario iniciarSesion(String correo, String clave) {
+    public Usuario iniciarSesion(String username, String password) {
         List<Usuario> usuarios = (List<Usuario>) data.findAll();
-        Optional<Usuario> usuarioEncontrado = usuarios.stream().filter(usuario-> usuario.getCorreo().equals(correo) && usuario.getClave().equals(clave)).findFirst();
+        Optional<Usuario> usuarioEncontrado = usuarios.stream().filter(usuario-> usuario.getUsername().equals(username) && usuario.getPassword().equals(password)).findFirst();
 
         if(usuarioEncontrado.isEmpty()){
             System.out.println("Los datos ingresados no coinciden");
@@ -57,14 +58,14 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
     }
 
 
-    @Override //Aqui debemos indicar a security de donde sacar los datos
+/*    @Override //Aqui debemos indicar a security de donde sacar los datos
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("Buscando con el correo" + username);
-        Usuario usuario = data.findByCorreo(username);
+        System.out.println("Buscando con el username" + username);
+        Usuario usuario = data.findByUsername(username);
         List<GrantedAuthority> roles = new ArrayList<>();
         roles.add(new SimpleGrantedAuthority("ADMIN"));
 
-        UserDetails userDet = new User(usuario.getNombres(), usuario.getClave(), roles);
+        UserDetails userDet = new User(usuario.getNombres(), usuario.getPassword(), roles);
         return userDet;
-    }
+    }*/
 }

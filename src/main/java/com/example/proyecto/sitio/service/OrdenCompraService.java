@@ -49,9 +49,9 @@ public class OrdenCompraService implements IOrdenCompraService {
     }
 
     @Override
-    public List<OrdenCompra> buscarPorCorreo(String correo) {
+    public List<OrdenCompra> buscarPorUsername(String username) {
         return ( (List<OrdenCompra>) data.findAll() ).stream().
-                                    filter(oc -> oc.getUsuario().getCorreo().equals(correo))
+                                    filter(oc -> oc.getUsuario().getUsername().equals(username))
                                     .collect(Collectors.toList());
     }
 }

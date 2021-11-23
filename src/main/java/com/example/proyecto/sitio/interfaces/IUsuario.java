@@ -5,8 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUsuario extends CrudRepository<Usuario, String> {
+public interface IUsuario extends CrudRepository<Usuario, Integer> {
 
-    Usuario findByCorreo(String correo);
+    Usuario findByUsername(String username);
 
 }
