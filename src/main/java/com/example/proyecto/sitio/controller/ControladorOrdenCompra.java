@@ -50,9 +50,7 @@ public class ControladorOrdenCompra {
         ordenCompra.setTotal( carrito.getTotal() );
         ordenCompra.setFecha(fechaActual);
         serviceOrdenCompra.save(ordenCompra);
-        //Aqui falta disminuir el stock del producto
         guardarOrdenMasProducto(ordenCompra);
-        //Limpiando carrito
         carrito.limpiarCarrito();
         return "redirect:/orden_exitosa?id_orden="+ordenCompra.getId_orden() ;
     }// cierra funcion
@@ -83,7 +81,7 @@ public class ControladorOrdenCompra {
      * Es la funcion redirecciona a la vista que muestra la orden exitosa del comprobante generado
      *
      * @param id_orden Es la orden de compra a la que se le obtendran los datos
-     * @param model Es un conteder de Spring Boot que tiene informacion del programa
+     * @param model Es un contenedor de Spring Boot que tiene informacion del programa
      * @return Redirecciona a la vista orden exitosa
      */
         @GetMapping("/orden_exitosa") //PELIGRO!!
@@ -107,7 +105,7 @@ public class ControladorOrdenCompra {
      * Esta funcion muestra el comprobante de pago de una orden
      *
      * @param id_orden Es la orden a la cual se le obtiene el comprobante
-     * @param model Es un conteder de Spring Boot que tiene informacion del programa
+     * @param model Es un contenedor de Spring Boot que tiene informacion del programa
      * @return Redirecciona a la vista comprobante
      */
         @GetMapping("/comprobante")
@@ -153,7 +151,7 @@ public class ControladorOrdenCompra {
      * Esta funcion muestra todos los datos de una orden de compra en especifico
      *
      * @param id_orden Es la orden de compra a la que se le obtendran los datos
-     * @param model Es un conteder de Spring Boot que tiene informacion del programa
+     * @param model Es un contenedor de Spring Boot que tiene informacion del programa
      * @return Redirecciona a la vista orden compra
      */
         @GetMapping("/orden_compra")
@@ -200,7 +198,7 @@ public class ControladorOrdenCompra {
      * Esta funcion permite a los usuarios acceder a las ordenes de compra con
      * comprobantes pendientes
      *
-     * @param model Es un conteder de Spring Boot que tiene informacion del programa
+     * @param model Es un contenedor de Spring Boot que tiene informacion del programa
      * @return Redirecciona a mis comprobantes
      */
     @GetMapping(value = "mis_comprobantes")
@@ -220,7 +218,7 @@ public class ControladorOrdenCompra {
      * Esta funcion permite a los usuarios acceder a las ordenes de compra realizada
      * por el usuario
      *
-     * @param model Es un conteder de Spring Boot que tiene informacion del programa
+     * @param model Es un contenedor de Spring Boot que tiene informacion del programa
      * @return Redirecciona a mis ordenes
      */
     @GetMapping("/mis_ordenes")

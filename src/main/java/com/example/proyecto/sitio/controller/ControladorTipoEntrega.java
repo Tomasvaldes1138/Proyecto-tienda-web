@@ -30,9 +30,16 @@ public class ControladorTipoEntrega {
     //******************* TIPO ENTREGA *******************
     //****************************************************
 
+    /**
+     * Esta funcion redirecciona a la vista tipo entrega
+     * y muestra informmacion que se agregara a la orden de compra
+     *
+     * @param model Es un contenedor de Spring Boot que tiene informacion del programa
+     * @return Redirecciona a la vista tipo entrega
+     */
+
     @GetMapping("/tipo_entrega")
     public String tipo_entrega(Model model){
-
 
         if( usuarioLogeado == null  || carrito.getProductos().isEmpty() ){
             System.err.println("DEBES INICIAR SESION O CARRITO VACIO");
@@ -53,7 +60,7 @@ public class ControladorTipoEntrega {
         String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
         model.addAttribute("nombre_cliente", contenido );
         return "tipo_entrega";
-    }
+    }// cierra funcion
 
 
 }
