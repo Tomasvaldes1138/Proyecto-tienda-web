@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -22,25 +24,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private BCryptPasswordEncoder bcrypt;
 
+    @Autowired
+    private DataSource dataSource;
+
     @Bean
    public static BCryptPasswordEncoder passwordEncoder(){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
 
-    @Override
+/*    @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bcrypt);
-    }
+    }*/
 
-//    @Autowired
-//    public void configurerSecurityGlobals(AuthenticationManagerBuilder builder) throws Exception {
-//        builder.jdbcAuthentication()
-//                .dataSource(userDetailsService)
-//                .passwordEncoder(bcrypt)
-//                .usersByUsernameQuery("SELECT correo, clave FROM usuario WHERE correo=?")
-//                .authoritiesByUsernameQuery("SELECT c.correo, r.rol FROM roles r INNER JOIN usuario c ON r.correo_usuario=c.correo WHERE c.correo =?");
-//    }
+    @Autowired
+    public void configurerSecurityGlobals(AuthenticationManagerBuilder builder) throws Exception {
+        builder.jdbcAuthentication()
+                .dataSource(dataSource)
+                .passwordEncoder(bcrypt)
+                .usersByUsernameQuery("SELECT correo, clave, enabled FROM usuario WHERE correo=?")
+                .authoritiesByUsernameQuery("SELECT u.correo, r.rol from roles r inner join usuario u ON r.usuario_correo=u.correo WHERE u.correo=?");
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -48,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         http.authorizeRequests().antMatchers("/home","/img/**","/gulp_sass/**" ).permitAll() //Aqui se indican las paginas de acceso publico (tambien los archivos estaticos como CSS)
-                .antMatchers("/mis_comprobantes/").hasAnyRole("USER") //Vistas disponibles segun roles
+                .antMatchers("/categoria/procesadores").hasAnyRole("USER") //Vistas disponibles segun roles
                 .antMatchers("/pedidos_realizados").hasAnyRole("ADMIN")
                 .antMatchers("/info_productos").hasAnyRole("ADMIN")
                 .antMatchers("/actualizar_producto").hasAnyRole("ADMIN")
