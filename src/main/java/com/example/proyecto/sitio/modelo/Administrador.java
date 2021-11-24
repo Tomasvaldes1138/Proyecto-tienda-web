@@ -19,7 +19,9 @@ public class Administrador {
     private String rut;
     private String clave;
 
-
+    /**
+     * Constructor vacio
+     */
     public  Administrador(){
 
     }
@@ -41,10 +43,20 @@ public class Administrador {
         this.clave = clave;
     }
 
+    /**
+     * Obtiene el rut del Administrador
+     *
+     * @return String con el rut
+     */
     public String getRut() {
         return rut;
     }
 
+    /**
+     * Settea el Rut del Administrador
+     *
+     * @param rut String con el rut
+     */
     public void setRut(String rut) {
         this.rut = rut;
     }
@@ -94,14 +106,29 @@ public class Administrador {
         return nombres;
     }
 
+    /**
+     * Settea nombre del administrador
+     *
+     * @param nombres String con los nombres
+     */
     public void setNombres(String nombres) {
         this.nombres = nombres;
     }
 
+    /**
+     * Obtiene apellidos del administrador
+     *
+     * @return String con los apellidos
+     */
     public String getApellidos() {
         return apellidos;
     }
 
+    /**
+     * Settea apellidos del administrador
+     *
+     * @param apellidos String con los apellidos
+     */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }

@@ -44,35 +44,6 @@ public class OrdenCompra {
     public OrdenCompra() {
     }
 
-
-    public OrdenCompra(int id_orden, LocalDateTime fecha, Usuario usuario, TipoEntrega tipoEntrega, String comprobantePago) {
-        this.id_orden = id_orden;
-        this.fecha = fecha;
-        this.usuario = usuario;
-        this.tipoEntrega = tipoEntrega;
-        this.comprobantePago = comprobantePago;
-    }
-
-    public OrdenCompra(int id_orden, String comprobante) {
-        this.id_orden = id_orden;
-        this.comprobantePago = comprobante;
-    }
-
-    public OrdenCompra(int id_orden, TipoEntrega tipoEntrega) {
-        this.id_orden = id_orden;
-        this.tipoEntrega = tipoEntrega;
-    }
-
-    public OrdenCompra(int id_orden, TipoEntrega tipoEntrega, String comprobantePago) {
-        this.id_orden = id_orden;
-        this.tipoEntrega = tipoEntrega;
-        this.comprobantePago = comprobantePago;
-    }
-
-    public OrdenCompra(TipoEntrega tipoEntrega) {
-        this.tipoEntrega = tipoEntrega;
-    }
-
     /**
      * Obtiene la id de la orden
      *
@@ -91,11 +62,20 @@ public class OrdenCompra {
         this.id_orden = id;
     }
 
-
+    /**
+     * Obtiene el tipo de entrega de la orden de compra
+     *
+     * @return TipoEntrega de la orden
+     */
     public TipoEntrega getTipoEntrega() {
         return tipoEntrega;
     }
 
+    /**
+     *  Settea el tipo de entrega de la orden de compra
+     *
+     * @param tipoEntrega TipoEntrega que se va a settear
+     */
     public void setTipoEntrega(TipoEntrega tipoEntrega) {
         this.tipoEntrega = tipoEntrega;
     }

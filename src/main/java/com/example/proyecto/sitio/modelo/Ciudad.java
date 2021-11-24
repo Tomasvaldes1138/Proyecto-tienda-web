@@ -63,14 +63,29 @@ public class Ciudad {
         return region;
     }
 
+    /**
+     * Settea la Region
+     *
+     * @param region La Region que se va a settear
+     */
     public void setRegion(Region region) {
         this.region = region;
     }
 
+    /**
+     * Obtiene la id de la ciudad
+     *
+     * @return int con la id
+     */
     public int getId_ciudad() {
         return id_ciudad;
     }
 
+    /**
+     * Settea la id
+     *
+     * @param id La id que se quiere settear
+     */
     public void setId_ciudad(int id) {
         this.id_ciudad = id;
     }

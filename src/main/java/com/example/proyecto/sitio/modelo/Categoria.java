@@ -20,6 +20,11 @@ public class Categoria {
 
     private String nombre_categoria;
 
+    /**
+     * Obtiene el nombre de la categoria
+     *
+     * @return String con el nombre
+     */
     public String getNombre_categoria() {
         return nombre_categoria;
     }
