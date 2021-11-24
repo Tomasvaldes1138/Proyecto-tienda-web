@@ -70,10 +70,10 @@ public class ControladorUsuario {
         rol.setRol("ROLE_USER");
         serviceRoles.save(rol);
         return "redirect:/login";
-    }
+    }// cierra funcion
 
   
-    }// cierra funcion
+
 
 
     //****************************************************
