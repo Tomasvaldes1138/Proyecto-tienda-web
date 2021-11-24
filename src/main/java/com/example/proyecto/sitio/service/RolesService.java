@@ -12,6 +12,11 @@ public class RolesService implements IRolesService {
     @Autowired
     private IRoles data;
 
+    /**
+     * Metodo que se encarga de guardar un rol en la base de datos
+     * @param r
+     * @return
+     */
     @Override
     public int save(Roles r) {
         int respuesta = 0;

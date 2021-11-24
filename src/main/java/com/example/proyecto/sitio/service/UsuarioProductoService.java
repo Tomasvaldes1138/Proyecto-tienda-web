@@ -18,11 +18,20 @@ public class UsuarioProductoService  implements IUsuarioProductoService {
     @Autowired
     private IUsuarioProducto data;
 
+    /**
+     * Metodo que retorna listado con los UsuarioProducto existentes en la base de datos
+     * @return List<UsuarioProducto> UsuarioProducto encontrados
+     */
     @Override
     public List<UsuarioProducto> listar() {
         return (List<UsuarioProducto>)  data.findAll();
     }
 
+    /**
+     * Metodo que guarda un UsuarioProducto en la base de datos
+     * @param a UsuarioProducto a guardar
+     * @return respuesta de la base de datos
+     */
     @Override
     public int guardar(UsuarioProducto a) {
         int respuesta = 0;
@@ -33,6 +42,11 @@ public class UsuarioProductoService  implements IUsuarioProductoService {
         return respuesta;
     }
 
+    /**
+     * Metodo que retorna un listado UsuarioProducto segun el id_orden
+     * @param id_orden id de la orden a buscar
+     * @return Listado UsuarioProducto
+     */
     @Override
     public List<UsuarioProducto> get_orden_producto(int id_orden) {
 
@@ -41,6 +55,11 @@ public class UsuarioProductoService  implements IUsuarioProductoService {
         return listado;
     }
 
+    /**
+     * Metodo que retorna el total de alguna compra realizada por los usuarios
+      * @param id_orden id de la orden asociada a la compra
+     * @return int con el total de la compra
+     */
     @Override
     public int getTotal(int id_orden){
         List<UsuarioProducto> listado = get_orden_producto(id_orden);
@@ -48,7 +67,6 @@ public class UsuarioProductoService  implements IUsuarioProductoService {
         for (UsuarioProducto up : listado){
             total += up.getCantidad() * up.getProducto().getPrecio();
         }
-        System.out.println("TOTAL!: " + total);
         return total;
     }
 

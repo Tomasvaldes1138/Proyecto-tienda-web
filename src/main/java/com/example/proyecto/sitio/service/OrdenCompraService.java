@@ -23,6 +23,12 @@ public class OrdenCompraService implements IOrdenCompraService {
         return (List<OrdenCompra>) data.findAll();
     }
 
+    /**
+     * Guarda las ordenes de compra en la base de datos
+     *
+     * @param a La orden que se quiere guardar
+     * @return int con la respuesta a la base de datos
+     */
     @Override
     public int save(OrdenCompra a) {
         int respuesta = 0;
@@ -33,12 +39,11 @@ public class OrdenCompraService implements IOrdenCompraService {
         return 0;
     }
 
-    @Override
-    @Query(value = "update orden_compra set comprobante_pago = :comprobantePago where id = 5 ", nativeQuery = true)
-    public void set_comprobante_pago(String comprobantePago) {
-        data.findById(3).get().setComprobantePago(comprobantePago);
-    }
-
+    /**
+     * Metodo que busca ordenes de compra por su id
+     * @param id id de la orden de compra  a buscar
+     * @return OrdenCompra orden de compra encontrada
+     */
     @Override
     public OrdenCompra buscarPorId(int id) {
         Optional<OrdenCompra> orden_compra = data.findById(id);
@@ -48,6 +53,11 @@ public class OrdenCompraService implements IOrdenCompraService {
         return orden_compra.get();
     }
 
+    /**
+     * Metodo que busca las ordenes de compras asociadas a un correo
+     * @param correo correo del usuario relacionado con la orden
+     * @return List<OrdenCompra> listado de las ordenes asociadas a un usuario
+     */
     @Override
     public List<OrdenCompra> buscarPorCorreo(String correo) {
         return ( (List<OrdenCompra>) data.findAll() ).stream().

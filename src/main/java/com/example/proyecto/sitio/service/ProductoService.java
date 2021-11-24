@@ -25,6 +25,11 @@ public class ProductoService implements IProductoService {
         return (List<Producto>) data.findAll();
     }
 
+    /**
+     * Metodo qye guarda un producto en la base de datos
+     * @param a producto a guardar
+     * @return int con respuesta de la base de datos
+     */
     @Override
     public int save(Producto a) {
         int respuesta = 0;
@@ -35,12 +40,23 @@ public class ProductoService implements IProductoService {
         return 0;
     }
 
+    /**
+     * Metodo que filtra los productos cuyo nombre contenga los caracteres de busqueda
+     * @param busqueda String para filtrar los productos
+     * @return List<Producto> listado con los productos encontrados
+     */
     @Override
     public List<Producto> filtrar(String busqueda) {
         List<Producto> productos = (List<Producto>) data.findAll();
         productos = productos.stream().filter(producto -> producto.getNombre().toLowerCase().contains(busqueda)).collect(Collectors.toList());
         return productos;
     }
+
+    /**
+     * Metodo que busca un producto por su id
+     * @param id id del producto a buscar
+     * @return producto encontrado
+     */
 
     @Override
     public Producto buscarPorId(int id) {
@@ -51,6 +67,11 @@ public class ProductoService implements IProductoService {
         return producto.get();
     }
 
+    /**
+     * metodo que se encarga de disminuit el stock de un producto especifico
+     * @param cantidad cantidad a disminuir
+     * @param id_producto id del producto
+     */
     @Override
     public void disminuir_stock(int cantidad, int id_producto) {
         Producto producto = buscarPorId(id_producto);

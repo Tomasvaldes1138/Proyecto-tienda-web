@@ -52,9 +52,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         System.err.println(SecurityContextHolder.getContext().getAuthentication());
 
 
-        http.authorizeRequests().antMatchers("/home","/registro","/insertar_usuario",
+        http.authorizeRequests().antMatchers("/home","/registro","/categoria/**","/insertar_usuario",
                         "/img/**","/gulp_sass/**" ).permitAll() //Aqui se indican las paginas de acceso publico (tambien los archivos estaticos como CSS)
-                .antMatchers("/categoria/procesadores").hasAnyRole("USER") //Vistas disponibles segun roles
+                .antMatchers("/mis_comprobantes").hasAnyRole("USER") //Vistas disponibles segun roles
+                .antMatchers("/mis_ordenes").hasAnyRole("USER") //Vistas disponibles segun roles
                 .antMatchers("/pedidos_realizados").hasAnyRole("ADMIN")
                 .antMatchers("/info_productos").hasAnyRole("ADMIN")
                 .antMatchers("/actualizar_producto").hasAnyRole("ADMIN")

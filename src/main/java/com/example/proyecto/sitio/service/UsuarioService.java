@@ -50,10 +50,10 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
     }
 
     /**
-     * Obtiene los datos de la base de datos
+     * Metodo que carga los datos de un usuario segun su username
      *
-     * @param username El usuario que se va a buscar
-     * @return UserDetails  El usuario detectado
+     * @param username username del usuario que se va a buscar
+     * @return UserDetails con el usuario detectado
      * @throws UsernameNotFoundException
      */
     @Override //Aqui debemos indicar a security de donde sacar los datos

@@ -16,6 +16,10 @@ public class CiudadService implements ICiudadService {
     private ICiudad data;
 
 
+    /**
+     *Obtiene las ciudades de la base de datos
+     * @return List<Ciudad> ciudades encontradas
+     */
     @Override
     public List<Ciudad> listar() {
         return (List<Ciudad>) data.findAll();

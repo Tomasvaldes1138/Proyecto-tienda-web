@@ -15,7 +15,6 @@ import java.util.List;
 public interface IOrdenCompraService {
     public List<OrdenCompra> listar();
     public int save(OrdenCompra a);
-    public void set_comprobante_pago(String comprobantePago);
     public OrdenCompra buscarPorId(int id);
     public List<OrdenCompra> buscarPorCorreo(String correo);
 

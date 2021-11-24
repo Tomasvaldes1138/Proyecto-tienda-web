@@ -59,7 +59,8 @@ public class ControladorAdministrador {
      */
     @PostMapping(value = "validar_loginAdmin")
     public String validar_loginAdmin(@ModelAttribute Administrador administrador){
-        Administrador valido = serviceAdmin.iniciarSesion(administrador.getCorreo(), administrador.getClave() );
+        //Administrador valido = serviceAdmin.iniciarSesion(administrador.getCorreo(), administrador.getClave() );
+        Administrador valido = null;
         if(valido != null){
             administradorLogeado = valido;
             return "redirect:/pedidos_realizados";
