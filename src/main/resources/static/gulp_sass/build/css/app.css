@@ -356,7 +356,7 @@ img {
   max-width: 100%;
 }
 
-h1, h2, h3, p, a, tr, th, td, label, option, select, input {
+h1, h2, h3, p, a, tr, th, td, label, option, select, input, button, span {
   color: #000000;
   font-family: "Roboto", sans-serif;
   margin: 0;
@@ -503,11 +503,13 @@ a {
   margin-top: 0rem;
   border: 1px solid #e1e1e1;
 }
-.acciones .dropdown-content a {
+.acciones .dropdown-content .nav-rol a {
   display: block;
   background-color: #fff;
   padding: 1rem;
-  text-decoration: underline;
+}
+.acciones .dropdown-content .nav-rol a:hover {
+  background-color: #e1e1e1;
 }
 .acciones .dropdown:hover .dropdown-content {
   display: block;
@@ -545,6 +547,19 @@ a {
 .page-name {
   font-weight: 700;
   padding: 3rem 0;
+}
+
+.hover-bg:hover {
+  background-color: #e1e1e1;
+}
+
+.logout {
+  display: block;
+  background-color: #fff;
+  padding: 1rem;
+}
+.logout:hover {
+  background-color: #e1e1e1;
 }
 
 .registro-container {
