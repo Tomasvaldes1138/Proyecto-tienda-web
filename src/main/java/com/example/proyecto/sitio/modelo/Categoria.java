@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 
 /**
- * Esta clase define la clase de categoria
+ * Esta clase define la clase de Categoria
  * @version 23/11/2021
  */
 
