@@ -46,6 +46,7 @@ public class ControladorOrdenCompra {
      * Esta funcion genera la orden de compra con los datos y productos del cliente, fecha y total
      *
      * @param ordenCompra Es la orden de compra a la cual es le agregaran todos los datos
+     * @param auth Permite obtener el nombre del usuario que ha iniciado sesion
      * @return Redirecciona a la vista orden exitosa para subir el comprobante
      */
 
@@ -210,6 +211,7 @@ public class ControladorOrdenCompra {
      * comprobantes pendientes
      *
      * @param model Es un contenedor de Spring Boot que tiene informacion del programa
+     * @param auth Permite obtener el nombre del usuario que ha iniciado sesion
      * @return Redirecciona a mis comprobantes
      */
       @GetMapping(value = "mis_comprobantes")
@@ -225,6 +227,7 @@ public class ControladorOrdenCompra {
      * por el usuario
      *
      * @param model Es un contenedor de Spring Boot que tiene informacion del programa
+     * @param auth Permite obtener el nombre del usuario que ha iniciado sesion
      * @return Redirecciona a mis ordenes
      */
       @GetMapping("/mis_ordenes")

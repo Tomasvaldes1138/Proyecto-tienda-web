@@ -74,10 +74,9 @@ public class ControladorProducto {
      * @return Redirecciona a categoria procesadores
      */
     @GetMapping("categoria/procesadores")
-    public String categoria_procesadores(Model model, Authentication auth){
+    public String categoria_procesadores(Model model){
         List<Producto> procesadores = filtroCategoria(service.listar(), "Procesadores" );
         model.addAttribute("productos", procesadores);
-        System.err.println("USUARIO: " + auth.getName());
         return "categoria/procesadores";
     }// cierra funcion
 

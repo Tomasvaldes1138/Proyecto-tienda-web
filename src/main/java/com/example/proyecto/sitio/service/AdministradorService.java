@@ -9,17 +9,25 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Esta clase define la clase AdministradorService
+ * impelementa los metodos de IAdministradorService
+ * @version 23/11/2021
+ */
+
 @Service
 public class AdministradorService implements IAdministradorService {
 
     @Autowired
     private IAdministrador data;
 
-    @Override
-    public List<Administrador> listar() {
-        return null;
-    }
 
+    /**
+     * Permite guardar el administrador a la base de datos
+     *
+     * @param a el administrador que se va a guardar
+     * @return int con la respuesta a la bae de datos
+     */
     @Override
     public int save(Administrador a) {
         int respuesta = 0;
@@ -30,15 +38,4 @@ public class AdministradorService implements IAdministradorService {
         return 0;
     }
 
-    @Override
-    public Administrador iniciarSesion(String correo, String clave) {
-        List<Administrador> administradores = (List<Administrador>) data.findAll();
-        Optional<Administrador> administradorEncontrado = administradores.stream().filter(usuario-> usuario.getCorreo().equals(correo) && usuario.getClave().equals(clave)).findFirst();
-
-        if(administradorEncontrado.isEmpty()){
-            System.out.println("Los datos ingresados no coinciden");
-            return null;
-        }
-        return administradorEncontrado.get();
-    }
 }

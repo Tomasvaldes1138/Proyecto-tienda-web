@@ -60,7 +60,7 @@ public class Roles {
     }
 
     /**
-     * Settea el rol del Usuario
+     * Settea el Usuario
      *
      * @param usuario Settea el usuario al rol
      */
@@ -77,7 +77,12 @@ public class Roles {
         return rol;
     }
 
+    /**
+     * Settea el rol del Usuario
+     *
+     * @param rol String con el rol
+     */
     public void setRol(String rol) {
         this.rol = rol;
     }
-}
+}// cierra clase

@@ -23,12 +23,22 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
     private IUsuario data;
 
 
-
+    /**
+     * Lista los Usuarios de la base de datos
+     *
+     * @return una Lista con los Usuarios encontrados
+     */
     @Override
     public List<Usuario> Listar() {
         return (List<Usuario>)  data.findAll();
     }
 
+    /**
+     * Guarda al Usuario en la base de datos
+     *
+     * @param a El usuario que se quiere guardar
+     * @return int con la respuesta a la base de datos
+     */
     @Override
     public int guardar(Usuario a) {
         int respuesta = 0;
@@ -39,24 +49,13 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
         return 0;
     }
 
-    @Override
-    public Usuario iniciarSesion(String correo, String clave) {
-        List<Usuario> usuarios = (List<Usuario>) data.findAll();
-        Optional<Usuario> usuarioEncontrado = usuarios.stream().filter(usuario-> usuario.getCorreo().equals(correo) && usuario.getClave().equals(clave)).findFirst();
-
-        if(usuarioEncontrado.isEmpty()){
-            System.out.println("Los datos ingresados no coinciden");
-            return null;
-        }
-        return usuarioEncontrado.get();
-    }
-
-    public boolean validarLogin() {
-
-        return false;
-    }
-
-
+    /**
+     * Obtiene los datos de la base de datos
+     *
+     * @param username El usuario que se va a buscar
+     * @return UserDetails  El usuario detectado
+     * @throws UsernameNotFoundException
+     */
     @Override //Aqui debemos indicar a security de donde sacar los datos
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("Buscando con el correo" + username);

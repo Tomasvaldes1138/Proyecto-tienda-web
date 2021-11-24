@@ -13,7 +13,5 @@ import java.util.List;
 
 @Service
 public interface IAdministradorService {
-    public List<Administrador> listar();
     public int save(Administrador a);
-    public Administrador iniciarSesion(String correo, String clave);
 }
