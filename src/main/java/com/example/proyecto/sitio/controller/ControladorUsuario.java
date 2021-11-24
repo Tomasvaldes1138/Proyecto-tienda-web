@@ -4,6 +4,7 @@ import com.example.proyecto.sitio.interfaceService.IUsuarioService;
 import com.example.proyecto.sitio.modelo.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,8 @@ public class ControladorUsuario {
 
     protected static Usuario usuarioLogeado = null;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
 
     //****************************************************
@@ -55,6 +58,7 @@ public class ControladorUsuario {
      */
     @PostMapping(value = "insertar_usuario")
     public String insertar_usuario(@ModelAttribute Usuario usuario){
+        usuario.setClave(encoder.encode(usuario.getClave() ));
         serviceUsuario.guardar(usuario);
         return "login";
     }// cierra funcion
@@ -71,7 +75,7 @@ public class ControladorUsuario {
      */
     @GetMapping("/login")
     public String login(Model model){
-        model.addAttribute("usuario", new Usuario());
+        //model.addAttribute("usuario", new Usuario());
         return "login";
     }// cierra funcion
 

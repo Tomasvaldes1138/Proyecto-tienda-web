@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org">
+<html xmlns="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
@@ -25,21 +26,24 @@
             <a class="h-logo mg-l-1" href="carrito">Carro</a>
           </div>
 
-          <div class="login-container dropdown">
-              <div class="dropdown-btn flex-space">
-                <img th:src="@{/img/icons/login.svg}" alt="icon_carrito" width="18px">
-                <p class="h-logo mg-l-1" th:text="${nombre_cliente}"></p>
-                <div class="triangle"></div>
-            </div>
-            <div class="dropdown-content">
-              <a href="login">Cliente</a>
-              <a href="login_admin">Administrador</a>
-              <a href="mis_ordenes">Mis Ordenes</a>
-              <a href="mis_comprobantes">Mis Comprobantes</a>
+          <div class="login-container dropdown" >
 
-              <form th:if="${!#strings.equals(nombre_cliente, 'Login')}"  th:action="@{/cerrar_sesionUsuario}" class="cerrar_sesion" method="post">
-                <input class="form-control c-pointer btn-reset underline" type="submit" value="Cerrar Sesión">
-              </form>
+            <div class="dropdown-btn flex-space" sec:authorize="!isAuthenticated()">
+                <img th:src="@{/img/icons/login.svg}" alt="icon_carrito" width="18px">
+                <a  class="h-logo mg-l-1" th:href="@{/login}">Login</a>
+            </div>
+
+            <div class="dropdown-btn flex-space" sec:authorize="isAuthenticated()">
+              <span class="h-logo mg-l-1"  sec:authentication="name" ></span>
+              <div class="triangle"></div>
+              <div class="dropdown-content" >
+                
+                <a href="mis_ordenes">Mis Ordenes</a>
+                <a href="mis_comprobantes">Mis Comprobantes</a>
+                <form th:action="@{/logout}" method="post">
+                  <button type="submit">Cerrar Sesion</button>
+                </form>
+              </div>
             </div>
           </div>
       </div>

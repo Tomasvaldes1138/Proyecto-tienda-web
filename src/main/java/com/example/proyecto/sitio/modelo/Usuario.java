@@ -14,7 +14,15 @@ public class Usuario  {
     private String apellidos;
     private String rut;
     private String clave;
+    private short enabled;
 
+    public short getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(short enabled) {
+        this.enabled = enabled;
+    }
 
     public Usuario() {
 

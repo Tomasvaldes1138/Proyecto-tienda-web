@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="gulp_sass/build/css/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css"> -->
+</head>
+<body>
+<header class="header">
+    <div class="container flex-space">
+        <a class="logo c-pointer" href="home">PC Labs</a>
+
+        <form th:action="@{/buscar_productos}" class="barra-container" method="post">
+            <input class="barra-busqueda" type="text" name="busqueda" id="busqueda" placeholder="Buscar Productos">
+            <input type="submit" value="🔍" class="lupa">
+        </form>
+
+        <div class="acciones flex-space">
+            <div class="carro-container flex-space">
+                <img th:src="@{/img/icons/carrito.svg}" alt="icon_carrito" width="18px">
+                <a class="h-logo mg-l-1" href="carrito">Carro</a>
+            </div>
+
+            <div class="login-container dropdown">
+                <div class="dropdown-btn flex-space">
+                    <img th:src="@{/img/icons/login.svg}" alt="icon_carrito" width="18px">
+                    <p class="h-logo mg-l-1" th:text="${nombre_cliente}"></p>
+                    <div class="triangle"></div>
+                </div>
+                <div class="dropdown-content">
+                    <a href="login">Cliente</a>
+                    <a href="login_admin">Administrador</a>
+                    <a href="mis_ordenes">Mis Ordenes</a>
+                    <a href="mis_comprobantes">Mis Comprobantes</a>
+
+                    <form th:if="${!#strings.equals(nombre_cliente, 'Login')}"  th:action="@{/cerrar_sesionUsuario}" class="cerrar_sesion" method="post">
+                        <input class="form-control c-pointer btn-reset underline" type="submit" value="Cerrar Sesión">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</header>
+<nav class="nav">
+    <div class="container">
+        <a href="categoria/procesadores" class="nav-link" >Procesadores</a>
+        <a href="categoria/tarjetas_graficas" class="nav-link" >Tarjetas Graficas</a>
+        <a href="categoria/memorias_ram" class="nav-link" >Memorias Ram</a>
+        <a href="categoria/placas_madre" class="nav-link" >Placas Madre</a>
+        <a href="categoria/fuentes_poder" class="nav-link" >Fuentes de Poder</a>
+        <a href="categoria/gabinetes" class="nav-link" >Gabinetes</a>
+    </div>
+</nav>
+<div class="container">
+    <h1>Error, no tienes permiso para acceder a este recurso!</h1>
+</div>
+<footer class="footer">
+    <div class="container flex-space f-start gap-column">
+        <div class="icons">
+            <p class="logo logo-f c-pointer">PC Labs</p>
+
+            <div class="social-media">
+                <div class="fb-container c-pointer">
+                    <img th:src="@{/img/icon_fb.svg}" alt="icon_fb" width="24px">
+                </div>
+                <div class="tw-container c-pointer">
+                    <img th:src="@{/img/icon_tw.svg}" alt="icon_tw" width="24px">
+
+                </div>
+                <div class="ig-container c-pointer">
+                    <img th:src="@{/img/icon_ig.svg}" alt="icon_ig" width="24px">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="n-t-container f-column-l">
+            <h3 class="f-title" >Nuestra tienda</h3>
+            <a class="f-link underline" href="#">Trabaja con nosotros</a>
+            <a class="f-link underline" href="#">Sobre nosotros</a>
+            <a class="f-link underline" href="#">Contáctanos</a>
+            <a class="f-link underline" href="#">Promociones</a>
+            <a class="f-link underline" href="#">Admnistradores</a>
+        </div>
+
+        <div class="s-c-container f-column-l">
+            <h3 class="f-title" >Servicio al Cliente</h3>
+            <a class="f-link underline" href="#">Términos y condiciones</a>
+            <a class="f-link underline" href="#">Cambios y devoluciones</a>
+            <a class="f-link underline" href="#">Centro de ayuda</a>
+        </div>
+
+        <div class="c-container f-column-l">
+            <h3 class="f-title" >Categorías</h3>
+            <a class="f-link underline" href="categoria/procesadores">Procesadores</a>
+            <a class="f-link underline" href="categoria/tarjetas_graficas">Tarjetas gráficas</a>
+            <a class="f-link underline" href="categoria/memorias_ram">Memorias ram</a>
+            <a class="f-link underline" href="categoria/fuentes_poder">Fuentes de poder</a>
+            <a class="f-link underline" href="categoria/gabinetes">Gabinetes</a>
+        </div>
+
+        <div class="s-container f-column-l">
+            <h3 class="f-title" >Suscríbete</h3>
+            <p class="f-link"> Suscríbete a nuestro newletter, para que seas el primero en conocer nuestras nuevas ofertas y promociones</p>
+            <div class="s-btn-container c-pointer">
+                <input class="input-s" type="email" name="email" id="email">
+                <div class="btn-suscribirse">
+                    <p>Suscribirse</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <p class="copyright">Copyright © 2021 PC Labs. Todos los Derechos Reservados.</p>
+    </div>
+</footer>
+</body>
+</html>
