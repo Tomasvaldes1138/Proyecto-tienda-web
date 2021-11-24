@@ -1,6 +1,8 @@
 package com.example.proyecto.sitio.controller;
 
+import com.example.proyecto.sitio.interfaceService.IRolesService;
 import com.example.proyecto.sitio.interfaceService.IUsuarioService;
+import com.example.proyecto.sitio.modelo.Roles;
 import com.example.proyecto.sitio.modelo.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,7 +29,9 @@ public class ControladorUsuario {
     @Autowired
     private IUsuarioService serviceUsuario;
 
-    protected static Usuario usuarioLogeado = null;
+    @Autowired
+    private IRolesService serviceRoles;
+
 
     @Autowired
     private BCryptPasswordEncoder encoder;
@@ -59,9 +63,18 @@ public class ControladorUsuario {
     @PostMapping(value = "insertar_usuario")
     public String insertar_usuario(@ModelAttribute Usuario usuario){
         usuario.setClave(encoder.encode(usuario.getClave() ));
+        usuario.setEnabled((short) 1);
         serviceUsuario.guardar(usuario);
-        return "login";
+        Roles rol = new Roles();
+        rol.setUsuario(usuario);
+        rol.setRol("ROLE_USER");
+        serviceRoles.save(rol);
+        return "redirect:/login";
+    }
+
+  
     }// cierra funcion
+
 
     //****************************************************
     //******************* LOGIN USUARIO ******************
@@ -77,33 +90,8 @@ public class ControladorUsuario {
     public String login(Model model){
         //model.addAttribute("usuario", new Usuario());
         return "login";
-    }// cierra funcion
+    }
 
-    /**
-     * Esta funcion valida que haya un usuario exista en la base de datos
-     *
-     * @param usuario Es el usuario que se va a validar
-     * @return Redirecciona a la vista que se llame en la funcion
-     */
-    @PostMapping(value = "validar_login")
-    public String validar_login(@ModelAttribute Usuario usuario){
-        Usuario valido = serviceUsuario.iniciarSesion(usuario.getCorreo(), usuario.getClave() );
-        if(valido != null){
-            usuarioLogeado = valido;
-            return "redirect:/home";
-        }
-        return "redirect:/login";
-    }// cierra funcion
 
-    /**
-     * Esta funcion cierra sesion del usuario
-     *
-     * @return Redirecciona a la vista home
-     */
-    @PostMapping(value = "cerrar_sesionUsuario")
-    public String cerrar_sesionUsuario(){
-        usuarioLogeado= null;
-        return "redirect:/home";
-    }// cierra funcion
 
 }// cierre clase

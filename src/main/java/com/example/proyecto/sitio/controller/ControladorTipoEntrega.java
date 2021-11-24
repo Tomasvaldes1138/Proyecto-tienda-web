@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 import static com.example.proyecto.sitio.controller.ControladorProducto.carrito;
-import static com.example.proyecto.sitio.controller.ControladorUsuario.usuarioLogeado;
 
 @Controller
 @RequestMapping
@@ -47,8 +46,10 @@ public class ControladorTipoEntrega {
     @GetMapping("/tipo_entrega")
     public String tipo_entrega(Model model){
 
-        if( usuarioLogeado == null  || carrito.getProductos().isEmpty() ){
-            System.err.println("DEBES INICIAR SESION O CARRITO VACIO");
+
+        if( carrito.getProductos().isEmpty() ){
+            System.err.println("CARRITO VACIO");
+
             return "redirect:/carrito";
         }
 
@@ -63,8 +64,6 @@ public class ControladorTipoEntrega {
         model.addAttribute("p_cantidades", p_cantidad);
         model.addAttribute("precio_total", carrito.getTotal() );
 
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
         return "tipo_entrega";
     }// cierra funcion
 

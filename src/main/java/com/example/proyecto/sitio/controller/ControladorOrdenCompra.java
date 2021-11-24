@@ -5,6 +5,7 @@ import com.example.proyecto.sitio.interfaceService.IProductoService;
 import com.example.proyecto.sitio.interfaceService.IUsuarioProductoService;
 import com.example.proyecto.sitio.modelo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 import static com.example.proyecto.sitio.controller.ControladorProducto.carrito;
-import static com.example.proyecto.sitio.controller.ControladorUsuario.usuarioLogeado;
 
 @Controller
 @RequestMapping
@@ -50,9 +50,13 @@ public class ControladorOrdenCompra {
      */
 
     @PostMapping("/generar_orden_compra")
-    public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra) {
+    public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra, Authentication auth) {
         LocalDateTime fechaActual = LocalDateTime.now(ZoneId.of("GMT-3"));
-        ordenCompra.setUsuario(usuarioLogeado);
+
+        Usuario usuario = new Usuario();
+        usuario.setCorreo(auth.getName());
+
+        ordenCompra.setUsuario(usuario);
         ordenCompra.setTotal( carrito.getTotal() );
         ordenCompra.setFecha(fechaActual);
         serviceOrdenCompra.save(ordenCompra);
@@ -98,8 +102,6 @@ public class ControladorOrdenCompra {
             model.addAttribute("orden_compra", orden_compra);
             model.addAttribute("precio", serviceUsuarioProducto.getTotal(id_orden) );
 
-            String contenido = usuarioLogeado == null ? "Login" : usuarioLogeado.getNombres();
-            model.addAttribute("nombre_cliente", contenido);
             return "orden_exitosa";
         }// cierra funcion
 
@@ -177,6 +179,7 @@ public class ControladorOrdenCompra {
         //***********COMPROBANTES Y ORDENES ******************
         //****************************************************
 
+
     /**
      * Esta funcion redirecciona a la vista orden exitosa para subir el comprobante
      * a ordenes que esten pendientes
@@ -184,12 +187,14 @@ public class ControladorOrdenCompra {
      * @param id_orden Es la orden de compra a la que se le obtendran los datos
      * @return Redirecciona a orden exitosa
      */
-        @PostMapping("/orden_comprobante")
-        public String orden_comprobante(@RequestParam(name="id_orden") int id_orden) {
-            System.err.println("COMPROBANTE PARA ORDEN: " + id_orden);
-            return "redirect:/orden_exitosa?id_orden="+id_orden;
-        }// cierra funcion
 
+      @PostMapping("/orden_comprobante")
+      public String orden_comprobante(@RequestParam(name="id_orden") int id_orden) {
+          System.err.println("COMPROBANTE PARA ORDEN: " + id_orden);
+          return "redirect:/orden_exitosa?id_orden="+id_orden;
+      }
+
+       
     /**
      * Esta funcion redirecciona a una orden de compra en especifico
      * @param id_orden Es la orden de compra a la que se le obtendran los datos
@@ -207,18 +212,13 @@ public class ControladorOrdenCompra {
      * @param model Es un contenedor de Spring Boot que tiene informacion del programa
      * @return Redirecciona a mis comprobantes
      */
-    @GetMapping(value = "mis_comprobantes")
-    public String mis_comprobantes(Model model){
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
+      @GetMapping(value = "mis_comprobantes")
+      public String mis_comprobantes(Model model, Authentication auth){
 
-        if(usuarioLogeado==null){
-            return "redirect:/login";
-        }
-        List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(usuarioLogeado.getCorreo());
-        model.addAttribute("ordenes", ordenes);
-        return "mis_comprobantes";
-    }// cierra funcion
+          List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(auth.getName());
+          model.addAttribute("ordenes", ordenes);
+          return "mis_comprobantes";
+      }// cierra funcion
 
     /**
      * Esta funcion permite a los usuarios acceder a las ordenes de compra realizada
@@ -227,16 +227,11 @@ public class ControladorOrdenCompra {
      * @param model Es un contenedor de Spring Boot que tiene informacion del programa
      * @return Redirecciona a mis ordenes
      */
-    @GetMapping("/mis_ordenes")
-    public String mis_ordenes(Model model){
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
-        if(usuarioLogeado==null){
-            return "redirect:/login";
-        }
-        List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(usuarioLogeado.getCorreo());
-        model.addAttribute("ordenes", ordenes);
-        return "mis_ordenes";
-    }// cierra funcion
+      @GetMapping("/mis_ordenes")
+      public String mis_ordenes(Model model, Authentication auth){
+          List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(auth.getName());
+          model.addAttribute("ordenes", ordenes);
+          return "mis_ordenes";
+      }// cierra funcion
 
 }// cierre clase
