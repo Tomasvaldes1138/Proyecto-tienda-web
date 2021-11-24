@@ -14,7 +14,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
+/**
+ * Esta clase implementa los metodos de IUsuarioService y UserDetailsService
+ * @version 23/11/2021
+ */
 
 @Service
 public class UsuarioService implements IUsuarioService, UserDetailsService {
@@ -54,7 +58,7 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
      *
      * @param username username del usuario que se va a buscar
      * @return UserDetails con el usuario detectado
-     * @throws UsernameNotFoundException
+     * @throws UsernameNotFoundException Excepcion en caso de no encontrar el Username
      */
     @Override //Aqui debemos indicar a security de donde sacar los datos
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

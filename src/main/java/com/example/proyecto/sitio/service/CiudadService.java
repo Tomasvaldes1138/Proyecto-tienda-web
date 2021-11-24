@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/**
+ * Esta clase implementa los metodos de ICiudadService
+ * @version 23/11/2021
+ */
 @Service
 public class CiudadService implements ICiudadService {
 
@@ -18,7 +21,7 @@ public class CiudadService implements ICiudadService {
 
     /**
      *Obtiene las ciudades de la base de datos
-     * @return List<Ciudad> ciudades encontradas
+     * @return ciudades encontradas
      */
     @Override
     public List<Ciudad> listar() {

@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Esta clase define la clase AdministradorService
- * impelementa los metodos de IAdministradorService
+ * Esta clase implementa los metodos de IAdministradorService
  * @version 23/11/2021
  */
 

@@ -6,7 +6,10 @@ import com.example.proyecto.sitio.modelo.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * Esta clase implementa los metodos de IRolesService
+ * @version 23/11/2021
+ */
 @Service
 public class RolesService implements IRolesService {
     @Autowired
@@ -14,8 +17,8 @@ public class RolesService implements IRolesService {
 
     /**
      * Metodo que se encarga de guardar un rol en la base de datos
-     * @param r
-     * @return
+     * @param r rol a guardar
+     * @return respuesta de la base de datos
      */
     @Override
     public int save(Roles r) {

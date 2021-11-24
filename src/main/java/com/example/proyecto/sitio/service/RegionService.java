@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/**
+ * Esta clase implementa los metodos de IRegionService
+ * @version 23/11/2021
+ */
 @Service
 public class RegionService implements IRegionService{
 
@@ -16,7 +19,7 @@ public class RegionService implements IRegionService{
 
     /**
      * Metodo que devuelve las regiones existentes en la base de datos
-     * @return List<Region> listado con las regiones encontradas
+     * @return  listado con las regiones encontradas
      */
     @Override
     public List<Region> listar() {

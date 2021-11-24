@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+/**
+ * Esta clase implementa los metodos de IProductoService
+ * @version 23/11/2021
+ */
 @Service
 public class ProductoService implements IProductoService {
 
@@ -18,7 +21,7 @@ public class ProductoService implements IProductoService {
 
     /**
      *  Metodo que retorna un List de Producto
-     * @return List<Producto> retorna un objeto List con los Productos encontrados
+     * @return retorna un objeto List con los Productos encontrados
      */
     @Override
     public List<Producto> listar() {
@@ -43,7 +46,7 @@ public class ProductoService implements IProductoService {
     /**
      * Metodo que filtra los productos cuyo nombre contenga los caracteres de busqueda
      * @param busqueda String para filtrar los productos
-     * @return List<Producto> listado con los productos encontrados
+     * @return listado con los productos encontrados
      */
     @Override
     public List<Producto> filtrar(String busqueda) {

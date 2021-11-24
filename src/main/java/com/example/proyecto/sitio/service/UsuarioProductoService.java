@@ -11,7 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+/**
+ * Esta clase implementa los metodos de IUsuarioProductoService
+ * @version 23/11/2021
+ */
 @Service
 public class UsuarioProductoService  implements IUsuarioProductoService {
 

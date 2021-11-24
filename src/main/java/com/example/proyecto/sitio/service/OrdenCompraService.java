@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+/**
+ * Esta clase implementa los metodos de IOrdenCompraService
+ * @version 23/11/2021
+ */
 
 @Service
 public class OrdenCompraService implements IOrdenCompraService {
@@ -56,7 +60,7 @@ public class OrdenCompraService implements IOrdenCompraService {
     /**
      * Metodo que busca las ordenes de compras asociadas a un correo
      * @param correo correo del usuario relacionado con la orden
-     * @return List<OrdenCompra> listado de las ordenes asociadas a un usuario
+     * @return  listado de las ordenes asociadas a un usuario
      */
     @Override
     public List<OrdenCompra> buscarPorCorreo(String correo) {
