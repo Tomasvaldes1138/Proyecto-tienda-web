@@ -5,6 +5,7 @@ import com.example.proyecto.sitio.interfaceService.IProductoService;
 import com.example.proyecto.sitio.interfaceService.IUsuarioProductoService;
 import com.example.proyecto.sitio.modelo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 import static com.example.proyecto.sitio.controller.ControladorProducto.carrito;
-import static com.example.proyecto.sitio.controller.ControladorUsuario.usuarioLogeado;
 
 @Controller
 @RequestMapping
@@ -39,9 +39,13 @@ public class ControladorOrdenCompra {
 
 
     @PostMapping("/generar_orden_compra")
-    public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra) {
+    public String generar_orden_compra(@ModelAttribute OrdenCompra ordenCompra, Authentication auth) {
         LocalDateTime fechaActual = LocalDateTime.now(ZoneId.of("GMT-3"));
-        ordenCompra.setUsuario(usuarioLogeado);
+
+        Usuario usuario = new Usuario();
+        usuario.setCorreo(auth.getName());
+
+        ordenCompra.setUsuario(usuario);
         ordenCompra.setTotal( carrito.getTotal() );
         ordenCompra.setFecha(fechaActual);
         serviceOrdenCompra.save(ordenCompra);
@@ -76,8 +80,6 @@ public class ControladorOrdenCompra {
             model.addAttribute("orden_compra", orden_compra);
             model.addAttribute("precio", serviceUsuarioProducto.getTotal(id_orden) );
 
-            String contenido = usuarioLogeado == null ? "Login" : usuarioLogeado.getNombres();
-            model.addAttribute("nombre_cliente", contenido);
             return "orden_exitosa";
         }
 
@@ -137,14 +139,9 @@ public class ControladorOrdenCompra {
         //****************************************************
 
         @GetMapping(value = "mis_comprobantes")
-        public String mis_comprobantes(Model model){
-            String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-            model.addAttribute("nombre_cliente", contenido );
+        public String mis_comprobantes(Model model, Authentication auth){
 
-            if(usuarioLogeado==null){
-                return "redirect:/login";
-            }
-            List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(usuarioLogeado.getCorreo());
+            List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(auth.getName());
             model.addAttribute("ordenes", ordenes);
             return "mis_comprobantes";
         }
@@ -156,13 +153,8 @@ public class ControladorOrdenCompra {
         }
 
         @GetMapping("/mis_ordenes")
-        public String mis_ordenes(Model model){
-            String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-            model.addAttribute("nombre_cliente", contenido );
-            if(usuarioLogeado==null){
-                return "redirect:/login";
-            }
-            List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(usuarioLogeado.getCorreo());
+        public String mis_ordenes(Model model, Authentication auth){
+            List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(auth.getName());
             model.addAttribute("ordenes", ordenes);
             return "mis_ordenes";
         }

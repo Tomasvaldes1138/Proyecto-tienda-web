@@ -87,6 +87,7 @@ public class ControladorAdministrador {
 
     @PostMapping(value="insertar_admin")
     public String insertar_admin(@ModelAttribute Administrador administrador){
+
         serviceAdmin.save(administrador);
 
         return "redirect:/nuevo_administrador";

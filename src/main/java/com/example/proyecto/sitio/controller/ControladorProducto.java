@@ -5,6 +5,7 @@ import com.example.proyecto.sitio.modelo.Carrito;
 import com.example.proyecto.sitio.modelo.PCantidad;
 import com.example.proyecto.sitio.modelo.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.proyecto.sitio.controller.ControladorUsuario.usuarioLogeado;
 
 @Controller
 @RequestMapping
@@ -32,8 +32,6 @@ public class ControladorProducto {
 
         List<Producto> productos = service.listar();
         model.addAttribute("productos", productos);
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
         return "home";
     }
 
@@ -50,12 +48,10 @@ public class ControladorProducto {
     //*******************************************************
 
     @GetMapping("categoria/procesadores")
-    public String categoria_procesadores(Model model){
+    public String categoria_procesadores(Model model, Authentication auth){
         List<Producto> procesadores = filtroCategoria(service.listar(), "Procesadores" );
         model.addAttribute("productos", procesadores);
-
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
+        System.err.println("USUARIO: " + auth.getName());
         return "categoria/procesadores";
     }
 
@@ -63,9 +59,6 @@ public class ControladorProducto {
     public String categoria_fuentes_poder(Model model){
         List<Producto> fuentes_poder = filtroCategoria(service.listar(), "Fuentes de Poder" );
         model.addAttribute("productos", fuentes_poder);
-
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
         return "categoria/fuentes_poder";
     }
 
@@ -73,9 +66,6 @@ public class ControladorProducto {
     public String categoria_gabinetes(Model model){
         List<Producto> gabinetes = filtroCategoria(service.listar(), "Gabinetes" );
         model.addAttribute("productos", gabinetes);
-
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
         return "categoria/gabinetes";
     }
 
@@ -83,9 +73,6 @@ public class ControladorProducto {
     public String categoria_memorias_ram(Model model){
         List<Producto> memorias_ram = filtroCategoria(service.listar(), "Memorias Ram" );
         model.addAttribute("productos", memorias_ram);
-
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
         return "categoria/memorias_ram";
     }
 
@@ -93,9 +80,6 @@ public class ControladorProducto {
     public String categoria_placas_madre(Model model){
         List<Producto> placas_madre = filtroCategoria(service.listar(), "Placas Madre" );
         model.addAttribute("productos", placas_madre);
-
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
         return "categoria/placas_madre";
     }
 
@@ -103,9 +87,6 @@ public class ControladorProducto {
     public String categoria_tarjetas_graficas(Model model){
         List<Producto> tarjetas_graficas = filtroCategoria(service.listar(), "Tarjetas Graficas" );
         model.addAttribute("productos", tarjetas_graficas);
-
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
         return "categoria/tarjetas_graficas";
     }
 
@@ -124,9 +105,6 @@ public class ControladorProducto {
         model.addAttribute("productos", productos_carrito);
         model.addAttribute("precio_total", carrito.getTotal() );
         model.addAttribute("cantidad", carrito.getCantidad() );
-
-        String contenido = usuarioLogeado==null ? "Login" : usuarioLogeado.getNombres() ;
-        model.addAttribute("nombre_cliente", contenido );
 
         return "carrito";
     }
