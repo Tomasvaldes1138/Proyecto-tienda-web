@@ -4,6 +4,12 @@ package com.example.proyecto.sitio.modelo;
 import javax.persistence.*;
 import java.util.ArrayList;
 
+/**
+ * Esta clase define la clase de Categoria
+ * @version 23/11/2021
+ */
+
+
 @Entity
 @Table(name = "categoria")
 public class Categoria {
@@ -17,8 +23,4 @@ public class Categoria {
     public String getNombre_categoria() {
         return nombre_categoria;
     }
-
-    public void setNombre_categoria(String nombre_categoria) {
-        this.nombre_categoria = nombre_categoria;
-    }
-}
+}// cierre clase

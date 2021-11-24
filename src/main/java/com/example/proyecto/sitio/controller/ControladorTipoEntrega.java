@@ -16,6 +16,12 @@ import static com.example.proyecto.sitio.controller.ControladorProducto.carrito;
 
 @Controller
 @RequestMapping
+
+/**
+ * Esta clase contiene todos los metodos necesarios para el funcionamiento del tipo de entrega
+ * @version 23/11/2021
+ */
+
 public class ControladorTipoEntrega {
 
     @Autowired
@@ -29,12 +35,21 @@ public class ControladorTipoEntrega {
     //******************* TIPO ENTREGA *******************
     //****************************************************
 
+    /**
+     * Esta funcion redirecciona a la vista tipo entrega
+     * y muestra informmacion que se agregara a la orden de compra
+     *
+     * @param model Es un contenedor de Spring Boot que tiene informacion del programa
+     * @return Redirecciona a la vista tipo entrega
+     */
+
     @GetMapping("/tipo_entrega")
     public String tipo_entrega(Model model){
 
 
         if( carrito.getProductos().isEmpty() ){
             System.err.println("CARRITO VACIO");
+
             return "redirect:/carrito";
         }
 
@@ -50,7 +65,7 @@ public class ControladorTipoEntrega {
         model.addAttribute("precio_total", carrito.getTotal() );
 
         return "tipo_entrega";
-    }
+    }// cierra funcion
 
 
 }

@@ -2,6 +2,11 @@ package com.example.proyecto.sitio.modelo;
 
 import javax.persistence.*;
 
+/**
+ * Esta clase define la clase de TipoEntrega
+ * @version 23/11/2021
+ */
+
 @Entity
 @Table(name = "tipo_entrega")
 public class TipoEntrega {
@@ -11,8 +16,11 @@ public class TipoEntrega {
     private int id_entrega;
     private String nombre_entrega;
 
-    public TipoEntrega(){
 
+    /**
+     * Constructor vacio
+     */
+    public TipoEntrega(){
     }
 
     public TipoEntrega(int id_entrega, String nombre_entrega) {

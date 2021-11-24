@@ -18,6 +18,12 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping
+
+/**
+ * Esta clase contiene todos los metodos necesarios para el funcionamiento del usuario
+ * @version 23/11/2021
+ */
+
 public class ControladorUsuario {
 
     @Autowired
@@ -35,12 +41,25 @@ public class ControladorUsuario {
     //******************* REGISTRO USUARIO ***************
     //****************************************************
 
+    /**
+     * Esta funcion redirecciona al registro de usuario
+     *
+     * @param model Es un contenedor de Spring Boot que tiene informacion del programa
+     * @return Redirecciona a la vista registro
+     */
     @GetMapping("/registro")
     public String registro(Model model){
         model.addAttribute("usuario", new Usuario());
         return "registro";
-    }
+    }// cierra funcion
 
+
+    /**
+     * Esta funcion inserta usuarios a la base de datos
+     *
+     * @param usuario Es el usuario que se va a insertar
+     * @return Redirecciona a la vista login
+     */
     @PostMapping(value = "insertar_usuario")
     public String insertar_usuario(@ModelAttribute Usuario usuario){
         usuario.setClave(encoder.encode(usuario.getClave() ));
@@ -50,15 +69,23 @@ public class ControladorUsuario {
         rol.setUsuario(usuario);
         rol.setRol("ROLE_USER");
         serviceRoles.save(rol);
-
-
         return "redirect:/login";
     }
+
+  
+    }// cierra funcion
+
 
     //****************************************************
     //******************* LOGIN USUARIO ******************
     //****************************************************
 
+    /**
+     * Esta funcion redirecciona a login
+     *
+     * @param model Es un contenedor de Spring Boot que tiene informacion del programa
+     * @return Redirecciona a la vista login
+     */
     @GetMapping("/login")
     public String login(Model model){
         //model.addAttribute("usuario", new Usuario());
@@ -67,5 +94,4 @@ public class ControladorUsuario {
 
 
 
-
-}
+}// cierre clase

@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Esta clase define la interface IOrdenCompraService
+ * @version 23/11/2021
+ */
+
 @Service
 public interface IOrdenCompraService {
     public List<OrdenCompra> listar();

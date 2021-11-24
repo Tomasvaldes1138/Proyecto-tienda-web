@@ -1,5 +1,9 @@
 package com.example.proyecto.sitio.modelo;
 
+/**
+ * Esta clase define la clase de Region
+ * @version 23/11/2021
+ */
 
 import javax.persistence.*;
 
@@ -12,6 +16,11 @@ public class Region {
     private int id_region;
     private String nombre_region;
 
+    /**
+     * obtiene el nombre de la region
+     *
+     * @return retorna un String con el nombre de la region
+     */
     public String getNombre_region() {
         return nombre_region;
     }
