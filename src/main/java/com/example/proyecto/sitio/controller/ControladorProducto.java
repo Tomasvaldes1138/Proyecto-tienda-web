@@ -60,7 +60,7 @@ public class ControladorProducto {
         busqueda = busqueda.toLowerCase();
         List<Producto> productos = service.filtrar(busqueda);
         model.addAttribute("productos", productos);
-        return "categoria/filtrados";
+        return "categoria/buscar_productos";
     }// cierra funcion
 
     //*******************************************************

@@ -34,16 +34,27 @@
           <div class="dropdown-btn flex-space" sec:authorize="isAuthenticated()">
             <span class="h-logo mg-l-1"  sec:authentication="name" ></span>
             <div class="triangle"></div>
-            <div class="dropdown-content" >
-
-              <a href="mis_ordenes">Mis Ordenes</a>
-              <a href="mis_comprobantes">Mis Comprobantes</a>
-              <form th:action="@{/logout}" method="post">
-                <button type="submit">Cerrar Sesion</button>
-              </form>
-            </div>
           </div>
-        </div> <!--.login-container-->
+          <div class="dropdown-content" >
+            <div class="nav-rol" sec:authorize="hasRole('ROLE_USER')" >
+              <a class="role-link" th:href="@{/mis_ordenes}">Mis Ordenes</a>
+              <a class="role-link" th:href="@{/mis_comprobantes}">Mis Comprobantes</a>
+            </div>
+
+            <div class="nav-rol" sec:authorize="hasRole('ROLE_ADMIN')" >
+              <a class="role-link" th:href="@{/pedidos_realizados}">Ordenes</a>
+              <a class="role-link" th:href="@{/info_productos}">Productos</a>
+              <a class="role-link" th:href="@{/nuevo_producto}">Nuevo Producto</a>
+              <a class="role-link" th:href="@{/nuevo_administrador}">Nuevo Administrador</a>
+            </div>
+
+            <form class="hover-bg" th:action="@{/logout}" method="post">
+              <button class="btn-reset logout c-pointer" type="submit">Cerrar Sesion</button>
+            </form>
+          </div>
+
+        </div> <!--login-container-->
+
 
       </div>
 
