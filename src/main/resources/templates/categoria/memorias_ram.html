@@ -12,7 +12,7 @@
 <body>
   <header class="header">
       <div class="container flex-space">
-      <a class="logo c-pointer" href="../home">PC Labs</a>
+      <a class="logo c-pointer" th:href="@{/home}">PC Labs</a>
 
         <form th:action="@{/buscar_productos}" class="barra-container" method="post">
           <input class="barra-busqueda" type="text" name="busqueda" id="busqueda" placeholder="Buscar Productos">
@@ -58,19 +58,19 @@
 
 
       </div>
-
+      </div>
     </div>
     </header>
-    <nav class="nav">
-      <div class="container">
-        <a href="procesadores" class="nav-link" >Procesadores</a>
-        <a href="tarjetas_graficas" class="nav-link" >Tarjetas Graficas</a>
-        <a href="memorias_ram" class="nav-link" >Memorias Ram</a>
-        <a href="placas_madre" class="nav-link" >Placas Madre</a>
-        <a href="fuentes_poder" class="nav-link" >Fuentes de Poder</a>
-        <a href="gabinetes" class="nav-link" >Gabinetes</a>
+  <nav class="nav">
+    <div class="container">
+      <a th:href="@{/categoria/procesadores}" class="nav-link" >Procesadores</a>
+      <a th:href="@{/categoria/tarjetas_graficas}" class="nav-link" >Tarjetas Graficas</a>
+      <a th:href="@{/categoria/memorias_ram}" class="nav-link" >Memorias Ram</a>
+      <a th:href="@{/categoria/placas_madre}" class="nav-link" >Placas Madre</a>
+      <a th:href="@{/categoria/fuentes_poder}" class="nav-link" >Fuentes de Poder</a>
+      <a th:href="@{/categoria/gabinetes}" class="nav-link" >Gabinetes</a>
     </div>
-    </nav>
+  </nav>
     <div class="container">
       <p class="page-name" >Home > Memorias Ram</p>
       
