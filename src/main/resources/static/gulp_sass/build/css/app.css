@@ -644,6 +644,13 @@ a {
   text-align: center;
 }
 
+.home-icon {
+  position: absolute;
+  margin-left: 4rem;
+  width: 5rem;
+  height: 5rem;
+}
+
 .title {
   margin-bottom: 4rem;
   font-weight: 400;

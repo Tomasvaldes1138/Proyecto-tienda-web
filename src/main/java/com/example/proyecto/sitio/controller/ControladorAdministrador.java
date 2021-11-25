@@ -11,14 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-@Controller
-@RequestMapping
-
 /**
  * Esta clase contiene todos los metodos necesarios para el funcionamiento de un usuario con rol de administrador
  * @version 23/11/2021
  */
+
+@Controller
+@RequestMapping
 
 public class ControladorAdministrador {
 

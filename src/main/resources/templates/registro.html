@@ -7,11 +7,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Play&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <!--<link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css"> -->
+    <!--<link rel="stylesheet" type="text/css" href="../static/gulp_sass/build/css/app.css">-->
   </head>
   <body class="reg-background">
 
       <div class="registro-container">
+        <a th:href="@{/home}" class="home-icon">
+            <img th:src="@{/img/icons/home.svg}" alt="home-icon" height="50px">
+        </a>
+
           <div class="form-container">
 
           <form class="f-registro" th:object="${usuario}" th:action="@{/insertar_usuario}" method="post">
