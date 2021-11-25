@@ -73,17 +73,15 @@
     </nav>
     <div class="container">
       <p class="page-name" >Mis Comprobantes Pendientes</p>
-      
-      <h1 class="title" >Comprobantes Pendientes</h1>
+      <h1 class="title" th:text="${ordenes.empty ? 'No tienes comprobantes pendientes': 'Comprobantes Pendientes' }" ></h1>
 
-      <form action="" class="form-ordenes f-column-l" th:action="@{/orden_comprobante}" method="POST">
+      <form th:if="${!ordenes.empty}" class="form-ordenes f-column-l" th:action="@{/orden_comprobante}" method="POST">
         <div class="radio-opcion" th:each="orden:${ordenes}">
           <input type="radio" name="orden" id="modificarEsto" th:name="id_orden" th:value="${orden.id_orden}">
           <label for="" th:text="'Orden ' + ${orden.fecha}"></label>
           <p th:text="'$' + ${orden.total}"></p>
         </div>
-
-        <input type="submit" value="Subir Comprobante" class="btn-reset btn-agregar btn-orden c-pointer">
+        <input  type="submit" value="Subir Comprobante" class="btn-reset btn-agregar btn-orden c-pointer">
       </form>
 
     </div>

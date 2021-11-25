@@ -73,10 +73,11 @@
     </nav>
     <div class="container">
       <p class="page-name" >Ordenes</p>
-      
-      <h1 class="title" >Mis Ordenes</h1>
 
-      <form th:action="@{/ver_orden_usuario}" method="POST" class="form-ordenes f-column-l">
+      <h1 class="title" th:text="${ordenes.empty ? 'No tienes ordenes registradas': 'Mis Ordenes' }" ></h1>
+
+
+      <form th:if="${!ordenes.empty}" th:action="@{/ver_orden_usuario}" method="POST" class="form-ordenes f-column-l">
         <div class="radio-opcion" th:each="orden:${ordenes}">
           <input type="radio" name="orden" id="modificarEsto" th:name="id_orden" th:value="${orden.id_orden}">
           <label for="" th:text="'Orden ' + ${orden.fecha}"></label>

@@ -216,8 +216,7 @@ public class ControladorOrdenCompra {
      */
       @GetMapping(value = "mis_comprobantes")
       public String mis_comprobantes(Model model, Authentication auth){
-
-          List<OrdenCompra> ordenes = serviceOrdenCompra.buscarPorCorreo(auth.getName());
+          List<OrdenCompra> ordenes = serviceOrdenCompra.filtrarComprobantesPendientes(auth.getName());
           model.addAttribute("ordenes", ordenes);
           return "mis_comprobantes";
       }// cierra funcion

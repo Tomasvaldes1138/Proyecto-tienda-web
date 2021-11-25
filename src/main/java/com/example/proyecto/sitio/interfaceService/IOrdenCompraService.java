@@ -17,6 +17,7 @@ public interface IOrdenCompraService {
     public int save(OrdenCompra a);
     public OrdenCompra buscarPorId(int id);
     public List<OrdenCompra> buscarPorCorreo(String correo);
+    public List<OrdenCompra> filtrarComprobantesPendientes(String correo);
 
 
 }

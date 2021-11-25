@@ -68,4 +68,11 @@ public class OrdenCompraService implements IOrdenCompraService {
                                     filter(oc -> oc.getUsuario().getCorreo().equals(correo))
                                     .collect(Collectors.toList());
     }
+
+    @Override
+    public List<OrdenCompra> filtrarComprobantesPendientes(String correo) {
+        List<OrdenCompra> ordenes = this.buscarPorCorreo(correo);
+        return ordenes.stream().filter(o -> o.getComprobantePago() == null).collect(Collectors.toList());
+    }
+
 }
